@@ -23,4 +23,6 @@ public class PostCreateRequest {
     private String content;
 
     private String image;
+
+    private Long categoryID;
 }

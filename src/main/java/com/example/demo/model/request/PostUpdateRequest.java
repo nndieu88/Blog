@@ -23,4 +23,6 @@ public class PostUpdateRequest {
     private String content;
 
     private String image;
+
+    private Long categoryID;
 }

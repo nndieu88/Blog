@@ -21,7 +21,7 @@ public class PostMapper {
         postDto.setUserName(post.getUser().getUserName());
         postDto.setCategoryID(post.getCategory().getId());
         postDto.setCategoryName(post.getCategory().getCategoryName());
-        postDto.setMetaCategory(post.getCategory().getMetaCategory());
+        postDto.setMetaCategory(post.getMetaCategory());
         return postDto;
     }
 
@@ -30,14 +30,15 @@ public class PostMapper {
         post.setTitle(postCreateRequest.getTitle());
         post.setContent(postCreateRequest.getContent());
         post.setMetaTitle(ConvertStringToUrl.convert(postCreateRequest.getTitle()));
+        post.setMetaCategory(ConvertStringToUrl.convert(postCreateRequest.g));
         post.setDateCreated(new Date());
         post.setDateUpdated(new Date());
         post.setImage(postCreateRequest.getImage());
         return post;
     }
 
-    public static Post toPost(PostUpdateRequest postUpdateRequest, Long id, Date date){
-        Post post=new Post();
+    public static Post toPost(PostUpdateRequest postUpdateRequest, Long id, Date date) {
+        Post post = new Post();
         post.setId(id);
         post.setTitle(postUpdateRequest.getTitle());
         post.setContent(postUpdateRequest.getContent());
