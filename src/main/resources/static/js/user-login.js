@@ -9,7 +9,7 @@ $(document).ready(function () {
             return;
         }
 
-        axios.post("http://localhost:8080/login", data)
+        axios.post("http://localhost:8080/api/login", data)
             .then(function (data) {
                 if (data.data == "ROLE_ADMIN") {
                     location.replace("/admin")

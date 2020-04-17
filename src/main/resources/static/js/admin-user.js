@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         axios.get("http://localhost:8080/admins/users/" + id)
             .then(function (data) {
-                $("#input-cate-name-update").val(data.data.name);
+                $("#input-cate-name-update").val(data.data.userName);
                 $("#input-cate-address-update").val(data.data.address);
                 $("#input-cate-phone-update").val(data.data.phone);
                 // $('#img').attr('src', data.data.avatar);

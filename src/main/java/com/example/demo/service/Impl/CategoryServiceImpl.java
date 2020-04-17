@@ -7,7 +7,6 @@ import com.example.demo.exception.NotFoundException;
 import com.example.demo.model.dto.CategoryDto;
 import com.example.demo.model.dto.Paging;
 import com.example.demo.model.mapper.CategoryMapper;
-import com.example.demo.model.mapper.PostMapper;
 import com.example.demo.model.request.CategoryCreateRequest;
 import com.example.demo.model.request.CategoryUpdateRequest;
 import com.example.demo.repository.CategoryRepository;
@@ -16,11 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
@@ -36,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Paging getAll(int page) {
-        Page<Category> categories = categoryRepository.getAll(PageRequest.of(page, 3, Sort.by("dateCreated").descending()));
+        Page<Category> categories = categoryRepository.findAll(PageRequest.of(page, 3, Sort.by("dateCreated").descending()));
         List<CategoryDto> listCategories = new ArrayList<>();
         for (Category category : categories.getContent()) {
             listCategories.add(CategoryMapper.toCategoryDto(category));
@@ -63,7 +64,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto createCategory(CategoryCreateRequest categoryCreateRequest) {
-        Category category = categoryRepository.findAllByCategoryName(categoryCreateRequest.getCategoryName());
+        Category category = categoryRepository.findCategoryByCategoryName(categoryCreateRequest.getCategoryName());
         if (category != null) {
             throw new DuplicateRecordException("category already is in use");
         }

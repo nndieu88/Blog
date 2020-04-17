@@ -22,7 +22,7 @@ public class WebCorsConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/*/**","/*/**","/info/*/**")
+                .addResourceHandler("/*/**","/info/*/**")
                 .addResourceLocations("classpath:/static/");
     }
 }

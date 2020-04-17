@@ -29,7 +29,7 @@ public class ApiAuthenticate {
 
     private final String NAME_TOKEN = "JWT_TOKEN";
 
-    @PostMapping("/login")
+    @PostMapping("/api/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthenticationRequest req, HttpServletResponse res) {
         // Xác thực từ username và password.
         Authentication authentication = authenticationManager.authenticate(

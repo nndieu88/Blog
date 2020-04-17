@@ -36,7 +36,17 @@ public class User {
 
     private Date dateUpdated;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private Role role;
+
+    public User(Long id, String userName, String address, String phone, String email, String password, Role role) {
+        this.id = id;
+        this.userName = userName;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }

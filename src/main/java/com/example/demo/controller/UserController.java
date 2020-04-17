@@ -89,10 +89,6 @@ public class UserController {
         return "/user/register";
     }
 
-    @GetMapping("/tran-page")
-    public String tranPage() {
-        return "/user/tran-page";
-    }
 
     @GetMapping("/info/{id}")
     public String info(@PathVariable Long id, Model model) {

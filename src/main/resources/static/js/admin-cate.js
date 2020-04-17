@@ -12,7 +12,7 @@ $(document).ready(function () {
     });
 
     $("#save-cate").on("click", function () {
-        dataCategory.nameCate = $("#input-category-name").val();
+        dataCategory.categoryName = $("#input-category-name").val();
 
         axios.post("http://localhost:8080/admins/categories", dataCategory)
             .then(function (data) {
@@ -30,11 +30,11 @@ $(document).ready(function () {
 
         axios.get("http://localhost:8080/admins/categories/" + id)
             .then(function (data) {
-                $("#input-cate-name-update").val(data.data.nameCate);
+                $("#input-cate-name-update").val(data.data.categoryName);
             });
 
         $("#btn-update-cate").on("click", function () {
-            dataCategory.nameCate = $("#input-cate-name-update").val();
+            dataCategory.categoryName = $("#input-cate-name-update").val();
             axios.put("http://localhost:8080/admins/categories/" + id, dataCategory)
                 .then(function (data) {
                     swal("successful");

@@ -37,12 +37,12 @@ public class AdminController {
         return "/admin/home";
     }
 
-    //admin-catelories-page
+    // admin-catelories-page
     @GetMapping("/categories")
     public String category(Model model, @RequestParam(required = false) Integer page) {
         int currentPage = (page == null ? 0 : page - 1);
         Paging categories = categoryService.getAll(currentPage);
-        model.addAttribute("category", categories);
+        model.addAttribute("categories", categories);
         return "/admin/category";
     }
 
@@ -54,8 +54,8 @@ public class AdminController {
         return "/admin/user";
     }
 
-    //admin-products-page
-    @GetMapping("/post")
+    //admin-post-page
+    @GetMapping("/posts")
     public String post(Model model, @RequestParam(required = false) Integer page) {
         model.addAttribute("isPost", true);
 
@@ -67,7 +67,7 @@ public class AdminController {
         return "/admin/post";
     }
 
-    @GetMapping("post/search")
+    @GetMapping("posts/search")
     public String postByTitle(Model model,
                               @RequestParam(required = false) String key,
                               Integer page) {
@@ -85,7 +85,7 @@ public class AdminController {
         model.addAttribute("key", key);
 
         isUser(model);
-        return "/admin/products";
+        return "/admin/post";
     }
 
     public void isUser(Model model) {

@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Danh mục sản phẩm</title>
+    <title>Blog</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -26,7 +26,7 @@
 <div class="container-scroller">
 
 
-    <div th:replace="~{/fragment/header_admin :: header_admin}"></div>
+    <div th:replace="~{/admin/header_admin :: header_admin}"></div>
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
@@ -34,18 +34,13 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/products}">
-                        <span class="menu-title">Product</span>
+                    <a class="nav-link" th:href="@{/admin/posts}">
+                        <span class="menu-title">Post</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/admin/categories}">
                         <span class="menu-title">Category</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/orders}">
-                        <span class="menu-title">Order</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -58,8 +53,8 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h1>Product Management</h1>
-                    <form class="form-inline my-2 my-lg-0"  th:method="get" th:action="@{/admin/products/search}">
+                    <h1>Post Management</h1>
+                    <form class="form-inline my-2 my-lg-0" th:method="get" th:action="@{/admin/post/search}">
                         <input class="form-control mr-sm-2" th:name="key" th:value="${key}" type="text">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
@@ -67,10 +62,10 @@
 
                 <button type="button" class="btn btn-primary" id="new-product" data-toggle="modal"
                         style="margin-bottom: 20px">
-                    Add new product
+                    Add new post
                 </button>
 
-<!--                <p id="description"></p>-->
+                <!--                <p id="description"></p>-->
 
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
@@ -82,59 +77,65 @@
                                         #
                                     </th>
 
-                                    <th colspan="2">
-                                        Name
+                                    <th colspan="1">
+                                        Title
+                                    </th>
+                                    <th colspan="1">
+                                        Content
                                     </th>
                                     <th colspan="1">
                                         Image
                                     </th>
                                     <th colspan="1">
-                                        Price
-                                    </th>
-                                    <th colspan="1">
                                         Category
                                     </th>
                                     <th colspan="1">
-                                        Description
+                                        Date_Created
+                                    </th>
+                                    <th colspan="1">
+                                        Date_Updated
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="product, i : ${products.content}">
+                                <tr th:each="post, i : ${posts.content}">
                                     <td colspan="1" th:text="${i.count}"></td>
-                                    <td colspan="2" th:text="${product.name}"></td>
-                                    <td colspan="1"><img th:src="@{${product.image}}" style="height: 40px;width: 40px">
+                                    <td colspan="1" th:text="${post.title}"></td>
+                                    <td colspan="1" th:text="${post.content}"></td>
+                                    <td colspan="1"><img th:src="@{${post.image}}" style="height: 40px;width: 40px">
                                     </td>
-                                    <td colspan="1" th:text="${#numbers.formatCurrency(product.price)}"></td>
-                                    <td colspan="1" th:text="${product.cate}"></td>
-                                    <td colspan="1" th:text="${product.description}"></td>
-
-<!--                                    <td class="descip" th:attr="prodID=${product.id}" colspan="1" th:text="${#strings.abbreviate(product.description,20)}"></td>-->
+                                    <td colspan="1" th:text="${post.categoryName}"></td>
+                                    <td colspan="1"
+                                        th:text="${#dates.format(post.dateCreated,'dd-MM-yyyy HH:mm:ss')}"></td>
+                                    <td colspan="1"
+                                        th:text="${#dates.format(post.dateUpdated, 'dd-MM-yyyy HH:mm:ss')}"></td>
+<!--                                    <td class="descip" th:attr="prodID=${product.id}" colspan="1"-->
+<!--                                        th:text="${#strings.abbreviate(product.description,20)}"></td>-->
                                     <td colspan="1">
                                         <i class="far fa-edit btn-edit-product" title="Edit product"
-                                           th:attr="cateid=${product.id}" style="cursor: pointer"></i>
+                                           th:attr="cateid=${post.id}" style="cursor: pointer"></i>
                                         <i class="far fa-trash-alt btn-delete-product" title="Delete product"
-                                           th:attr="cateid=${product.id}" style="cursor: pointer"></i>
+                                           th:attr="cateid=${post.id}" style="cursor: pointer"></i>
                                     </td>
 
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="topassda" th:if="${isProduct}">
-                                <a th:href="@{'/admin/products'( page=${products.currentPage -1})}"
-                                   th:if="${products.hasPrev}">Previous</a>
-                                <span th:text="${products.currentPage}"></span>/<span
-                                    th:text="${products.totalPage}"></span>
-                                <a th:href="@{'/admin/products'( page=${products.currentPage + 1})}"
-                                   th:if="${products.hasNext}">Next</a>
+                            <div class="topassda" th:if="${isPost}">
+                                <a th:href="@{'/admin/post'( page=${posts.currentPage -1})}"
+                                   th:if="${posts.hasPrev}">Previous</a>
+                                <span th:text="${posts.currentPage}"></span>/<span
+                                    th:text="${posts.totalPage}"></span>
+                                <a th:href="@{'/admin/post'( page=${posts.currentPage + 1})}"
+                                   th:if="${posts.hasNext}">Next</a>
                             </div>
                             <div class="topassda" th:if="${isSearch}">
-                                <a th:href="@{'/admin/products/search'( key=${key}, page=${products.currentPage -1})}"
-                                   th:if="${products.hasPrev}">Previous</a>
-                                <span th:text="${products.currentPage}"></span>/<span
-                                    th:text="${products.totalPage}"></span>
-                                <a th:href="@{'/admin/products/search'(key=${key}, page=${products.currentPage + 1})}"
-                                   th:if="${products.hasNext}">Next</a>
+                                <a th:href="@{'/admin/post/search'( key=${key}, page=${posts.currentPage -1})}"
+                                   th:if="${posts.hasPrev}">Previous</a>
+                                <span th:text="${posts.currentPage}"></span>/<span
+                                    th:text="${posts.totalPage}"></span>
+                                <a th:href="@{'/admin/post/search'(key=${key}, page=${posts.currentPage + 1})}"
+                                   th:if="${posts.hasNext}">Next</a>
                             </div>
                         </div>
                     </div>
@@ -158,15 +159,19 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <label>Product name:</label>
-                                <input type="text" class="form-control" id="input-category-name">
+                                <label>Title:</label>
+                                <input type="text" class="form-control" id="input-title">
+                            </div>
+                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                                <label>Content:</label>
+                                <textarea type="text" class="form-control" id="input-content"></textarea>
                             </div>
                             <div class="form-group margin-bottom-15" style="margin-top: 20px">
                                 <label>Category:</label>
                                 <select class="category-id-create">
                                     <option th:each="category : ${categories}"
                                             th:value="${category.id}"
-                                            th:text="${category.nameCate}"
+                                            th:text="${category.categoryName}"
                                             th:attr="cateid=${category.id}"></option>
                                 </select>
                             </div>
@@ -179,14 +184,6 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <label>Price:</label>
-                                <input type="text" class="form-control" id="input-category-price">
-                            </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <label>Description:</label>
-                                <textarea type="textare" class="form-control" id="input-category-decription"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -214,15 +211,19 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <label>Product name:</label>
-                                <input type="text" class="form-control" id="input-cate-name-update">
+                                <label>Title:</label>
+                                <input type="text" class="form-control" id="input-title-update">
+                            </div>
+                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                                <label>Content:</label>
+                                <textarea type="text" class="form-control" id="input-content-update"></textarea>
                             </div>
                             <div class="form-group margin-bottom-15" style="margin-top: 20px">
                                 <label>Category:</label>
                                 <select class="category-id-update">
                                     <option th:each="category : ${categories}"
                                             th:value="${category.id}"
-                                            th:text="${category.nameCate}"
+                                            th:text="${category.categoryName}"
                                             th:attr="cateid=${category.id}"></option>
                                 </select>
                             </div>
@@ -236,14 +237,6 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <label>Price:</label>
-                                <input type="text" class="form-control" id="input-cate-price-update">
-                            </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <label>Description:</label>
-                                <textarea type="text" class="form-control" id="input-cate-decription-update"></textarea>
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary bnt-close" data-dismiss="modal">Close
@@ -254,8 +247,6 @@
                 </div>
 
             </div>
-
-            <footer class="footer" th:replace="/fragment/footer_admin :: footer_admin"></footer>
 
         </div>
         <!-- main-panel ends -->
@@ -280,6 +271,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-<script th:src="@{/js/admin-product.js}"></script>
+<script th:src="@{/js/admin-post.js}"></script>
 </body>
 </html>

@@ -16,11 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class PostServiceImpl implements PostService {
 
     @Autowired
@@ -41,7 +43,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Paging getAll(int page) {
-        Page<Post> posts = postRepository.getAll(PageRequest.of(page, 3, Sort.by("dateCreate").descending()));
+        Page<Post> posts = postRepository.findAll(PageRequest.of(page, 3, Sort.by("dateCreated").descending()));
         List<PostDto> postDtos = new ArrayList<>();
         for (Post post : posts.getContent()) {
             postDtos.add(PostMapper.toPostDto(post));
@@ -52,7 +54,8 @@ public class PostServiceImpl implements PostService {
         paging.setHasNext(posts.hasNext());
         paging.setHasPrev(posts.hasPrevious());
         paging.setCurrentPage(page + 1);
-        paging.setTotalPage(posts.getTotalPages());
+        int totalPage = (posts.getTotalPages() == 0 ? 1 : posts.getTotalPages());
+        paging.setTotalPage(totalPage);
         return paging;
     }
 
@@ -103,7 +106,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDto createPost(PostCreateRequest postCreateRequest) {
-        Post post = postRepository.findByMetaTitle(postCreateRequest.getTitle());
+        Post post = postRepository.findPostByTitle(postCreateRequest.getTitle());
         if (post != null) {
             throw new DuplicateRecordException("title already is in use");
         }
