@@ -26,7 +26,6 @@ public class UserController {
 
     @GetMapping("/")
     public String index(Model model, @RequestParam(required = false) Integer page) {
-        model.addAttribute("isBlog", true);
 
         int currentPage = (page == null ? 0 : page - 1);
         Paging posts = postService.getAll(currentPage);
@@ -57,6 +56,16 @@ public class UserController {
         return "/user/index";
     }
 
+    @GetMapping("/all")
+    public String allBlog(Model model, @RequestParam(required = false) Integer page) {
+        model.addAttribute("isBlog", true);
+
+        int currentPage = (page == null ? 0 : page - 1);
+        Paging posts = postService.getAll(currentPage);
+        model.addAttribute("posts", posts);
+        return "/user/list";
+    }
+
     @GetMapping("/search")
     public String indexByTitle(Model model,
                                @RequestParam(required = false) String key,
@@ -72,10 +81,10 @@ public class UserController {
 
         model.addAttribute("key", key);
 
-        addCategory(model);
-
-        isUser(model);
-        return "/user/index";
+//        addCategory(model);
+//
+//        isUser(model);
+        return "/user/list";
     }
 
     @GetMapping("/login")

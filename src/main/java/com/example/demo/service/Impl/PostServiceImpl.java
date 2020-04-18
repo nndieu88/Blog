@@ -69,9 +69,9 @@ public class PostServiceImpl implements PostService {
 
         Paging paging = new Paging();
         paging.setContent(postDtos);
-        paging.setCurrentPage(page + 1);
         paging.setHasNext(posts.hasNext());
         paging.setHasPrev(posts.hasPrevious());
+        paging.setCurrentPage(page + 1);
         int totalPage = (posts.getTotalPages() == 0 ? 1 : posts.getTotalPages());
         paging.setTotalPage(totalPage);
         return paging;
@@ -88,7 +88,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Paging getAllPostByTitle(String name, int page) {
-        Page<Post> posts = postRepository.findAllPostByTitle(name, PageRequest.of(page, 3, Sort.by("dateCreated").descending()));
+        Page<Post> posts = postRepository.findAllPostByTitle(name, PageRequest.of(page, 6, Sort.by("date_created").descending()));
         List<PostDto> postDtos = new ArrayList<>();
         for (Post post : posts.getContent()) {
             postDtos.add(PostMapper.toPostDto(post));
@@ -96,11 +96,11 @@ public class PostServiceImpl implements PostService {
 
         Paging paging = new Paging();
         paging.setContent(postDtos);
+        paging.setHasNext(posts.hasNext());
+        paging.setHasPrev(posts.hasPrevious());
         paging.setCurrentPage(page + 1);
         int totalPage = (posts.getTotalPages() == 0 ? 1 : posts.getTotalPages());
         paging.setTotalPage(totalPage);
-        paging.setHasPrev(posts.hasPrevious());
-        paging.setHasNext(posts.hasNext());
         return paging;
     }
 

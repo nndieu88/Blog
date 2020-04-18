@@ -14,7 +14,7 @@ $(document).ready(function () {
                 if (data.data == "ROLE_ADMIN") {
                     location.replace("/admin")
                 } else {
-                    location.replace("/mobile");
+                    location.replace("/");
                 }
             }).catch(function (err) {
             swal("Tài khoản sai, vui lòng nhập lại")

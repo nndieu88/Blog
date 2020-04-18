@@ -6,6 +6,17 @@ $(document).ready(function () {
         location.reload();
     });
 
+    // content
+    $(".show-content").on("click", function () {
+        var id = $(".btn-edit-product").attr("cateid");
+        $("#modal-context").modal();
+
+        axios.get("http://localhost:8080/admins/posts/" + id)
+            .then(function (data) {
+                $(".context").val(data.data.content);
+            });
+    });
+
     // add
     $("#new-product").on("click", function () {
         $("#modal-create-cate").modal();

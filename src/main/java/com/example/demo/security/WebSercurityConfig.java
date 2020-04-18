@@ -51,8 +51,6 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/info/images/**").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN") // Api đăng nhập đăng kí không cần kiểm tra xác thực
-//                .antMatchers(HttpMethod.POST, "/admins/users").permitAll() // Api đăng nhập đăng kí không cần kiểm tra xác thực
-//                .antMatchers(HttpMethod.GET,  "/users").permitAll() // Api đăng nhập đăng kí không cần kiểm tra xác thực
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

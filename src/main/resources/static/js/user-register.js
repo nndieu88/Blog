@@ -20,7 +20,7 @@ $(document).ready(function () {
                 axios.post("http://localhost:8080/login", dataLogin)
                     .then(function () {
                         swal("Đăng ký thành công");
-                        location.replace("/mobile")
+                        location.replace("/")
                     })
             }).catch(function (err) {
             swal("Lỗi đăng ký. Vui lòng nhập lại thông tin");

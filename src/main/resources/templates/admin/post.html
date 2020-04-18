@@ -100,8 +100,9 @@
                                 <tbody>
                                 <tr th:each="post, i : ${posts.content}">
                                     <td colspan="1" th:text="${i.count}"></td>
-                                    <td colspan="1" th:text="${post.title}"></td>
-                                    <td colspan="1" th:text="${post.content}"></td>
+                                    <td colspan="1" th:text="${#strings.abbreviate(post.title,30)}"></td>
+                                    <td colspan="1" class="show-content"><a
+                                            th:text="${#strings.abbreviate(post.content,20)}"></a></td>
                                     <td colspan="1"><img th:src="@{${post.image}}" style="height: 40px;width: 40px">
                                     </td>
                                     <td colspan="1" th:text="${post.categoryName}"></td>
@@ -109,8 +110,8 @@
                                         th:text="${#dates.format(post.dateCreated,'dd-MM-yyyy HH:mm:ss')}"></td>
                                     <td colspan="1"
                                         th:text="${#dates.format(post.dateUpdated, 'dd-MM-yyyy HH:mm:ss')}"></td>
-<!--                                    <td class="descip" th:attr="prodID=${product.id}" colspan="1"-->
-<!--                                        th:text="${#strings.abbreviate(product.description,20)}"></td>-->
+                                    <!--                                    <td class="descip" th:attr="prodID=${product.id}" colspan="1"-->
+                                    <!--                                        th:text="${#strings.abbreviate(product.description,20)}"></td>-->
                                     <td colspan="1">
                                         <i class="far fa-edit btn-edit-product" title="Edit product"
                                            th:attr="cateid=${post.id}" style="cursor: pointer"></i>
@@ -147,6 +148,27 @@
 
 
             <!-- Modal -->
+            <div class="modal fade" id="modal-context" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Content:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                                <textarea disabled class="context" style="width: 470px;height: 400px"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
             <div class="modal fade" id="modal-create-cate" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">

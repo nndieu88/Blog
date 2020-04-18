@@ -3,12 +3,359 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
     <meta charset="UTF-8">
+    <script type="text/javascript">(window.NREUM || (NREUM = {})).loader_config = {
+        licenseKey: "6b6b1d1407",
+        applicationID: "52117986"
+    };
+    window.NREUM || (NREUM = {}), __nr_require = function (e, n, t) {
+        function r(t) {
+            if (!n[t]) {
+                var i = n[t] = {exports: {}};
+                e[t][0].call(i.exports, function (n) {
+                    var i = e[t][1][n];
+                    return r(i || n)
+                }, i, i.exports)
+            }
+            return n[t].exports
+        }
+
+        if ("function" == typeof __nr_require) return __nr_require;
+        for (var i = 0; i < t.length; i++) r(t[i]);
+        return r
+    }({
+        1: [function (e, n, t) {
+            function r() {
+            }
+
+            function i(e, n, t) {
+                return function () {
+                    return o(e, [u.now()].concat(f(arguments)), n ? null : this, t), n ? void 0 : this
+                }
+            }
+
+            var o = e("handle"), a = e(4), f = e(5), c = e("ee").get("tracer"), u = e("loader"), s = NREUM;
+            "undefined" == typeof window.newrelic && (newrelic = s);
+            var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished", "addToTrace", "inlineHit", "addRelease"],
+                l = "api-", d = l + "ixn-";
+            a(p, function (e, n) {
+                s[n] = i(l + n, !0, "api")
+            }), s.addPageAction = i(l + "addPageAction", !0), s.setCurrentRouteName = i(l + "routeName", !0), n.exports = newrelic, s.interaction = function () {
+                return (new r).get()
+            };
+            var m = r.prototype = {
+                createTracer: function (e, n) {
+                    var t = {}, r = this, i = "function" == typeof n;
+                    return o(d + "tracer", [u.now(), e, t], r), function () {
+                        if (c.emit((i ? "" : "no-") + "fn-start", [u.now(), r, i], t), i) try {
+                            return n.apply(this, arguments)
+                        } catch (e) {
+                            throw c.emit("fn-err", [arguments, this, e], t), e
+                        } finally {
+                            c.emit("fn-end", [u.now()], t)
+                        }
+                    }
+                }
+            };
+            a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (e, n) {
+                m[n] = i(d + n)
+            }), newrelic.noticeError = function (e, n) {
+                "string" == typeof e && (e = new Error(e)), o("err", [e, u.now(), !1, n])
+            }
+        }, {}], 2: [function (e, n, t) {
+            function r(e, n) {
+                var t = e.getEntries();
+                t.forEach(function (e) {
+                    "first-paint" === e.name ? c("timing", ["fp", Math.floor(e.startTime)]) : "first-contentful-paint" === e.name && c("timing", ["fcp", Math.floor(e.startTime)])
+                })
+            }
+
+            function i(e, n) {
+                var t = e.getEntries();
+                t.length > 0 && c("lcp", [t[t.length - 1]])
+            }
+
+            function o(e) {
+                if (e instanceof s && !l) {
+                    var n, t = Math.round(e.timeStamp);
+                    n = t > 1e12 ? Date.now() - t : u.now() - t, l = !0, c("timing", ["fi", t, {type: e.type, fid: n}])
+                }
+            }
+
+            if (!("init" in NREUM && "page_view_timing" in NREUM.init && "enabled" in NREUM.init.page_view_timing && NREUM.init.page_view_timing.enabled === !1)) {
+                var a, f, c = e("handle"), u = e("loader"), s = NREUM.o.EV;
+                if ("PerformanceObserver" in window && "function" == typeof window.PerformanceObserver) {
+                    a = new PerformanceObserver(r), f = new PerformanceObserver(i);
+                    try {
+                        a.observe({entryTypes: ["paint"]}), f.observe({entryTypes: ["largest-contentful-paint"]})
+                    } catch (p) {
+                    }
+                }
+                if ("addEventListener" in document) {
+                    var l = !1, d = ["click", "keydown", "mousedown", "pointerdown", "touchstart"];
+                    d.forEach(function (e) {
+                        document.addEventListener(e, o, !1)
+                    })
+                }
+            }
+        }, {}], 3: [function (e, n, t) {
+            function r(e, n) {
+                if (!i) return !1;
+                if (e !== i) return !1;
+                if (!n) return !0;
+                if (!o) return !1;
+                for (var t = o.split("."), r = n.split("."), a = 0; a < r.length; a++) if (r[a] !== t[a]) return !1;
+                return !0
+            }
+
+            var i = null, o = null, a = /Version\/(\S+)\s+Safari/;
+            if (navigator.userAgent) {
+                var f = navigator.userAgent, c = f.match(a);
+                c && f.indexOf("Chrome") === -1 && f.indexOf("Chromium") === -1 && (i = "Safari", o = c[1])
+            }
+            n.exports = {agent: i, version: o, match: r}
+        }, {}], 4: [function (e, n, t) {
+            function r(e, n) {
+                var t = [], r = "", o = 0;
+                for (r in e) i.call(e, r) && (t[o] = n(r, e[r]), o += 1);
+                return t
+            }
+
+            var i = Object.prototype.hasOwnProperty;
+            n.exports = r
+        }, {}], 5: [function (e, n, t) {
+            function r(e, n, t) {
+                n || (n = 0), "undefined" == typeof t && (t = e ? e.length : 0);
+                for (var r = -1, i = t - n || 0, o = Array(i < 0 ? 0 : i); ++r < i;) o[r] = e[n + r];
+                return o
+            }
+
+            n.exports = r
+        }, {}], 6: [function (e, n, t) {
+            n.exports = {exists: "undefined" != typeof window.performance && window.performance.timing && "undefined" != typeof window.performance.timing.navigationStart}
+        }, {}], ee: [function (e, n, t) {
+            function r() {
+            }
+
+            function i(e) {
+                function n(e) {
+                    return e && e instanceof r ? e : e ? c(e, f, o) : o()
+                }
+
+                function t(t, r, i, o) {
+                    if (!l.aborted || o) {
+                        e && e(t, r, i);
+                        for (var a = n(i), f = v(t), c = f.length, u = 0; u < c; u++) f[u].apply(a, r);
+                        var p = s[y[t]];
+                        return p && p.push([b, t, r, a]), a
+                    }
+                }
+
+                function d(e, n) {
+                    h[e] = v(e).concat(n)
+                }
+
+                function m(e, n) {
+                    var t = h[e];
+                    if (t) for (var r = 0; r < t.length; r++) t[r] === n && t.splice(r, 1)
+                }
+
+                function v(e) {
+                    return h[e] || []
+                }
+
+                function g(e) {
+                    return p[e] = p[e] || i(t)
+                }
+
+                function w(e, n) {
+                    u(e, function (e, t) {
+                        n = n || "feature", y[t] = n, n in s || (s[n] = [])
+                    })
+                }
+
+                var h = {}, y = {}, b = {
+                    on: d,
+                    addEventListener: d,
+                    removeEventListener: m,
+                    emit: t,
+                    get: g,
+                    listeners: v,
+                    context: n,
+                    buffer: w,
+                    abort: a,
+                    aborted: !1
+                };
+                return b
+            }
+
+            function o() {
+                return new r
+            }
+
+            function a() {
+                (s.api || s.feature) && (l.aborted = !0, s = l.backlog = {})
+            }
+
+            var f = "nr@context", c = e("gos"), u = e(4), s = {}, p = {}, l = n.exports = i();
+            l.backlog = s
+        }, {}], gos: [function (e, n, t) {
+            function r(e, n, t) {
+                if (i.call(e, n)) return e[n];
+                var r = t();
+                if (Object.defineProperty && Object.keys) try {
+                    return Object.defineProperty(e, n, {value: r, writable: !0, enumerable: !1}), r
+                } catch (o) {
+                }
+                return e[n] = r, r
+            }
+
+            var i = Object.prototype.hasOwnProperty;
+            n.exports = r
+        }, {}], handle: [function (e, n, t) {
+            function r(e, n, t, r) {
+                i.buffer([e], r), i.emit(e, n, t)
+            }
+
+            var i = e("ee").get("handle");
+            n.exports = r, r.ee = i
+        }, {}], id: [function (e, n, t) {
+            function r(e) {
+                var n = typeof e;
+                return !e || "object" !== n && "function" !== n ? -1 : e === window ? 0 : a(e, o, function () {
+                    return i++
+                })
+            }
+
+            var i = 1, o = "nr@id", a = e("gos");
+            n.exports = r
+        }, {}], loader: [function (e, n, t) {
+            function r() {
+                if (!x++) {
+                    var e = E.info = NREUM.info, n = d.getElementsByTagName("script")[0];
+                    if (setTimeout(s.abort, 3e4), !(e && e.licenseKey && e.applicationID && n)) return s.abort();
+                    u(y, function (n, t) {
+                        e[n] || (e[n] = t)
+                    }), c("mark", ["onload", a() + E.offset], null, "api");
+                    var t = d.createElement("script");
+                    t.src = "https://" + e.agent, n.parentNode.insertBefore(t, n)
+                }
+            }
+
+            function i() {
+                "complete" === d.readyState && o()
+            }
+
+            function o() {
+                c("mark", ["domContent", a() + E.offset], null, "api")
+            }
+
+            function a() {
+                return O.exists && performance.now ? Math.round(performance.now()) : (f = Math.max((new Date).getTime(), f)) - E.offset
+            }
+
+            var f = (new Date).getTime(), c = e("handle"), u = e(4), s = e("ee"), p = e(3), l = window, d = l.document,
+                m = "addEventListener", v = "attachEvent", g = l.XMLHttpRequest, w = g && g.prototype;
+            NREUM.o = {
+                ST: setTimeout,
+                SI: l.setImmediate,
+                CT: clearTimeout,
+                XHR: g,
+                REQ: l.Request,
+                EV: l.Event,
+                PR: l.Promise,
+                MO: l.MutationObserver
+            };
+            var h = "" + location, y = {
+                    beacon: "bam.nr-data.net",
+                    errorBeacon: "bam.nr-data.net",
+                    agent: "js-agent.newrelic.com/nr-1167.min.js"
+                }, b = g && w && w[m] && !/CriOS/.test(navigator.userAgent),
+                E = n.exports = {offset: f, now: a, origin: h, features: {}, xhrWrappable: b, userAgent: p};
+            e(1), e(2), d[m] ? (d[m]("DOMContentLoaded", o, !1), l[m]("load", r, !1)) : (d[v]("onreadystatechange", i), l[v]("onload", r)), c("mark", ["firstbyte", f], null, "api");
+            var x = 0, O = e(6)
+        }, {}], "wrap-function": [function (e, n, t) {
+            function r(e) {
+                return !(e && e instanceof Function && e.apply && !e[a])
+            }
+
+            var i = e("ee"), o = e(5), a = "nr@original", f = Object.prototype.hasOwnProperty, c = !1;
+            n.exports = function (e, n) {
+                function t(e, n, t, i) {
+                    function nrWrapper() {
+                        var r, a, f, c;
+                        try {
+                            a = this, r = o(arguments), f = "function" == typeof t ? t(r, a) : t || {}
+                        } catch (u) {
+                            l([u, "", [r, a, i], f])
+                        }
+                        s(n + "start", [r, a, i], f);
+                        try {
+                            return c = e.apply(a, r)
+                        } catch (p) {
+                            throw s(n + "err", [r, a, p], f), p
+                        } finally {
+                            s(n + "end", [r, a, c], f)
+                        }
+                    }
+
+                    return r(e) ? e : (n || (n = ""), nrWrapper[a] = e, p(e, nrWrapper), nrWrapper)
+                }
+
+                function u(e, n, i, o) {
+                    i || (i = "");
+                    var a, f, c, u = "-" === i.charAt(0);
+                    for (c = 0; c < n.length; c++) f = n[c], a = e[f], r(a) || (e[f] = t(a, u ? f + i : i, o, f))
+                }
+
+                function s(t, r, i) {
+                    if (!c || n) {
+                        var o = c;
+                        c = !0;
+                        try {
+                            e.emit(t, r, i, n)
+                        } catch (a) {
+                            l([a, t, r, i])
+                        }
+                        c = o
+                    }
+                }
+
+                function p(e, n) {
+                    if (Object.defineProperty && Object.keys) try {
+                        var t = Object.keys(e);
+                        return t.forEach(function (t) {
+                            Object.defineProperty(n, t, {
+                                get: function () {
+                                    return e[t]
+                                }, set: function (n) {
+                                    return e[t] = n, n
+                                }
+                            })
+                        }), n
+                    } catch (r) {
+                        l([r])
+                    }
+                    for (var i in e) f.call(e, i) && (n[i] = e[i]);
+                    return n
+                }
+
+                function l(n) {
+                    try {
+                        e.emit("internal-error", n)
+                    } catch (t) {
+                    }
+                }
+
+                return e || (e = i), t.inPlace = u, t.flag = a, t
+            }
+        }, {}]
+    }, {}, ["loader"]);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/favicon.ico"
           type="image/x-icon"/>
     <script>var h = document.getElementsByTagName('html')[0];
     h.className = h.className.replace('no-js', 'js-enabled')</script>
-    <title>Capgemini: Consulting, Technology, Digital Transformation Services</title>
+    <title>Insights &amp; News &#8211; Capgemini Worldwide</title>
     <link rel='dns-prefetch' href='//www.google.com'/>
     <link rel='dns-prefetch' href='//code.jquery.com'/>
     <link rel='dns-prefetch' href='//s.w.org'/>
@@ -18,9 +365,6 @@
           href="https://www.capgemini.com/comments/feed/"/>
     <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide - Blog Posts Feed"
           href="https://www.capgemini.com/blogs/?feed=rss2"/>
-    <meta name='description'
-          content='A global leader in consulting, technology services and digital transformation, we offer an array of integrated services combining technology with deep sector expertise.'/>
-    <!-- WP SEO -->
     <script type="text/javascript">
         window._wpemojiSettings = {
             "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/",
@@ -84,7 +428,7 @@
         }
     </style>
     <link rel='stylesheet' id='all-css-0'
-          href='https://www.capgemini.com/_static/??-eJx9jUEOgjAQRS9kGcVA3BjPUsqAI22n6Qwx3N4SNjUmbn/+ew/eyVB0fh1RwInASKIweHaL8TRkmzcQ3Tw2gWJTDicohOOoGBWSX2eKBZwNeitKzrx4ELAiqIev3n94fWLYuzbNWPxkFg6JhRRrxdH/006ZE2YzcQ5f7Xo3Uy7gbnmE+6W79deu7dvzB6a3X44='
+          href='https://www.capgemini.com/_static/??-eJx9jUEOgjAQRS9kmYgB3RjPUsqAI22n6Qwx3N4SNjUmbn/+ew/eyVB0fh1RwInASKIweHaL8TRkmzcQ3Tw2gWJTDicohOOoGBWSX2eKBZwNeitKzrx4ELAiqIev3n94fWLYuzbNWPxkFg6JhRRrxdH/006ZE2YzcQ5f7Xo3Uy7gbnmE+7m79Zeu7dvrB6a+X5U='
           type='text/css' media='all'/>
     <style id='wp-block-library-inline-css'>
         .has-text-align-justify {
@@ -94,10 +438,10 @@
     <link rel='stylesheet' id='datepicker-css'
           href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=5.4' media='all'/>
     <link rel='stylesheet' id='all-css-2'
-          href='https://www.capgemini.com/wp-content/mu-plugins/jetpack/css/jetpack.css?m=1583439314g' type='text/css'
+          href='https://www.capgemini.com/wp-content/mu-plugins/jetpack/css/jetpack.css?m=1587053071g' type='text/css'
           media='all'/>
     <script type='text/javascript'
-            src='https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/js/libs/jquery-3.2.1.min.js?m=1577082598g'></script>
+            src='https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/js/libs/jquery-3.2.1.min.js?m=1580827494g'></script>
     <script async defer src='https://www.google.com/recaptcha/api.js?ver=5.4'></script>
     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=5.4'></script>
     <link rel='https://api.w.org/' href='https://www.capgemini.com/wp-json/'/>
@@ -105,8 +449,8 @@
     <link rel="wlwmanifest" type="application/wlwmanifest+xml"
           href="https://www.capgemini.com/wp-includes/wlwmanifest.xml"/>
     <meta name="generator" content="WordPress 5.4"/>
-    <link rel="canonical" href="https://www.capgemini.com/"/>
-    <link rel='shortlink' href='https://www.capgemini.com/'/>
+    <link rel="canonical" href="https://www.capgemini.com/insights-and-news/"/>
+    <link rel='shortlink' href='https://www.capgemini.com/?p=41283'/>
     <style>@media (min-width: 576px) {
         .footer__banner-link {
             background-position: center;
@@ -130,23 +474,28 @@
             background-position: center;
         }
     }</style>
-    <link rel="alternate" href="https://www.capgemini.com/" hreflang="x-default"/>
-    <link rel="alternate" href="https://www.capgemini.com/fr-fr/" hreflang="fr-fr"/>
-    <link rel="alternate" href="https://www.capgemini.com/us-en/" hreflang="en-us"/>
-    <link rel="alternate" href="https://www.capgemini.com/de-de/" hreflang="de-de"/>
-    <link rel="alternate" href="https://www.capgemini.com/in-en/" hreflang="en-in"/>
-    <link rel="alternate" href="https://www.capgemini.com/br-pt/" hreflang="pt-br"/>
-    <link rel="alternate" href="https://www.capgemini.com/au-en/" hreflang="en-au"/>
-    <link rel="alternate" href="https://www.capgemini.com/ca-en/" hreflang="en-ca"/>
-    <link rel="alternate" href="https://www.capgemini.com/cn-zh/capgemini-home/" hreflang="zh-cn"/>
-    <link rel="alternate" href="https://www.capgemini.com/it-it/" hreflang="it-it"/>
-    <link rel="alternate" href="https://www.capgemini.com/jp-jp/" hreflang="ja-jp"/>
-    <link rel="alternate" href="https://www.capgemini.com/pl-pl/" hreflang="pl-pl"/>
-    <link rel="alternate" href="https://www.capgemini.com/es-es/" hreflang="es-es"/>
-    <link rel="alternate" href="https://www.capgemini.com/be-en/" hreflang="en-be"/>
-    <link rel="alternate" href="https://www.capgemini.com/pt-en/" hreflang="en-pt"/>
-    <link rel="alternate" href="https://www.capgemini.com/fi-en/" hreflang="en-fi"/>
-    <link rel="alternate" href="https://www.capgemini.com/no-no/" hreflang="no-no"/>
+    <link rel="alternate" href="https://www.capgemini.com/insights-and-news/" hreflang="x-default"/>
+    <link rel="alternate" href="https://www.capgemini.com/fr-fr/insights-news/" hreflang="fr-fr"/>
+    <link rel="alternate" href="https://www.capgemini.com/gb-en/insights-news/" hreflang="en-gb"/>
+    <link rel="alternate" href="https://www.capgemini.com/us-en/insights-news/" hreflang="en-us"/>
+    <link rel="alternate" href="https://www.capgemini.com/de-de/insights-news/" hreflang="de-de"/>
+    <link rel="alternate" href="https://www.capgemini.com/in-en/insights-news/" hreflang="en-in"/>
+    <link rel="alternate" href="https://www.capgemini.com/nl-nl/nieuws-inzichten/" hreflang="nl-nl"/>
+    <link rel="alternate" href="https://www.capgemini.com/br-pt/insights-news/" hreflang="pt-br"/>
+    <link rel="alternate" href="https://www.capgemini.com/au-en/insights-news/" hreflang="en-au"/>
+    <link rel="alternate" href="https://www.capgemini.com/ca-en/insights-news/" hreflang="en-ca"/>
+    <link rel="alternate" href="https://www.capgemini.com/cn-zh/insights-news/" hreflang="zh-cn"/>
+    <link rel="alternate" href="https://www.capgemini.com/it-it/insights-news/" hreflang="it-it"/>
+    <link rel="alternate" href="https://www.capgemini.com/jp-jp/insights-news/" hreflang="ja-jp"/>
+    <link rel="alternate" href="https://www.capgemini.com/pl-pl/informacje/" hreflang="pl-pl"/>
+    <link rel="alternate" href="https://www.capgemini.com/es-es/prensa/" hreflang="es-es"/>
+    <link rel="alternate" href="https://www.capgemini.com/be-en/insights-news/" hreflang="en-be"/>
+    <link rel="alternate" href="https://www.capgemini.com/pt-en/insights-news/" hreflang="en-pt"/>
+    <link rel="alternate" href="https://www.capgemini.com/ar-es/insights-news/" hreflang="es-ar"/>
+    <link rel="alternate" href="https://www.capgemini.com/mx-es/insights-news/" hreflang="es-mx"/>
+    <link rel="alternate" href="https://www.capgemini.com/at-de/insights-news/" hreflang="de-at"/>
+    <link rel="alternate" href="https://www.capgemini.com/ch-de/insights-news/" hreflang="ch-de"/>
+    <link rel="alternate" href="https://www.capgemini.com/fi-en/insights-news/" hreflang="en-fi"/>
     <style type='text/css'>img#wpstats {
         display: none
     }</style>
@@ -163,34 +512,34 @@
     </script>
 
     <!-- Jetpack Open Graph Tags -->
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Capgemini: Consulting, Technology, Digital Transformation Services"/>
-    <meta property="og:description"
-          content="A global leader in consulting, technology services and digital transformation, we offer an array of integrated services combining technology with deep sector expertise."/>
-    <meta property="og:url" content="https://www.capgemini.com/"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Insights &amp; News"/>
+    <meta property="og:url" content="https://www.capgemini.com/insights-and-news/"/>
+    <meta property="og:description" content="Visit the post for more."/>
+    <meta property="article:published_time" content="2017-08-04T12:12:15+00:00"/>
+    <meta property="article:modified_time" content="2020-04-03T11:55:55+00:00"/>
     <meta property="og:site_name" content="Capgemini Worldwide"/>
     <meta property="og:image" content="https://s0.wp.com/i/blank.jpg"/>
     <meta property="og:locale" content="en_US"/>
-    <meta name="twitter:text:title" content="Capgemini: Consulting, Technology, Digital Transformation Services"/>
+    <meta name="twitter:text:title" content="Insights &amp; News"/>
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:description" content="Visit the post for more."/>
 
     <!-- End Jetpack Open Graph Tags -->
 </head>
 
-<body class="home page-template page-template-dynamic-template-base page-template-dynamic-template-base-php page page-id-40776 ">
+<body class="page-template page-template-template-insights-and-news page-template-template-insights-and-news-php page page-id-41283 ">
 
 <script>var dataLayer = [{
-    "front_page": true,
     "post_type": "page",
-    "post_id": 40776,
+    "post_id": 41283,
     "blog": "https:\/\/www.capgemini.com",
     "network": "https:\/\/www.capgemini.com\/",
-    "u1": "Capgemini: home",
+    "u1": "Insights &amp; News",
     "u2": "US",
     "u3": "en_US",
-    "author": "",
-    "date_posted": "2017-08-02 15:11:06"
+    "author": "Parker Ward",
+    "date_posted": "2017-08-04 13:12:15"
 }];</script>
 <!-- Google Tag Manager -->
 <noscript>
@@ -262,8 +611,8 @@
                     <ul class="locations__list">
                         <li><span class="locations__list-fl location-global-en"> <img alt="country flag"
                                                                                       class="img--flag"
-                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/globe.svg"/> </span><a
-                                href="https://www.capgemini.com/?georedirect_none=true">Global | EN</a></li>
+                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/globe.svg"/> </span>
+                            <a href="https://www.capgemini.com/?georedirect_none=true">Global | EN</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-americas">
@@ -271,8 +620,8 @@
                     <ul class="locations__list">
                         <li><span class="locations__list-fl location-argentina-es"> <img alt="country flag"
                                                                                          class="img--flag"
-                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ar.svg"/> </span><a
-                                href="https://www.capgemini.com/ar-es/?georedirect_none=true">Argentina | ES</a></li>
+                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ar.svg"/> </span>
+                            <a href="https://www.capgemini.com/ar-es/?georedirect_none=true">Argentina | ES</a></li>
                         <li><span class="locations__list-fl location-brazil-pt"> <img alt="country flag"
                                                                                       class="img--flag"
                                                                                       src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/br.svg"/> </span>
@@ -411,9 +760,8 @@
                                                                                       class="img--flag"
                                                                                       src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/gb.svg"/> </span>
                                 <a href="https://www.capgemini.com/gb-en/?georedirect_none=true">UK | EN</a></li>
-                        </ul>
                     </div>
-                </div>
+                    </ul></div>
             </nav>
         </div>
 
@@ -796,8 +1144,9 @@
                         class="menu-item menu-item-type-post_type_archive menu-item-object-expert menu-item-40332"><a
                             href="https://www.capgemini.com/experts/">Our Experts</a></li>
                     <li id="menu-item-41388"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41388"><a
-                            href="https://www.capgemini.com/insights-and-news/">Insights &#038; News</a></li>
+                        class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-41283 current_page_item menu-item-41388">
+                        <a href="https://www.capgemini.com/insights-and-news/" aria-current="page">Insights &#038;
+                            News</a></li>
                     <li id="menu-item-41405"
                         class="hotjar_top_nav_about menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41405">
                         <a href="https://www.capgemini.com/our-company/">About us</a>
@@ -911,10 +1260,38 @@
     </div>
 </header>
 
-<header>
+<header class="header">
+
+    <nav class="nav--insights container-full">
+        <div class="container">
+            <div class="row">
+                <ul id="menu-insights" class="col">
+                    <li id="menu-item-352561"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352561"><a
+                            href="https://www.capgemini.com/podcasts/">Podcasts</a></li>
+                    <li id="menu-item-41387"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41387"><a
+                            href="https://www.capgemini.com/newsroom/">Newsroom</a></li>
+                    <li id="menu-item-41372"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41372"><a
+                            href="https://www.capgemini.com/blogs/">Blogs</a></li>
+                    <li id="menu-item-41377"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41377"><a
+                            href="https://www.capgemini.com/events/">Events</a></li>
+                    <li id="menu-item-261753"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-261753"><a
+                            href="https://www.capgemini.com/research/">Research</a></li>
+                    <li id="menu-item-41381"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41381"><a
+                            href="https://www.capgemini.com/all-client-stories/">Client stories</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1 class="sr-only">Insights and news</h1>
 
     <div class="container-full hero hero_full hero_full__pic  "
-         style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/04/Web-CG_1200x350_Final-2.jpg?w=1250&#038;h=364&#038;crop=1);">
+         style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/03/DotCom_banner_1200x350-without-textv1.jpg?w=1200&#038;h=350&#038;crop=1);">
         <div class="hero_full__inner">
             <div class="container">
                 <div class="row">
@@ -925,7 +1302,7 @@
 						<span class="inside">
 							<span class="inner">
 															<a class="1"
-                                                               href="https://www.capgemini.com/resources/we-welcome-altran/">We welcome Altran!</a>
+                                                               href="https://www.capgemini.com/research/virtual-organizations-need-real-leadership/">Virtual organizations need real leadership</a>
 														</span>
 						</span>
                         </h1>
@@ -933,8 +1310,8 @@
                         <div class="hero_full__text">
                             <div class="inner_text">
 
-                                <a href="https://www.capgemini.com/resources/we-welcome-altran/">
-                                    <span>Together, pioneering Intelligent Industry</span>
+                                <a href="https://www.capgemini.com/research/virtual-organizations-need-real-leadership/">
+                                    <span>Pragmatic tips from the Capgemini Research Institute</span>
                                 </a>
 
                             </div>
@@ -944,8 +1321,8 @@
                             <div class="hero_full__link_bg">
 
                                 <a class="hero_full__link section__button section__button--transparent"
-                                   href="https://www.capgemini.com/resources/we-welcome-altran/">
-                                    <span class="sr-only">We welcome Altran!</span>
+                                   href="https://www.capgemini.com/research/virtual-organizations-need-real-leadership/">
+                                    <span class="sr-only">Virtual organizations need real leadership</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15">
                                         <title>Read more</title>
                                         <path fill="none" stroke="#2B0A3D" stroke-width="2"
@@ -967,1075 +1344,423 @@
     </div>
 
 </header>
-<article>
 
-    <section class="section container article-text blue-title">
+
+<section class="section container-full  section--white">
+    <div class="container">
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-12">
-
-                <h2 class="section__title section__title--miniintro">COVID-19</h2>
-
-                <p>During these unprecedented times, Capgemini’s number one priority is to look after our people and
-                    their families, our clients and business partners. We are committed to delivering the best service,
-                    addressing each of our clients’ situations. While we may need to maintain a safe physical distance,
-                    it’s never been so important for us to ensure strong social connections because today relationships
-                    matter more than ever. As we unite to tackle this global challenge, Capgemini is supporting its
-                    communities to keep safe, connected and informed. <em>Stronger together.</em></p>
-            </div>
+            <h2 class="section__title col-12 col-md-10">Newsroom</h2>
         </div>
-    </section>
 
-
-    <section id="featured-insights" class="section container-full  section--grey">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-10">
-                    <h2 class="section__title">Featured Content</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="section__block col col--main col-md-12 col-lg-12" th:each="post:${posts.content}">
-
-                    <div class="card_default card_default--hovered card--horizontal  ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a th:href="@{/info/__${post.id}__}"><span th:text="${post.title}"></span></a>
-                            </h3>
-
-                            <div class="card_default__text">
-                                <p th:text="${#strings.abbreviate(post.content,100)}"></p>
-                            </div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a th:href="@{/info/__${post.id}__}" aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/our-company/covid-19-insights-for-today-and-tomorrow/">COVID-19:
-                                insights for today and tomorrow
-                                <div class="card_default__media--inner" style="height: 100px">
-                                    <img th:src="@{${post.image}}" style="width: 400px;height: 300px">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <a th:href="@{/all}" class="section__button">Show all</a>
-                </div>
-            </div>
+        <div th:if="${isPost}==false">
+            <h2 style="text-align: center">
+                Not found..!</h2>
         </div>
-    </section>
 
-    <section id="featuredcontent" class="section container-full  section--white">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-10">
-                    <h2 class="section__title">In the News</h2>
-                </div>
-            </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row row--horizontal">
+                    <div class="section__block col--aside col-12 col-md-6 col-lg-4" th:each="post:${posts.content}">
 
+                        <div class="card_default card_default--hovered hover--grey card_default--grey ">
+                            <div class="card_default__content">
 
-            <div class="row">
-
-
-                <div class="section__block col-sm-12 col-md-4 ">
-                    <div class="card_default card_default--hovered hover--grey card_default--grey ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/">Success
-                                    of Capgemini’s tender offer for Altran: Capgemini now holds 98% of Altran’s share
-                                    capital</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>The French financial market authority (Autorité des marchés financiers – AMF)
-                                    announced today...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
+                                <div class="card_default__tags">
                                 </div>
 
+                                <h3 class="card_default__title">
+                                    <a th:href="@{/info/__${post.id}__}"><span th:text="${post.title}"></span></a>
+                                </h3>
+
+
+                                <div class="card_default__links">
+                                    <div class="card_default__more">
+                                        <a th:href="@{/info/__${post.id}__}" aria-label="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                 viewBox="0 0 36 36">Read more icon
+                                                <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                                    <path class="border_svg"
+                                                          d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                                    <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                                </g>
+                                            </svg>
+                                        </a>
 
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/">Success
-                                of Capgemini’s tender offer for Altran: Capgemini now holds 98% of Altran’s share
-                                capital
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://i1.wp.com/www.capgemini.com/wp-content/uploads/2020/04/Web-CG_1200x350_2peopleonlyV2.jpg?crop=954px%2C0px%2C1037px%2C584px&#038;resize=540%2C304&#038;ssl=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey card_default--grey ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/news/capgemini-leader-nelsonhall/">Capgemini named a
-                                    “Leader” by NelsonHall in its NEAT evaluation of learning services</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>Capgemini announced today that it has been named a “Leader” in the NelsonHall
-                                    Evaluation...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/news/capgemini-leader-nelsonhall/" aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/news/capgemini-leader-nelsonhall/">Capgemini named a
-                                “Leader” by NelsonHall in its NEAT evaluation of learning services
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://i0.wp.com/www.capgemini.com/wp-content/uploads/2019/12/Web-Banner01.jpg?crop=564px%2C0px%2C533px%2C300px&#038;resize=540%2C304&#038;ssl=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey card_default--grey ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/news/continuous-quality-assurance/">New research on
-                                    continuous quality assurance</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>Companies must embed continuous quality assurance processes within agile development
-                                    to...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/news/continuous-quality-assurance/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/news/continuous-quality-assurance/">New research on
-                                continuous quality assurance
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://i0.wp.com/www.capgemini.com/wp-content/uploads/2020/03/DotCom_Banner_1200x300-3.jpg?crop=667px%2C0px%2C533px%2C300px&#038;resize=540%2C304&#038;ssl=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="featured-client-stories" class="section container-full  section--grey">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-10">
-                    <h2 class="section__title">Client Stories</h2>
-                </div>
-            </div>
-
-
-            <div class="row">
-
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey  ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/client-story/m1-transforms-its-customer-experience-for-the-digital-age/">M1
-                                    transforms its customer experience for the digital age</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>With continual innovation and a partnership with Capgemini, M1 develops a new
-                                    digital...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/client-story/m1-transforms-its-customer-experience-for-the-digital-age/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/client-story/m1-transforms-its-customer-experience-for-the-digital-age/">M1
-                                transforms its customer experience for the digital age
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://i1.wp.com/www.capgemini.com/wp-content/uploads/2019/09/2019-09-16_banner.jpg?crop=1005px%2C0px%2C853px%2C480px&#038;resize=540%2C304&#038;ssl=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey  ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/client-story/celcom-develops-a-modern-digital-customer-journey/">Celcom
-                                    develops a modern digital customer journey</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>With agile ways of working, Celcom developed new front-end channels and initiated a
-                                    cultural...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/client-story/celcom-develops-a-modern-digital-customer-journey/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/client-story/celcom-develops-a-modern-digital-customer-journey/">Celcom
-                                develops a modern digital customer journey
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://www.capgemini.com/wp-content/uploads/2019/07/2019-07-23_ClientstoriesBanner_Celcom_V2_KA.jpg?w=540&#038;h=304&#038;crop=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey  ">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/client-story/how-talktalk-halved-their-legacy-estate/">How
-                                    TalkTalk halved their legacy estate</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>TalkTalk, a telecommunications and media company, undertook an ambitious
-                                    modernisation and...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/client-story/how-talktalk-halved-their-legacy-estate/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/client-story/how-talktalk-halved-their-legacy-estate/">How
-                                TalkTalk halved their legacy estate
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://i0.wp.com/www.capgemini.com/wp-content/uploads/2018/08/talk_talk_banner.jpg?crop=4px%2C0px%2C893px%2C502px&#038;resize=540%2C304&#038;ssl=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 text-center">
-                    <a href="https://www.capgemini.com/all-client-stories/" class="section__button">Show all</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="slider" class="section container-full container--slider  slider--purple section--purple">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-10">
-                    <h3 class="section__title">Research</h3>
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center">
-                <div class="slider__arrow col-1 hidden-md-down">
-                    <button class="slider__btn slider__btn--prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="28" viewBox="0 0 10 15"><title>Left
-                            arrow</title>
-                            <path fill="none" fill-rule="evenodd" stroke="#2b0a3d" stroke-linecap="round"
-                                  stroke-linejoin="round" stroke-width="2" d="M7 1l-6.5 6.5 6.5 6.5"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="col-10 offset-sm-1 offset-md-0">
-                    <div class="slider">
-                        <div class="slider__swipe-window">
-                            <div class="row slider-mobile slider-mobile--center slider__swipe-list" data-is-desktop="1">
-                                <div class="slider__item col-12">
-
-                                    <div class="card_default card_default--hovered card--horizontal  ">
-                                        <div class="card_default__content">
-
-                                            <div class="card_default__tags">
-                                            </div>
-
-                                            <h3 class="card_default__title">
-                                                <a href="https://www.capgemini.com/research/sustainability-in-automotive/">The
-                                                    automotive industry in the era of sustainability</a>
-                                            </h3>
-
-
-                                            <div class="card_default__text">
-                                                <p>How can automotive organizations accelerate their efforts to improve
-                                                    sustainability?</p>
-                                            </div>
-
-                                            <div class="card_default__links">
-                                                <div class="card_default__more">
-                                                    <a href="https://www.capgemini.com/research/sustainability-in-automotive/"
-                                                       aria-label="Read more about The automotive industry in the era of sustainability">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                                             viewBox="0 0 36 36">Read more icon
-                                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD"
-                                                               stroke-width="2">
-                                                                <path class="border_svg"
-                                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="card_default__media   " style="background-image: url( ); ">
-                                            <!-- card_default__media -->
-
-                                            <a href="https://www.capgemini.com/research/sustainability-in-automotive/"
-                                               aria-label="Read more about The automotive industry in the era of sustainability">The
-                                                automotive industry in the era of sustainability
-                                                <div class="card_default__media--inner"
-                                                     style="background-image: url(https://i2.wp.com/www.capgemini.com/wp-content/uploads/2020/03/DotCom_Banner_1200x300-1.jpg?crop=600px%2C0px%2C533px%2C300px&#038;resize=540%2C304&#038;ssl=1)"
-                                                >
-                                                </div>
-                                            </a>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="slider__item col-12">
-
-                                    <div class="card_default card_default--hovered card--horizontal  ">
-                                        <div class="card_default__content">
-
-                                            <div class="card_default__tags">
-                                            </div>
-
-                                            <h3 class="card_default__title">
-                                                <a href="https://www.capgemini.com/research/tech-in-sports/">Emerging
-                                                    technologies in sports</a>
-                                            </h3>
 
 
-                                            <div class="card_default__text">
-                                                <p>Reimagining the fan experience</p>
-                                            </div>
-
-                                            <div class="card_default__links">
-                                                <div class="card_default__more">
-                                                    <a href="https://www.capgemini.com/research/tech-in-sports/"
-                                                       aria-label="Read more about Emerging technologies in sports">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                                             viewBox="0 0 36 36">Read more icon
-                                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD"
-                                                               stroke-width="2">
-                                                                <path class="border_svg"
-                                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="card_default__media   " style="background-image: url( ); ">
-                                            <!-- card_default__media -->
-
-                                            <a href="https://www.capgemini.com/research/tech-in-sports/"
-                                               aria-label="Read more about Emerging technologies in sports">Emerging
-                                                technologies in sports
-                                                <div class="card_default__media--inner"
-                                                     style="background-image: url(https://i1.wp.com/www.capgemini.com/wp-content/uploads/2020/01/DotCom_Banner_1540x600.jpg?crop=474px%2C0px%2C1066px%2C600px&#038;resize=540%2C304&#038;ssl=1)"
-                                                >
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slider__item col-12">
-
-                                    <div class="card_default card_default--hovered card--horizontal  ">
-                                        <div class="card_default__content">
-
-                                            <div class="card_default__tags">
-                                            </div>
-
-                                            <h3 class="card_default__title">
-                                                <a href="https://www.capgemini.com/research/automotive-smart-factories/">How
-                                                    automotive organizations can maximize the smart factory
-                                                    potential</a>
-                                            </h3>
-
-
-                                            <div class="card_default__text">
-                                                <p>The automotive industry has its sights firmly set on the promise of
-                                                    smart factories, which...</div>
-
-                                            <div class="card_default__links">
-                                                <div class="card_default__more">
-                                                    <a href="https://www.capgemini.com/research/automotive-smart-factories/"
-                                                       aria-label="Read more about How automotive organizations can maximize the smart factory potential">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                                             viewBox="0 0 36 36">Read more icon
-                                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD"
-                                                               stroke-width="2">
-                                                                <path class="border_svg"
-                                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="card_default__media   " style="background-image: url( ); ">
-                                            <!-- card_default__media -->
-
-                                            <a href="https://www.capgemini.com/research/automotive-smart-factories/"
-                                               aria-label="Read more about How automotive organizations can maximize the smart factory potential">How
-                                                automotive organizations can maximize the smart factory potential
-                                                <div class="card_default__media--inner"
-                                                     style="background-image: url(https://i1.wp.com/www.capgemini.com/wp-content/uploads/2020/02/DotCom_Banner_1540x600.jpg?crop=671px%2C71px%2C869px%2C488px&#038;resize=540%2C304&#038;ssl=1)"
-                                                >
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slider__item col-12">
-
-                                    <div class="card_default card_default--hovered card--horizontal  ">
-                                        <div class="card_default__content">
-
-                                            <div class="card_default__tags">
-                                            </div>
-
-                                            <h3 class="card_default__title">
-                                                <a href="https://www.capgemini.com/research/emotional-intelligence/">Emotional
-                                                    Intelligence</a>
-                                            </h3>
-
-
-                                            <div class="card_default__text">
-                                                <p>The essential skillset for the age of AI</p>
-                                            </div>
-
-                                            <div class="card_default__links">
-                                                <div class="card_default__more">
-                                                    <a href="https://www.capgemini.com/research/emotional-intelligence/"
-                                                       aria-label="Read more about Emotional Intelligence">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                                             viewBox="0 0 36 36">Read more icon
-                                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD"
-                                                               stroke-width="2">
-                                                                <path class="border_svg"
-                                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="card_default__media   " style="background-image: url( ); ">
-                                            <!-- card_default__media -->
-
-                                            <a href="https://www.capgemini.com/research/emotional-intelligence/"
-                                               aria-label="Read more about Emotional Intelligence">Emotional
-                                                Intelligence
-                                                <div class="card_default__media--inner"
-                                                     style="background-image: url(https://i0.wp.com/www.capgemini.com/wp-content/uploads/2019/10/dontcom-banner-1540X866.jpg?crop=791px%2C238px%2C749px%2C421px&#038;resize=540%2C304&#038;ssl=1)"
-                                                >
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slider__item col-12">
-
-                                    <div class="card_default card_default--hovered card--horizontal  ">
-                                        <div class="card_default__content">
-
-                                            <div class="card_default__tags">
-                                            </div>
-
-                                            <h3 class="card_default__title">
-                                                <a href="https://www.capgemini.com/research/5g-in-industrial-operations/">5G
-                                                    in industrial operations</a>
-                                            </h3>
-
-
-                                            <div class="card_default__text">
-                                                <p>How telcos and industrial companies stand to benefit</p>
-                                            </div>
-
-                                            <div class="card_default__links">
-                                                <div class="card_default__more">
-                                                    <a href="https://www.capgemini.com/research/5g-in-industrial-operations/"
-                                                       aria-label="Read more about 5G in industrial operations">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                                             viewBox="0 0 36 36">Read more icon
-                                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD"
-                                                               stroke-width="2">
-                                                                <path class="border_svg"
-                                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="card_default__media   " style="background-image: url( ); ">
-                                            <!-- card_default__media -->
-
-                                            <a href="https://www.capgemini.com/research/5g-in-industrial-operations/"
-                                               aria-label="Read more about 5G in industrial operations">5G in industrial
-                                                operations
-                                                <div class="card_default__media--inner"
-                                                     style="background-image: url(https://i2.wp.com/www.capgemini.com/wp-content/uploads/2019/06/DotCombanner_1200x300-e1559805710351.jpg?crop=447px%2C1px%2C528px%2C297px&#038;resize=540%2C304&#038;ssl=1)"
-                                                >
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <nav class="slider__bullets"></nav>
                     </div>
                 </div>
-
-                <div class="slider__arrow col-1 hidden-md-down">
-                    <button class="slider__btn slider__btn--next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="28" viewBox="0 0 10 15"><title>Right
-                            arrow</title>
-                            <path fill="none" fill-rule="evenodd" stroke="#2b0a3d" stroke-linecap="round"
-                                  stroke-linejoin="round" stroke-width="2" d="M1.455 1l7 6.5-7 6.5"></path>
-                        </svg>
-                    </button>
-                </div>
             </div>
-
         </div>
-    </section>
 
-    <section id="featured-content" class="section container-full  section--white">
+
+        <div class="row" th:if="${isBlog}==true">
+            <div class="col-5 text-center">
+                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasPrev}" th:href="@{'/all' (page=${posts.currentPage -1})}">Prev</a>
+            </div>
+            <div class="col-2 text-center">
+            <span th:text="'Page '+ ${posts.currentPage}"></span>
+            </div>
+            <div class="col-5 text-center">
+                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasNext}" th:href="@{'/all' (page=${posts.currentPage +1})}">Next</a>
+            </div>
+        </div>
+
+        <div class="row" th:if="${isSearch}==true">
+            <div class="col-5 text-center">
+                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasPrev}" th:href="@{'/search' (key=${key}, page=${posts.currentPage -1})}">Prev</a>
+            </div>
+            <div class="col-2 text-center">
+                <span th:text="'Page '+ ${posts.currentPage}"></span>
+            </div>
+            <div class="col-5 text-center">
+                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasNext}" th:href="@{'/search' (key=${key}, page=${posts.currentPage +1})}">Next</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-full hero hero_full hero_full__pic  "
+     style="background-image: url(https://i0.wp.com/www.capgemini.com/wp-content/uploads/2019/11/DotCom_Banner_1540x600.jpg?crop=558px%2C355px%2C982px%2C245px&#038;resize=1920%2C480&#038;ssl=1);">
+    <div class="hero_full__inner">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-10">
-                    <h2 class="section__title">Latest from Experts</h2>
+                <div class="col-12 col-md-8 hero_overflow offset_hero--md">
+                    <div class="hero_full__info">
+                        <div class="hero_full__tags">
+                            <span>agile</span></div>
+                    </div>
+                    <h1 class="hero_full__title">
+						<span class="inside">
+							<span class="inner">
+															<a class="1"
+                                                               href="https://www.capgemini.com/research/agile-at-scale/">Agile at Scale</a>
+														</span>
+						</span>
+                    </h1>
+
+                    <div class="hero_full__text">
+                        <div class="inner_text">
+
+                            <a href="https://www.capgemini.com/research/agile-at-scale/">
+                                <span>Four recommendations to gain enterprise-wide agility</span>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="hero_full__link_wrapper">
+                        <div class="hero_full__link_bg">
+
+                            <a class="hero_full__link section__button section__button--transparent"
+                               href="https://www.capgemini.com/research/agile-at-scale/">
+                                <span class="sr-only">Agile at Scale</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15">
+                                    <title>Read more</title>
+                                    <path fill="none" stroke="#2B0A3D" stroke-width="2" d="M1.455 1l7 6.5-7 6.5"></path>
+                                </svg>
+                            </a>
+
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-
-            <div class="row">
-
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey card_default--grey invent">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/2020/04/6-golden-rules-for-the-digital-workplace/">6
-                                    Golden Rules for the Digital Workplace</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>Digital Workplace is a concept that encourages businesses to use digital
-                                    transformation to...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/2020/04/6-golden-rules-for-the-digital-workplace/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                                <div class="logo-invent"></div>
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/2020/04/6-golden-rules-for-the-digital-workplace/">6
-                                Golden Rules for the Digital Workplace
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/03/person-writing-on-white-paper-3803252.jpg?w=540&#038;h=304&#038;crop=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey card_default--grey invent">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/2020/03/how-to-facilitate-collaboration-in-a-virtual-team/">How
-                                    to facilitate collaboration in a virtual team</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>Virtual collaboration is becoming more and more essential. To make a success of
-                                    it,...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/2020/03/how-to-facilitate-collaboration-in-a-virtual-team/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                                <div class="logo-invent"></div>
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/2020/03/how-to-facilitate-collaboration-in-a-virtual-team/">How
-                                to facilitate collaboration in a virtual team
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/03/man-sitting-down-and-using-his-laptop-374085.jpg?w=540&#038;h=304&#038;crop=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section__block col-sm-12 col-md-4 ">
-
-                    <div class="card_default card_default--hovered hover--grey card_default--grey invent">
-                        <div class="card_default__content">
-
-                            <div class="card_default__tags">
-                            </div>
-
-                            <h3 class="card_default__title">
-                                <a href="https://www.capgemini.com/2020/02/green-it-the-latent-catalyst-in-transforming-tech-value-chains/">Green
-                                    IT: The latent catalyst in transforming tech value chains</a>
-                            </h3>
-
-
-                            <div class="card_default__text">
-                                <p>In the future, taking progressive action on decarbonization could become critical
-                                    for...</div>
-
-                            <div class="card_default__links">
-                                <div class="card_default__more">
-                                    <a href="https://www.capgemini.com/2020/02/green-it-the-latent-catalyst-in-transforming-tech-value-chains/"
-                                       aria-label="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                             viewBox="0 0 36 36">Read more icon
-                                            <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                                <path class="border_svg"
-                                                      d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                                <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
-                                            </g>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-
-                                <div class="logo-invent"></div>
-                            </div>
-                        </div>
-
-                        <div class="card_default__media   " style="background-image: url( ); ">
-                            <!-- card_default__media -->
-
-                            <a href="https://www.capgemini.com/2020/02/green-it-the-latent-catalyst-in-transforming-tech-value-chains/">Green
-                                IT: The latent catalyst in transforming tech value chains
-                                <div class="card_default__media--inner"
-                                     style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/02/green-it.png?w=540&#038;h=250&#038;crop=1)"
-                                >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
+    </div>
+</div>
+<!-- BtB subscribe form without inset class to avoid blank space within a hero module -->
+<div class="hero__inner">
+</div>
 
-    <section id="slider-people" class="section container-full container--slider  ">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-10">
-                    <h3 class="section__title">Love your Career</h3>
-                </div>
+
+<section class="section container-full  section--white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <h3 class="section__title">Editor&#039;s Picks</h3>
             </div>
+        </div>
+        <div class="row">
+            <div class="section__block col--main col-12 col-md-12 col-lg-6">
+
+                <div class="card_default card_default--hovered hover--grey card_default--grey invent">
+                    <div class="card_default__content">
+
+                        <div class="card_default__tags">
+                            <span>Capgemini Invent</span></div>
+
+                        <h3 class="card_default__title">
+                            <a href="https://www.capgemini.com/2020/04/preparing-for-tomorrow-touchless-retail-chinas-new-way-to-shop/">Touchless
+                                Retail: What the Rest of the World could learn from China’s new ways to shop</a>
+                        </h3>
+
+                        <div class="card_default__author">
+                            Julien Bourdinière
+                        </div>
+
+                        <div class="card_default__date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">Date icon
+                                <path fill="#000"
+                                      d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                            </svg>
+                            April 9, 2020
+                        </div>
+
+                        <div class="card_default__text">
+                            <p>Chinese retailers and brands have brought to life “Touchless Retail”, a new way to
+                                serve...</div>
+
+                        <div class="card_default__links">
+                            <div class="card_default__more">
+                                <a href="https://www.capgemini.com/2020/04/preparing-for-tomorrow-touchless-retail-chinas-new-way-to-shop/"
+                                   aria-label="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                                        Read more icon
+                                        <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                            <path class="border_svg"
+                                                  d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                            <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                        </g>
+                                    </svg>
+                                </a>
+
+                            </div>
 
 
-            <div class="card_person card_person--hovered card--horizontal ">
+                            <div class="logo-invent"></div>
+                        </div>
+                    </div>
 
-                <div class="card_person__media   ">
-                    <a href="https://www.capgemini.com/testimonials/nick-shimmen/">
-                        <div class="card_person__media--inner"
-                             style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/03/Nick_Shimmen.jpg?w=324&#038;h=219&#038;crop=1)">
+                    <div class="card_default__media   " style="background-image: url( ); "><!-- card_default__media -->
+
+                        <a href="https://www.capgemini.com/2020/04/preparing-for-tomorrow-touchless-retail-chinas-new-way-to-shop/">Touchless
+                            Retail: What the Rest of the World could learn from China’s new ways to shop
+                            <div class="card_default__media--inner"
+                                 style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/04/markus-spiske-wL7pwimB78Q-unsplash.jpg?w=540&#038;h=304&#038;crop=1)"
                             >
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card_person__content">
-                    <h3 class="card_person__title">
-                        <a href="https://www.capgemini.com/testimonials/nick-shimmen/">Nick Shimmen</a>
-                    </h3>
-
-
-                    <div class="card_person__text">
-                        <p>Since joining Invent I have worked in both the public and financial services sectors. I
-                            joined a well-established cloud development platform at one of Britain’s largest retail
-                            banks acting as a security analyst. Whilst in the public sector I took on a more traditional
-                            consulting role of a business analyst looking at process improvement and proper MI/KPI
-                            management.</p>
+                            </div>
+                        </a>
                     </div>
-
-
-                    <div class="card_person__links">
-                    </div>
-
                 </div>
             </div>
-
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="featured-jobs" class="section container-full jobs  section--purple ">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-12 col-md-10">
-                    <h2 class="section__title jobs__title">Featured Jobs</h2>
-                </div>
+<section class="section container-full  section--white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <h2 class="section__title">Latest Publications</h2>
             </div>
-
-            <div class="row slider-mobile" data-per-slide="3">
-                <div class="col-12 col-md-4 section__block jobs__card">
-
-                    <div class="card_textcard card_textcard--purple hover--purple">
-                        <div class="card_textcard__content">
-
-                            <h3 class="card_textcard__title">
-                                <a href="https://www.capgemini.com/jobs/onsite-coordinator-l3-enhancement-support-engineer/">Onsite
-                                    Coordinator/ &#038; L3/Enhancement support engineer</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 section__block jobs__card">
-
-                    <div class="card_textcard card_textcard--purple hover--purple">
-                        <div class="card_textcard__content">
-                            <div class="card_textcard__tags">
-                                <span>India</span></div>
-
-                            <h3 class="card_textcard__title">
-                                <a href="https://www.capgemini.com/jobs/business-analyst-6-yrs-to-9-yrs-pune/">Business
-                                    Analyst &#8211; 6 yrs to 9 yrs &#8211; Pune</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 section__block jobs__card">
-
-                    <div class="card_textcard card_textcard--purple hover--purple">
-                        <div class="card_textcard__content">
-                            <div class="card_textcard__tags">
-                                <span>India</span></div>
-
-                            <h3 class="card_textcard__title">
-                                <a href="https://www.capgemini.com/jobs/sfdc-developer-6-yrs-to-9-yrs-pune/">SFDC
-                                    Developer &#8211; 6 yrs to 9 yrs &#8211; Pune</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 section__block jobs__card">
-
-                    <div class="card_textcard card_textcard--purple hover--purple">
-                        <div class="card_textcard__content">
-                            <div class="card_textcard__tags">
-                                <span>India</span></div>
-
-                            <h3 class="card_textcard__title">
-                                <a href="https://www.capgemini.com/jobs/sfdc-lightning-developer-6-yrs-to-9-yrs-bangalore/">SFDC
-                                    Lightning Developer &#8211; 6 yrs to 9 yrs &#8211; Bangalore</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 section__block jobs__card">
-
-                    <div class="card_textcard card_textcard--purple hover--purple">
-                        <div class="card_textcard__content">
-                            <div class="card_textcard__tags">
-                                <span>India</span></div>
-
-                            <h3 class="card_textcard__title">
-                                <a href="https://www.capgemini.com/jobs/sfdc-lightning-developer-6-yrs-9-yrs-bangalore/">SFDC
-                                    Lightning Developer &#8211; 6 yrs &#8211; 9 yrs &#8211; Bangalore</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 section__block jobs__card">
-
-                    <div class="card_textcard card_textcard--purple hover--purple">
-                        <div class="card_textcard__content">
-                            <div class="card_textcard__tags">
-                                <span>India</span></div>
-
-                            <h3 class="card_textcard__title">
-                                <a href="https://www.capgemini.com/jobs/sfdc-developer-4-yrs-to-6-yrs-gurgaon/">SFDC
-                                    Developer &#8211; 4 yrs to 6 yrs &#8211; Gurgaon</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 text-center jobs__more">
-                    <a href="https://www.capgemini.com/careers/job-search/?search_term=" class="section__button">
-                        See more openings </a>
-                </div>
-            </div>
-
         </div>
-    </section>
-</article>
 
+
+        <div class="row">
+
+
+            <div class="section__block col-sm-12 col-md-4 ">
+
+                <div class="card_default card_default--hovered hover--grey card_default--grey invent">
+                    <div class="card_default__content">
+
+                        <div class="card_default__tags">
+                        </div>
+
+                        <h3 class="card_default__title">
+                            <a href="https://www.capgemini.com/2020/04/new-post-lockdown-use-cases-for-artificial-intelligence-in-china/">New
+                                post-lockdown use cases for Artificial Intelligence in China</a>
+                        </h3>
+
+                        <div class="card_default__author">
+                            Carol Wang
+                        </div>
+
+                        <div class="card_default__date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">Date icon
+                                <path fill="#000"
+                                      d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                            </svg>
+                            April 17, 2020
+                        </div>
+
+                        <div class="card_default__text">
+                            <p>The accelerated adoption of technology during the COVID-19 crisis in China led to more...
+                        </div>
+
+                        <div class="card_default__links">
+                            <div class="card_default__more">
+                                <a href="https://www.capgemini.com/2020/04/new-post-lockdown-use-cases-for-artificial-intelligence-in-china/"
+                                   aria-label="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                                        Read more icon
+                                        <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                            <path class="border_svg"
+                                                  d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                            <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                        </g>
+                                    </svg>
+                                </a>
+
+                            </div>
+
+
+                            <div class="logo-invent"></div>
+                        </div>
+                    </div>
+
+                    <div class="card_default__media   " style="background-image: url( ); "><!-- card_default__media -->
+
+                        <a href="https://www.capgemini.com/2020/04/new-post-lockdown-use-cases-for-artificial-intelligence-in-china/">New
+                            post-lockdown use cases for Artificial Intelligence in China
+                            <div class="card_default__media--inner"
+                                 style="background-image: url(https://i0.wp.com/www.capgemini.com/wp-content/uploads/2019/10/AI-and-Analytics.jpg?crop=0px%2C104px%2C1000px%2C563px&#038;resize=540%2C304&#038;ssl=1)"
+                            >
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section__block col-sm-12 col-md-4 ">
+
+                <div class="card_default card_default--hovered hover--grey card_default--grey ">
+                    <div class="card_default__content">
+
+                        <div class="card_default__tags">
+                        </div>
+
+                        <h3 class="card_default__title">
+                            <a href="https://www.capgemini.com/2020/04/the-impact-of-autonomous-vehicles-part-4/">The
+                                impact of autonomous vehicles – part 4</a>
+                        </h3>
+
+                        <div class="card_default__author">
+                            Satishchandra Nayak
+                        </div>
+
+                        <div class="card_default__date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">Date icon
+                                <path fill="#000"
+                                      d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                            </svg>
+                            April 17, 2020
+                        </div>
+
+                        <div class="card_default__text">
+                            <p>Explore the impact of L4 and L5 AVs on OEMs, component suppliers, and dealers.</p>
+                        </div>
+
+                        <div class="card_default__links">
+                            <div class="card_default__more">
+                                <a href="https://www.capgemini.com/2020/04/the-impact-of-autonomous-vehicles-part-4/"
+                                   aria-label="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                                        Read more icon
+                                        <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                            <path class="border_svg"
+                                                  d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                            <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                        </g>
+                                    </svg>
+                                </a>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="card_default__media   " style="background-image: url( ); "><!-- card_default__media -->
+
+                        <a href="https://www.capgemini.com/2020/04/the-impact-of-autonomous-vehicles-part-4/">The impact
+                            of autonomous vehicles – part 4
+                            <div class="card_default__media--inner"
+                                 style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/04/auto3.jpg?w=540&#038;h=304&#038;crop=1)"
+                            >
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section__block col-sm-12 col-md-4 ">
+
+                <div class="card_default card_default--hovered hover--grey card_default--grey invent">
+                    <div class="card_default__content">
+
+                        <div class="card_default__tags">
+                        </div>
+
+                        <h3 class="card_default__title">
+                            <a href="https://www.capgemini.com/2020/04/the-internet-of-things-iot-is-the-perfect-playground-for-life-sciences/">The
+                                internet of things (IoT) is the perfect playground for life sciences</a>
+                        </h3>
+
+                        <div class="card_default__author">
+                            Cédric Bourrely
+                        </div>
+
+                        <div class="card_default__date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">Date icon
+                                <path fill="#000"
+                                      d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                            </svg>
+                            April 17, 2020
+                        </div>
+
+                        <div class="card_default__text">
+                            <p>IoT can provide substantial value across the entire life sciences value chain, from
+                                research...</div>
+
+                        <div class="card_default__links">
+                            <div class="card_default__more">
+                                <a href="https://www.capgemini.com/2020/04/the-internet-of-things-iot-is-the-perfect-playground-for-life-sciences/"
+                                   aria-label="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                                        Read more icon
+                                        <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                            <path class="border_svg"
+                                                  d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                            <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                        </g>
+                                    </svg>
+                                </a>
+
+                            </div>
+
+
+                            <div class="logo-invent"></div>
+                        </div>
+                    </div>
+
+                    <div class="card_default__media   " style="background-image: url( ); "><!-- card_default__media -->
+
+                        <a href="https://www.capgemini.com/2020/04/the-internet-of-things-iot-is-the-perfect-playground-for-life-sciences/">The
+                            internet of things (IoT) is the perfect playground for life sciences
+                            <div class="card_default__media--inner"
+                                 style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/01/Life-sciencesDT.jpg?w=540&#038;h=304&#038;crop=1)"
+                            >
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="https://www.capgemini.com/blogs/" class="section__button">Show all</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer class="footer container-full">
     <div class="container">
@@ -2319,10 +2044,15 @@
 
 
 <script>
-    var ELASTIC_JOBS = {"api_url": "https:\/\/jobstream.elastic.macs.capgemini.com", "country_code": "global"};
+    var ELASTIC_JOBS = {
+        "api_url": "https:\/\/jobstream.elastic.macs.capgemini.com",
+        "country_code": "global",
+        "country_code_param": "",
+        "country_name_param": ""
+    };
 </script>
 <script type='text/javascript'
-        src='https://www.capgemini.com/_static/??/wp-content/plugins/cg-elastic-jobs/assets/js/elastic-jobs.js,/wp-content/themes/capgemini-komposite/assets/js/libs/jquery.touchSwipe.min.js?m=1586177724j'></script>
+        src='https://www.capgemini.com/_static/??/wp-content/plugins/cg-elastic-jobs/assets/js/elastic-jobs.js,/wp-content/themes/capgemini-komposite/assets/js/libs/jquery.touchSwipe.min.js?m=1586935255j'></script>
 <script src='https://www.capgemini.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.15'></script>
 <script>
     window.lodash = _.noConflict();
@@ -2334,7 +2064,7 @@
     var CG_hero = {"replayString": "Replay video"};
 </script>
 <script>
-    var CG_SEARCH = {"searchNonce": "631c0ab1d6", "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php"};
+    var CG_SEARCH = {"searchNonce": "8cb4e21d30", "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php"};
 </script>
 <script>
     var CG = {"expandString": "Expand", "collapseString": "Collapse"};
@@ -2342,7 +2072,7 @@
 <script>
     var PF = {
         "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php",
-        "ajaxNonce": "b7f646d54e",
+        "ajaxNonce": "6ae349bb37",
         "strings": {
             "remove_file": "remove file",
             "select_file": "Select File",
@@ -2356,13 +2086,25 @@
     };
 </script>
 <script type='text/javascript'
-        src='https://www.capgemini.com/_static/??-eJytk81OAzEMhF+IbFRVreCAeAyOVdbrTb1NYpM4ReXpCaqACk5sOOZnvsx4FPsqBjgpJrV6xIjFghOPkRKZE0fhQorWlYJa7FJsCTRhHpZyZ/8shUyixXDN0I5duhw+9A60li6gsFTpJ5hzi8ZdHHVjX5QjZv4HH50YKIfkzqukDoDzRJyMsvcBV0ECjS0LBgR9Zh7mGsJ6zvJSMV+GmbQNpKudrkpmzrGPQElqp4kxsDeF0tpivv6LSxh+WYnVSKieUruLKg5O9kAJ7FgpTDa4t4uh6Dxeu/leDu29n6xPEHgjmQXzdYA3Xm63zZybrjGe4uNmd7/bbB/22/3yDkCS3D0='></script>
+        src='https://www.capgemini.com/_static/??-eJytk81OAzEMhF+IbFqhqlwQj8Gxynq9qbdJbOKkqDw9QRVQwYkNx/zMlxmPYl/FAKeCqdhyxIhqwYnHSInMiaOwUkHrVLGoXdRqoAnzsOid/bMUMklRwzVDO3bpcvjQOyhVu4DCUqWfYM4tGndxihv7ohwx8z/46MSAHpI7r5I6AM4TcTKFvQ+4ChJobFkwIJRn5mGuIaznLC8V82WYqbSBdLXTVcnMOfYRKEntNDEG9kYprS3m67+4hOGXlViNhOoptbtYxMHJHiiBHSuFyQb3djEUncdrN9/Lob33k/UJAm8ks2C+DvDGy+22mXPTNcZTfNzuHvab3f1mv13eAUBz3DM='></script>
 <script type='text/javascript' src='https://stats.wp.com/e-202016.js' async='async' defer='defer'></script>
 <script type='text/javascript'>
     _stq = window._stq || [];
-    _stq.push(['view', {v: 'ext', j: '1:8.3', blog: '134905850', post: '40776', tz: '2', srv: 'www.capgemini.com'}]);
-    _stq.push(['clickTrackerInit', '134905850', '40776']);
+    _stq.push(['view', {v: 'ext', j: '1:8.4.2', blog: '134905850', post: '41283', tz: '2', srv: 'www.capgemini.com'}]);
+    _stq.push(['clickTrackerInit', '134905850', '41283']);
 </script>
 
+<script type="text/javascript">window.NREUM || (NREUM = {});
+NREUM.info = {
+    "beacon": "bam.nr-data.net",
+    "licenseKey": "6b6b1d1407",
+    "applicationID": "52117986",
+    "transactionName": "YANaNUJSCkUHVUZYDFlJeQJEWgtYSUJXXBNbB0wEHVoKRQ9RWkUQGgdWBR1dAUEV",
+    "queueTime": 0,
+    "applicationTime": 427,
+    "atts": "TERNQwpIGRpEVxALGEob",
+    "errorBeacon": "bam.nr-data.net",
+    "agent": ""
+}</script>
 </body>
 </html>
