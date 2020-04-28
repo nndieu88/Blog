@@ -12,6 +12,7 @@ public class CategoryMapper {
         CategoryDto categoryDto = new CategoryDto();
         categoryDto.setId(category.getId());
         categoryDto.setCategoryName(category.getCategoryName());
+        categoryDto.setMetaCategory(category.getMetaCategory());
         categoryDto.setDateCreated(category.getDateCreated());
         categoryDto.setDateUpdated(category.getDateUpdated());
         return categoryDto;
@@ -20,6 +21,7 @@ public class CategoryMapper {
     public static Category toCategory(CategoryCreateRequest categoryCreateRequest) {
         Category category = new Category();
         category.setCategoryName(categoryCreateRequest.getCategoryName());
+        category.setMetaCategory(ConvertStringToUrl.convert(categoryCreateRequest.getCategoryName()));
         category.setDateCreated(new Date());
         category.setDateUpdated(new Date());
         return category;
@@ -29,6 +31,7 @@ public class CategoryMapper {
         Category category = new Category();
         category.setId(id);
         category.setCategoryName(categoryUpdateRequest.getCategoryName());
+        category.setMetaCategory(ConvertStringToUrl.convert(categoryUpdateRequest.getCategoryName()));
         category.setDateCreated(date);
         category.setDateUpdated(new Date());
         return category;

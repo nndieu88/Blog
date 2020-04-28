@@ -1,5 +1,6 @@
 package com.example.demo.controller.api;
 
+import com.example.demo.model.api.BasicApiResult;
 import com.example.demo.model.dto.CategoryDto;
 import com.example.demo.model.request.CategoryCreateRequest;
 import com.example.demo.model.request.CategoryUpdateRequest;
@@ -19,25 +20,60 @@ public class ApiCategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCategoryById(@PathVariable Long id) {
-        CategoryDto categoryDto = categoryService.getOne(id);
-        return new ResponseEntity<>(categoryDto, HttpStatus.OK);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            CategoryDto categoryDto = categoryService.getOne(id);
+            result.setSuccess(true);
+            result.setMessage("Successful");
+            result.setData(categoryDto);
+        } catch (Exception ex) {
+            result.setSuccess(false);
+            result.setMessage(ex.getMessage());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping("")
     public ResponseEntity<?> createCategory(@Valid @RequestBody CategoryCreateRequest category) {
-        CategoryDto category1 = categoryService.createCategory(category);
-        return ResponseEntity.ok(category1);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            CategoryDto category1 = categoryService.createCategory(category);
+
+            result.setSuccess(true);
+            result.setMessage("Successful");
+            result.setData(category1);
+        } catch (Exception ex) {
+            result.setSuccess(false);
+            result.setMessage(ex.getMessage());
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCategory(@Valid @RequestBody CategoryUpdateRequest category, @PathVariable Long id) {
-        categoryService.updateCategory(category, id);
-        return ResponseEntity.ok("successfull");
+        BasicApiResult result = new BasicApiResult();
+        try {
+            categoryService.updateCategory(category, id);
+            result.setSuccess(true);
+            result.setMessage("Successful");
+        } catch (Exception ex) {
+            result.setSuccess(false);
+            result.setMessage(ex.getMessage());
+        }
+        return ResponseEntity.ok(result);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
-        categoryService.deleteCategory(id);
-        return new ResponseEntity<>("Successful", HttpStatus.OK);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            categoryService.deleteCategory(id);
+            result.setSuccess(true);
+            result.setMessage("Successful");
+        } catch (Exception ex) {
+            result.setSuccess(false);
+            result.setMessage(ex.getMessage());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

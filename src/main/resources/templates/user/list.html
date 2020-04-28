@@ -3,454 +3,17 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
     <meta charset="UTF-8">
-    <script type="text/javascript">(window.NREUM || (NREUM = {})).loader_config = {
-        licenseKey: "6b6b1d1407",
-        applicationID: "52117986"
-    };
-    window.NREUM || (NREUM = {}), __nr_require = function (e, n, t) {
-        function r(t) {
-            if (!n[t]) {
-                var i = n[t] = {exports: {}};
-                e[t][0].call(i.exports, function (n) {
-                    var i = e[t][1][n];
-                    return r(i || n)
-                }, i, i.exports)
-            }
-            return n[t].exports
-        }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
 
-        if ("function" == typeof __nr_require) return __nr_require;
-        for (var i = 0; i < t.length; i++) r(t[i]);
-        return r
-    }({
-        1: [function (e, n, t) {
-            function r() {
-            }
-
-            function i(e, n, t) {
-                return function () {
-                    return o(e, [u.now()].concat(f(arguments)), n ? null : this, t), n ? void 0 : this
-                }
-            }
-
-            var o = e("handle"), a = e(4), f = e(5), c = e("ee").get("tracer"), u = e("loader"), s = NREUM;
-            "undefined" == typeof window.newrelic && (newrelic = s);
-            var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished", "addToTrace", "inlineHit", "addRelease"],
-                l = "api-", d = l + "ixn-";
-            a(p, function (e, n) {
-                s[n] = i(l + n, !0, "api")
-            }), s.addPageAction = i(l + "addPageAction", !0), s.setCurrentRouteName = i(l + "routeName", !0), n.exports = newrelic, s.interaction = function () {
-                return (new r).get()
-            };
-            var m = r.prototype = {
-                createTracer: function (e, n) {
-                    var t = {}, r = this, i = "function" == typeof n;
-                    return o(d + "tracer", [u.now(), e, t], r), function () {
-                        if (c.emit((i ? "" : "no-") + "fn-start", [u.now(), r, i], t), i) try {
-                            return n.apply(this, arguments)
-                        } catch (e) {
-                            throw c.emit("fn-err", [arguments, this, e], t), e
-                        } finally {
-                            c.emit("fn-end", [u.now()], t)
-                        }
-                    }
-                }
-            };
-            a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (e, n) {
-                m[n] = i(d + n)
-            }), newrelic.noticeError = function (e, n) {
-                "string" == typeof e && (e = new Error(e)), o("err", [e, u.now(), !1, n])
-            }
-        }, {}], 2: [function (e, n, t) {
-            function r(e, n) {
-                var t = e.getEntries();
-                t.forEach(function (e) {
-                    "first-paint" === e.name ? c("timing", ["fp", Math.floor(e.startTime)]) : "first-contentful-paint" === e.name && c("timing", ["fcp", Math.floor(e.startTime)])
-                })
-            }
-
-            function i(e, n) {
-                var t = e.getEntries();
-                t.length > 0 && c("lcp", [t[t.length - 1]])
-            }
-
-            function o(e) {
-                if (e instanceof s && !l) {
-                    var n, t = Math.round(e.timeStamp);
-                    n = t > 1e12 ? Date.now() - t : u.now() - t, l = !0, c("timing", ["fi", t, {type: e.type, fid: n}])
-                }
-            }
-
-            if (!("init" in NREUM && "page_view_timing" in NREUM.init && "enabled" in NREUM.init.page_view_timing && NREUM.init.page_view_timing.enabled === !1)) {
-                var a, f, c = e("handle"), u = e("loader"), s = NREUM.o.EV;
-                if ("PerformanceObserver" in window && "function" == typeof window.PerformanceObserver) {
-                    a = new PerformanceObserver(r), f = new PerformanceObserver(i);
-                    try {
-                        a.observe({entryTypes: ["paint"]}), f.observe({entryTypes: ["largest-contentful-paint"]})
-                    } catch (p) {
-                    }
-                }
-                if ("addEventListener" in document) {
-                    var l = !1, d = ["click", "keydown", "mousedown", "pointerdown", "touchstart"];
-                    d.forEach(function (e) {
-                        document.addEventListener(e, o, !1)
-                    })
-                }
-            }
-        }, {}], 3: [function (e, n, t) {
-            function r(e, n) {
-                if (!i) return !1;
-                if (e !== i) return !1;
-                if (!n) return !0;
-                if (!o) return !1;
-                for (var t = o.split("."), r = n.split("."), a = 0; a < r.length; a++) if (r[a] !== t[a]) return !1;
-                return !0
-            }
-
-            var i = null, o = null, a = /Version\/(\S+)\s+Safari/;
-            if (navigator.userAgent) {
-                var f = navigator.userAgent, c = f.match(a);
-                c && f.indexOf("Chrome") === -1 && f.indexOf("Chromium") === -1 && (i = "Safari", o = c[1])
-            }
-            n.exports = {agent: i, version: o, match: r}
-        }, {}], 4: [function (e, n, t) {
-            function r(e, n) {
-                var t = [], r = "", o = 0;
-                for (r in e) i.call(e, r) && (t[o] = n(r, e[r]), o += 1);
-                return t
-            }
-
-            var i = Object.prototype.hasOwnProperty;
-            n.exports = r
-        }, {}], 5: [function (e, n, t) {
-            function r(e, n, t) {
-                n || (n = 0), "undefined" == typeof t && (t = e ? e.length : 0);
-                for (var r = -1, i = t - n || 0, o = Array(i < 0 ? 0 : i); ++r < i;) o[r] = e[n + r];
-                return o
-            }
-
-            n.exports = r
-        }, {}], 6: [function (e, n, t) {
-            n.exports = {exists: "undefined" != typeof window.performance && window.performance.timing && "undefined" != typeof window.performance.timing.navigationStart}
-        }, {}], ee: [function (e, n, t) {
-            function r() {
-            }
-
-            function i(e) {
-                function n(e) {
-                    return e && e instanceof r ? e : e ? c(e, f, o) : o()
-                }
-
-                function t(t, r, i, o) {
-                    if (!l.aborted || o) {
-                        e && e(t, r, i);
-                        for (var a = n(i), f = v(t), c = f.length, u = 0; u < c; u++) f[u].apply(a, r);
-                        var p = s[y[t]];
-                        return p && p.push([b, t, r, a]), a
-                    }
-                }
-
-                function d(e, n) {
-                    h[e] = v(e).concat(n)
-                }
-
-                function m(e, n) {
-                    var t = h[e];
-                    if (t) for (var r = 0; r < t.length; r++) t[r] === n && t.splice(r, 1)
-                }
-
-                function v(e) {
-                    return h[e] || []
-                }
-
-                function g(e) {
-                    return p[e] = p[e] || i(t)
-                }
-
-                function w(e, n) {
-                    u(e, function (e, t) {
-                        n = n || "feature", y[t] = n, n in s || (s[n] = [])
-                    })
-                }
-
-                var h = {}, y = {}, b = {
-                    on: d,
-                    addEventListener: d,
-                    removeEventListener: m,
-                    emit: t,
-                    get: g,
-                    listeners: v,
-                    context: n,
-                    buffer: w,
-                    abort: a,
-                    aborted: !1
-                };
-                return b
-            }
-
-            function o() {
-                return new r
-            }
-
-            function a() {
-                (s.api || s.feature) && (l.aborted = !0, s = l.backlog = {})
-            }
-
-            var f = "nr@context", c = e("gos"), u = e(4), s = {}, p = {}, l = n.exports = i();
-            l.backlog = s
-        }, {}], gos: [function (e, n, t) {
-            function r(e, n, t) {
-                if (i.call(e, n)) return e[n];
-                var r = t();
-                if (Object.defineProperty && Object.keys) try {
-                    return Object.defineProperty(e, n, {value: r, writable: !0, enumerable: !1}), r
-                } catch (o) {
-                }
-                return e[n] = r, r
-            }
-
-            var i = Object.prototype.hasOwnProperty;
-            n.exports = r
-        }, {}], handle: [function (e, n, t) {
-            function r(e, n, t, r) {
-                i.buffer([e], r), i.emit(e, n, t)
-            }
-
-            var i = e("ee").get("handle");
-            n.exports = r, r.ee = i
-        }, {}], id: [function (e, n, t) {
-            function r(e) {
-                var n = typeof e;
-                return !e || "object" !== n && "function" !== n ? -1 : e === window ? 0 : a(e, o, function () {
-                    return i++
-                })
-            }
-
-            var i = 1, o = "nr@id", a = e("gos");
-            n.exports = r
-        }, {}], loader: [function (e, n, t) {
-            function r() {
-                if (!x++) {
-                    var e = E.info = NREUM.info, n = d.getElementsByTagName("script")[0];
-                    if (setTimeout(s.abort, 3e4), !(e && e.licenseKey && e.applicationID && n)) return s.abort();
-                    u(y, function (n, t) {
-                        e[n] || (e[n] = t)
-                    }), c("mark", ["onload", a() + E.offset], null, "api");
-                    var t = d.createElement("script");
-                    t.src = "https://" + e.agent, n.parentNode.insertBefore(t, n)
-                }
-            }
-
-            function i() {
-                "complete" === d.readyState && o()
-            }
-
-            function o() {
-                c("mark", ["domContent", a() + E.offset], null, "api")
-            }
-
-            function a() {
-                return O.exists && performance.now ? Math.round(performance.now()) : (f = Math.max((new Date).getTime(), f)) - E.offset
-            }
-
-            var f = (new Date).getTime(), c = e("handle"), u = e(4), s = e("ee"), p = e(3), l = window, d = l.document,
-                m = "addEventListener", v = "attachEvent", g = l.XMLHttpRequest, w = g && g.prototype;
-            NREUM.o = {
-                ST: setTimeout,
-                SI: l.setImmediate,
-                CT: clearTimeout,
-                XHR: g,
-                REQ: l.Request,
-                EV: l.Event,
-                PR: l.Promise,
-                MO: l.MutationObserver
-            };
-            var h = "" + location, y = {
-                    beacon: "bam.nr-data.net",
-                    errorBeacon: "bam.nr-data.net",
-                    agent: "js-agent.newrelic.com/nr-1167.min.js"
-                }, b = g && w && w[m] && !/CriOS/.test(navigator.userAgent),
-                E = n.exports = {offset: f, now: a, origin: h, features: {}, xhrWrappable: b, userAgent: p};
-            e(1), e(2), d[m] ? (d[m]("DOMContentLoaded", o, !1), l[m]("load", r, !1)) : (d[v]("onreadystatechange", i), l[v]("onload", r)), c("mark", ["firstbyte", f], null, "api");
-            var x = 0, O = e(6)
-        }, {}], "wrap-function": [function (e, n, t) {
-            function r(e) {
-                return !(e && e instanceof Function && e.apply && !e[a])
-            }
-
-            var i = e("ee"), o = e(5), a = "nr@original", f = Object.prototype.hasOwnProperty, c = !1;
-            n.exports = function (e, n) {
-                function t(e, n, t, i) {
-                    function nrWrapper() {
-                        var r, a, f, c;
-                        try {
-                            a = this, r = o(arguments), f = "function" == typeof t ? t(r, a) : t || {}
-                        } catch (u) {
-                            l([u, "", [r, a, i], f])
-                        }
-                        s(n + "start", [r, a, i], f);
-                        try {
-                            return c = e.apply(a, r)
-                        } catch (p) {
-                            throw s(n + "err", [r, a, p], f), p
-                        } finally {
-                            s(n + "end", [r, a, c], f)
-                        }
-                    }
-
-                    return r(e) ? e : (n || (n = ""), nrWrapper[a] = e, p(e, nrWrapper), nrWrapper)
-                }
-
-                function u(e, n, i, o) {
-                    i || (i = "");
-                    var a, f, c, u = "-" === i.charAt(0);
-                    for (c = 0; c < n.length; c++) f = n[c], a = e[f], r(a) || (e[f] = t(a, u ? f + i : i, o, f))
-                }
-
-                function s(t, r, i) {
-                    if (!c || n) {
-                        var o = c;
-                        c = !0;
-                        try {
-                            e.emit(t, r, i, n)
-                        } catch (a) {
-                            l([a, t, r, i])
-                        }
-                        c = o
-                    }
-                }
-
-                function p(e, n) {
-                    if (Object.defineProperty && Object.keys) try {
-                        var t = Object.keys(e);
-                        return t.forEach(function (t) {
-                            Object.defineProperty(n, t, {
-                                get: function () {
-                                    return e[t]
-                                }, set: function (n) {
-                                    return e[t] = n, n
-                                }
-                            })
-                        }), n
-                    } catch (r) {
-                        l([r])
-                    }
-                    for (var i in e) f.call(e, i) && (n[i] = e[i]);
-                    return n
-                }
-
-                function l(n) {
-                    try {
-                        e.emit("internal-error", n)
-                    } catch (t) {
-                    }
-                }
-
-                return e || (e = i), t.inPlace = u, t.flag = a, t
-            }
-        }, {}]
-    }, {}, ["loader"]);</script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/favicon.ico"
-          type="image/x-icon"/>
-    <script>var h = document.getElementsByTagName('html')[0];
-    h.className = h.className.replace('no-js', 'js-enabled')</script>
-    <title>Insights &amp; News &#8211; Capgemini Worldwide</title>
-    <link rel='dns-prefetch' href='//www.google.com'/>
-    <link rel='dns-prefetch' href='//code.jquery.com'/>
-    <link rel='dns-prefetch' href='//s.w.org'/>
-    <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide &raquo; Feed"
-          href="https://www.capgemini.com/feed/"/>
-    <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide &raquo; Comments Feed"
-          href="https://www.capgemini.com/comments/feed/"/>
-    <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide - Blog Posts Feed"
-          href="https://www.capgemini.com/blogs/?feed=rss2"/>
-    <script type="text/javascript">
-        window._wpemojiSettings = {
-            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/",
-            "ext": ".png",
-            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/",
-            "svgExt": ".svg",
-            "source": {"concatemoji": "https:\/\/www.capgemini.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4"}
-        };
-        /*! This file is auto-generated */
-        !function (e, a, t) {
-            var r, n, o, i, p = a.createElement("canvas"), s = p.getContext && p.getContext("2d");
-
-            function c(e, t) {
-                var a = String.fromCharCode;
-                s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, e), 0, 0);
-                var r = p.toDataURL();
-                return s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, t), 0, 0), r === p.toDataURL()
-            }
-
-            function l(e) {
-                if (!s || !s.fillText) return !1;
-                switch (s.textBaseline = "top", s.font = "600 32px Arial", e) {
-                    case"flag":
-                        return !c([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) && (!c([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !c([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]));
-                    case"emoji":
-                        return !c([55357, 56424, 55356, 57342, 8205, 55358, 56605, 8205, 55357, 56424, 55356, 57340], [55357, 56424, 55356, 57342, 8203, 55358, 56605, 8203, 55357, 56424, 55356, 57340])
-                }
-                return !1
-            }
-
-            function d(e) {
-                var t = a.createElement("script");
-                t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
-            }
-
-            for (i = Array("flag", "emoji"), t.supports = {
-                everything: !0,
-                everythingExceptFlag: !0
-            }, o = 0; o < i.length; o++) t.supports[i[o]] = l(i[o]), t.supports.everything = t.supports.everything && t.supports[i[o]], "flag" !== i[o] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[i[o]]);
-            t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function () {
-                t.DOMReady = !0
-            }, t.supports.everything || (n = function () {
-                t.readyCallback()
-            }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function () {
-                "complete" === a.readyState && t.readyCallback()
-            })), (r = t.source || {}).concatemoji ? d(r.concatemoji) : r.wpemoji && r.twemoji && (d(r.twemoji), d(r.wpemoji)))
-        }(window, document, window._wpemojiSettings);
-    </script>
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <link rel='stylesheet' id='all-css-0'
-          href='https://www.capgemini.com/_static/??-eJx9jUEOgjAQRS9kmYgB3RjPUsqAI22n6Qwx3N4SNjUmbn/+ew/eyVB0fh1RwInASKIweHaL8TRkmzcQ3Tw2gWJTDicohOOoGBWSX2eKBZwNeitKzrx4ELAiqIev3n94fWLYuzbNWPxkFg6JhRRrxdH/006ZE2YzcQ5f7Xo3Uy7gbnmE+7m79Zeu7dvrB6a+X5U='
-          type='text/css' media='all'/>
+    <title th:text="${posts[0].categoryName}"></title>
+    <link href="css/user-index.css" rel="stylesheet" type="text/css" media="all"/>
     <style id='wp-block-library-inline-css'>
         .has-text-align-justify {
             text-align: justify;
         }
     </style>
-    <link rel='stylesheet' id='datepicker-css'
-          href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=5.4' media='all'/>
-    <link rel='stylesheet' id='all-css-2'
-          href='https://www.capgemini.com/wp-content/mu-plugins/jetpack/css/jetpack.css?m=1587053071g' type='text/css'
-          media='all'/>
-    <script type='text/javascript'
-            src='https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/js/libs/jquery-3.2.1.min.js?m=1580827494g'></script>
-    <script async defer src='https://www.google.com/recaptcha/api.js?ver=5.4'></script>
-    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=5.4'></script>
-    <link rel='https://api.w.org/' href='https://www.capgemini.com/wp-json/'/>
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.capgemini.com/xmlrpc.php?rsd"/>
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
-          href="https://www.capgemini.com/wp-includes/wlwmanifest.xml"/>
-    <meta name="generator" content="WordPress 5.4"/>
-    <link rel="canonical" href="https://www.capgemini.com/insights-and-news/"/>
-    <link rel='shortlink' href='https://www.capgemini.com/?p=41283'/>
+
     <style>@media (min-width: 576px) {
         .footer__banner-link {
             background-position: center;
@@ -473,127 +36,37 @@
         .footer__banner-link {
             background-position: center;
         }
-    }</style>
-    <link rel="alternate" href="https://www.capgemini.com/insights-and-news/" hreflang="x-default"/>
-    <link rel="alternate" href="https://www.capgemini.com/fr-fr/insights-news/" hreflang="fr-fr"/>
-    <link rel="alternate" href="https://www.capgemini.com/gb-en/insights-news/" hreflang="en-gb"/>
-    <link rel="alternate" href="https://www.capgemini.com/us-en/insights-news/" hreflang="en-us"/>
-    <link rel="alternate" href="https://www.capgemini.com/de-de/insights-news/" hreflang="de-de"/>
-    <link rel="alternate" href="https://www.capgemini.com/in-en/insights-news/" hreflang="en-in"/>
-    <link rel="alternate" href="https://www.capgemini.com/nl-nl/nieuws-inzichten/" hreflang="nl-nl"/>
-    <link rel="alternate" href="https://www.capgemini.com/br-pt/insights-news/" hreflang="pt-br"/>
-    <link rel="alternate" href="https://www.capgemini.com/au-en/insights-news/" hreflang="en-au"/>
-    <link rel="alternate" href="https://www.capgemini.com/ca-en/insights-news/" hreflang="en-ca"/>
-    <link rel="alternate" href="https://www.capgemini.com/cn-zh/insights-news/" hreflang="zh-cn"/>
-    <link rel="alternate" href="https://www.capgemini.com/it-it/insights-news/" hreflang="it-it"/>
-    <link rel="alternate" href="https://www.capgemini.com/jp-jp/insights-news/" hreflang="ja-jp"/>
-    <link rel="alternate" href="https://www.capgemini.com/pl-pl/informacje/" hreflang="pl-pl"/>
-    <link rel="alternate" href="https://www.capgemini.com/es-es/prensa/" hreflang="es-es"/>
-    <link rel="alternate" href="https://www.capgemini.com/be-en/insights-news/" hreflang="en-be"/>
-    <link rel="alternate" href="https://www.capgemini.com/pt-en/insights-news/" hreflang="en-pt"/>
-    <link rel="alternate" href="https://www.capgemini.com/ar-es/insights-news/" hreflang="es-ar"/>
-    <link rel="alternate" href="https://www.capgemini.com/mx-es/insights-news/" hreflang="es-mx"/>
-    <link rel="alternate" href="https://www.capgemini.com/at-de/insights-news/" hreflang="de-at"/>
-    <link rel="alternate" href="https://www.capgemini.com/ch-de/insights-news/" hreflang="ch-de"/>
-    <link rel="alternate" href="https://www.capgemini.com/fi-en/insights-news/" hreflang="en-fi"/>
-    <style type='text/css'>img#wpstats {
-        display: none
-    }</style>
-    <style type="text/css">
-        /* If html does not have either class, do not show lazy loaded images. */
-        html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
-            display: none;
-        }
+    }
     </style>
-    <script>
-        document.documentElement.classList.add(
-            'jetpack-lazy-images-js-enabled'
-        );
-    </script>
 
     <!-- Jetpack Open Graph Tags -->
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Insights &amp; News"/>
-    <meta property="og:url" content="https://www.capgemini.com/insights-and-news/"/>
-    <meta property="og:description" content="Visit the post for more."/>
-    <meta property="article:published_time" content="2017-08-04T12:12:15+00:00"/>
-    <meta property="article:modified_time" content="2020-04-03T11:55:55+00:00"/>
-    <meta property="og:site_name" content="Capgemini Worldwide"/>
-    <meta property="og:image" content="https://s0.wp.com/i/blank.jpg"/>
-    <meta property="og:locale" content="en_US"/>
-    <meta name="twitter:text:title" content="Insights &amp; News"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:description" content="Visit the post for more."/>
-
+    <meta property="og:type" content="website"/>
     <!-- End Jetpack Open Graph Tags -->
 </head>
 
-<body class="page-template page-template-template-insights-and-news page-template-template-insights-and-news-php page page-id-41283 ">
-
-<script>var dataLayer = [{
-    "post_type": "page",
-    "post_id": 41283,
-    "blog": "https:\/\/www.capgemini.com",
-    "network": "https:\/\/www.capgemini.com\/",
-    "u1": "Insights &amp; News",
-    "u2": "US",
-    "u3": "en_US",
-    "author": "Parker Ward",
-    "date_posted": "2017-08-04 13:12:15"
-}];</script>
-<!-- Google Tag Manager -->
-<noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-534SM7Q" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-534SM7Q');</script>
-<!-- End Google Tag Manager -->
-
-<!-- Google Tag Manager -->
-<noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TF6CWNB" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-TF6CWNB');</script>
-<!-- End Google Tag Manager -->
-
+<body class="home page-template page-template-dynamic-template-base page-template-dynamic-template-base-php page page-id-40776 ">
 
 <header class="header">
 
     <div class="header__window--top container">
         <div class="header__window--logo">
-            <a href="https://www.capgemini.com/" class="header__logo"><img
-                    src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg"
-                    alt="Capgemini Worldwide"></a>
+            <a class="header__logo"><img
+                    src="images/logo.png"
+                    alt=""></a>
         </div>
         <div class="header__window--buttons">
             <button class="header__locations header__locations-button open-menu">
-                <img alt="country flag" class="img--flag"
-                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/globe.svg"/>
+                <img alt="" src="images/globe.svg">
                 <span class="hidden-sm-down">Global | EN</span>
-                <span aria-hidden="true" class="icon-ios-arrow-left hidden-sm-down icons__button--locations"></span>
+                <span aria-hidden="true" ></span>
             </button>
             <div class="header__search-button ">
                 <div class="menu-search-menu-container">
-                    <ul id="menu-search-menu" class="search_results__button">
-                        <form th:method="get" th:action="@{/search}">
-                            <input th:name="key" th:value="${key}" type="text">
-                            <input type="submit" value="Search..."/>
-                        </form>
+                    <ul id="menu-search-menu" class="">
+                        <li id="menu-item-313458" style="padding-top: 9px;"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313458">
+                            <img alt="" src="images/Search-big.svg">
+                            <a th:href="@{/search}">Search</a></li>
                     </ul>
                 </div>
             </div>
@@ -760,8 +233,10 @@
                                                                                       class="img--flag"
                                                                                       src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/gb.svg"/> </span>
                                 <a href="https://www.capgemini.com/gb-en/?georedirect_none=true">UK | EN</a></li>
+
+                        </ul>
                     </div>
-                    </ul></div>
+                </div>
             </nav>
         </div>
 
@@ -1291,7 +766,7 @@
     <h1 class="sr-only">Insights and news</h1>
 
     <div class="container-full hero hero_full hero_full__pic  "
-         style="background-image: url(https://www.capgemini.com/wp-content/uploads/2020/03/DotCom_banner_1200x350-without-textv1.jpg?w=1200&#038;h=350&#038;crop=1);">
+         th:style="'background-image: url(' + @{${postImportant.image}} + ');'">
         <div class="hero_full__inner">
             <div class="container">
                 <div class="row">
@@ -1301,17 +776,19 @@
                         <h1 class="hero_full__title">
 						<span class="inside">
 							<span class="inner">
-															<a class="1"
-                                                               href="https://www.capgemini.com/research/virtual-organizations-need-real-leadership/">Virtual organizations need real leadership</a>
-														</span>
+                                <a class="1"
+                                   th:href="@{/info/__${postImportant.metaTitle}__}">
+                                    <span th:text="${postImportant.title}"></span>
+                                </a>
+                            </span>
 						</span>
                         </h1>
 
                         <div class="hero_full__text">
                             <div class="inner_text">
 
-                                <a href="https://www.capgemini.com/research/virtual-organizations-need-real-leadership/">
-                                    <span>Pragmatic tips from the Capgemini Research Institute</span>
+                                <a th:href="@{/info/__${postImportant.metaTitle}__}">
+                                    <span th:text="${#strings.abbreviate(postImportant.content,100)}"></span>
                                 </a>
 
                             </div>
@@ -1321,7 +798,7 @@
                             <div class="hero_full__link_bg">
 
                                 <a class="hero_full__link section__button section__button--transparent"
-                                   href="https://www.capgemini.com/research/virtual-organizations-need-real-leadership/">
+                                   th:href="@{/info/__${postImportant.metaTitle}__}">
                                     <span class="sr-only">Virtual organizations need real leadership</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15">
                                         <title>Read more</title>
@@ -1348,34 +825,168 @@
 
 <section class="section container-full  section--white">
     <div class="container">
-        <div class="row">
-            <h2 class="section__title col-12 col-md-10">Newsroom</h2>
-        </div>
-
-        <div th:if="${isPost}==false">
-            <h2 style="text-align: center">
-                Not found..!</h2>
-        </div>
 
         <div class="row">
+            <h2 class="section__title col-12 col-md-10" th:text="${posts[0].categoryName}"></h2>
+        </div>
+        <div class="row">
+            <div class="section__block col-12 col--main">
+
+                <div class="card_default card_default--hovered card--horizontal hover--grey card_default--grey ">
+                    <div class="card_default__content">
+
+                        <div class="card_default__tags">
+                        </div>
+
+                        <h3 class="card_default__title">
+                            <a th:href="@{/info/__${posts[0].metaTitle}__}"><span
+                                    th:text="${posts[0].title}"></span></a>
+
+                        </h3>
+
+
+                        <div class="card_default__date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">Date icon
+                                <path fill="#000"
+                                      d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                            </svg>
+                            <span th:text="${#dates.format(posts[0].dateCreated, 'dd-MM-yyyy')}">20 November 2015</span>
+
+                        </div>
+
+                        <div class="card_default__text">
+                            <p th:text="${#strings.abbreviate(posts[0].content,100)}"></p>
+                        </div>
+
+                        <div class="card_default__links">
+                            <div class="card_default__more">
+                                <a th:href="@{/info/__${posts[0].metaTitle}__}" aria-label="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                                        Read more icon
+                                        <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                            <path class="border_svg"
+                                                  d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                            <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                        </g>
+                                    </svg>
+                                </a>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="card_default__media   " style="background-image: url( ); "><!-- card_default__media -->
+                        <a th:href="@{/info/__${posts[0].metaTitle}__}">
+                            <div class="card_default__media--inner" style="height: 100px">
+                                <img th:src="@{${posts[0].image}}" style="width: 537px;height: 302px">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="col-12">
                 <div class="row row--horizontal">
-                    <div class="section__block col--aside col-12 col-md-6 col-lg-4" th:each="post:${posts.content}">
-
+                    <div class="section__block col--aside col-12 col-md-6 col-lg-3">
                         <div class="card_default card_default--hovered hover--grey card_default--grey ">
                             <div class="card_default__content">
-
                                 <div class="card_default__tags">
                                 </div>
-
                                 <h3 class="card_default__title">
-                                    <a th:href="@{/info/__${post.id}__}"><span th:text="${post.title}"></span></a>
+                                    <a th:href="@{/info/__${posts[1].metaTitle}__}"><span
+                                            th:text="${posts[1].title}"></span></a>
                                 </h3>
-
-
                                 <div class="card_default__links">
                                     <div class="card_default__more">
-                                        <a th:href="@{/info/__${post.id}__}" aria-label="">
+                                        <a th:href="@{/info/__${posts[1].metaTitle}__}" aria-label="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                 viewBox="0 0 36 36">Read more icon
+                                                <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                                    <path class="border_svg"
+                                                          d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                                    <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                                </g>
+                                            </svg>
+                                        </a>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section__block col--aside col-12 col-md-6 col-lg-3">
+                        <div class="card_default card_default--hovered hover--grey card_default--grey ">
+                            <div class="card_default__content">
+                                <div class="card_default__tags">
+                                </div>
+                                <h3 class="card_default__title">
+                                    <a th:href="@{/info/__${posts[2].metaTitle}__}"><span
+                                            th:text="${posts[2].title}"></span></a>
+                                </h3>
+                                <div class="card_default__links">
+                                    <div class="card_default__more">
+                                        <a th:href="@{/info/__${posts[2].metaTitle}__}" aria-label="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                 viewBox="0 0 36 36">Read more icon
+                                                <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                                    <path class="border_svg"
+                                                          d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                                    <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                                </g>
+                                            </svg>
+                                        </a>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section__block col--aside col-12 col-md-6 col-lg-3">
+                        <div class="card_default card_default--hovered hover--grey card_default--grey ">
+                            <div class="card_default__content">
+                                <div class="card_default__tags">
+                                </div>
+                                <h3 class="card_default__title">
+                                    <a th:href="@{/info/__${posts[3].metaTitle}__}"><span
+                                            th:text="${posts[3].title}"></span></a>
+                                </h3>
+                                <div class="card_default__links">
+                                    <div class="card_default__more">
+                                        <a th:href="@{/info/__${posts[3].metaTitle}__}" aria-label="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                 viewBox="0 0 36 36">Read more icon
+                                                <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                                    <path class="border_svg"
+                                                          d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                                    <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                                </g>
+                                            </svg>
+                                        </a>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section__block col--aside col-12 col-md-6 col-lg-3">
+                        <div class="card_default card_default--hovered hover--grey card_default--grey ">
+                            <div class="card_default__content">
+                                <div class="card_default__tags">
+                                </div>
+                                <h3 class="card_default__title">
+                                    <a th:href="@{/info/__${posts[4].metaTitle}__}"><span
+                                            th:text="${posts[4].title}"></span></a>
+                                </h3>
+                                <div class="card_default__links">
+                                    <div class="card_default__more">
+                                        <a th:href="@{/info/__${posts[4].metaTitle}__}" aria-label="">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
                                                  viewBox="0 0 36 36">Read more icon
                                                 <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
@@ -1396,29 +1007,9 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="row" th:if="${isBlog}==true">
-            <div class="col-5 text-center">
-                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasPrev}" th:href="@{'/all' (page=${posts.currentPage -1})}">Prev</a>
-            </div>
-            <div class="col-2 text-center">
-            <span th:text="'Page '+ ${posts.currentPage}"></span>
-            </div>
-            <div class="col-5 text-center">
-                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasNext}" th:href="@{'/all' (page=${posts.currentPage +1})}">Next</a>
-            </div>
-        </div>
-
-        <div class="row" th:if="${isSearch}==true">
-            <div class="col-5 text-center">
-                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasPrev}" th:href="@{'/search' (key=${key}, page=${posts.currentPage -1})}">Prev</a>
-            </div>
-            <div class="col-2 text-center">
-                <span th:text="'Page '+ ${posts.currentPage}"></span>
-            </div>
-            <div class="col-5 text-center">
-                <a href="https://www.capgemini.com/newsroom/" class="section__button" th:if="${posts.hasNext}" th:href="@{'/search' (key=${key}, page=${posts.currentPage +1})}">Next</a>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a th:href="@{/list-all/__${posts[0].metaCategory}__}" class="section__button">Show all News</a>
             </div>
         </div>
     </div>
@@ -1825,199 +1416,6 @@
         <div class="footer__bottom row no-gutters">
             <div class="footer__social col-12 col-xl-6">
                 <ul class="footer__social_icons_list">
-                    <li>
-                        <a href="https://www.facebook.com/Capgemini/" class="social-buttons__button--fb"
-                           target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Facebook icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Facebook">
-                                        <rect id="Rectangle-7" fill="#3D5E96" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M17.4871795,24.5333333 L17.4871795,16.7487179 L20.0923077,16.7487179 L20.4923077,13.7128205 L17.4871795,13.7128205 L17.4871795,11.774359 C17.4871795,10.9025641 17.7230769,10.2974359 18.9846154,10.2974359 L20.5948718,10.2974359 L20.5948718,7.58974359 C20.3179487,7.54871795 19.3641026,7.46666667 18.2564103,7.46666667 C15.9384615,7.46666667 14.3487179,8.88205128 14.3487179,11.4769231 L14.3487179,13.7128205 L11.7333333,13.7128205 L11.7333333,16.7487179 L14.3487179,16.7487179 L14.3487179,24.5333333 L17.4871795,24.5333333 Z"
-                                              id="" fill="#FFFFFF" fill-rule="nonzero"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/Capgemini" class="social-buttons__button--twitter" target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Twitter icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Twitter">
-                                        <rect id="Rectangle-7" fill="#46ADE9" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M7.46666667,21.2574713 C9.11111933,22.3379364 10.8999903,22.8781609 12.8333333,22.8781609 C14.077784,22.8781609 15.244439,22.67414 16.3333333,22.266092 C17.4222277,21.8580439 18.3555517,21.3120724 19.1333333,20.6281609 C19.911115,19.9442495 20.5805528,19.156901 21.1416667,18.266092 C21.7027806,17.3752829 22.1194431,16.4442577 22.3916667,15.4729885 C22.6638903,14.5017193 22.8,13.5333382 22.8,12.5678161 C22.8,12.3609185 22.7944445,12.2057476 22.7833333,12.1022989 C23.4833368,11.5850549 24.0666643,10.9586244 24.5333333,10.2229885 C23.911108,10.5103463 23.2388925,10.7057466 22.5166667,10.8091954 C23.272226,10.349423 23.7888875,9.67701592 24.0666667,8.79195402 C23.3444408,9.22873782 22.6000038,9.52183833 21.8333333,9.67126437 C21.1555522,8.91263989 20.3055607,8.53333333 19.2833333,8.53333333 C18.3166618,8.53333333 17.4916701,8.88677807 16.8083333,9.59367816 C16.1249966,10.3005782 15.7833333,11.154018 15.7833333,12.154023 C15.7833333,12.487358 15.8111108,12.7632173 15.8666667,12.9816092 C14.4333262,12.901149 13.0888952,12.5275895 11.8333333,11.8609195 C10.5777715,11.1942495 9.5111155,10.3034539 8.63333333,9.18850575 C8.3111095,9.76322126 8.15,10.3724106 8.15,11.016092 C8.15,12.3264433 8.6555505,13.3321804 9.66666667,14.0333333 C9.14444183,14.021839 8.58889183,13.8724152 8,13.5850575 L8,13.6195402 C8,14.4816135 8.277775,15.2488472 8.83333333,15.9212644 C9.38889167,16.5936815 10.0722182,17.010344 10.8833333,17.1712644 C10.5611095,17.2632189 10.277779,17.3091954 10.0333333,17.3091954 C9.88888817,17.3091954 9.67222367,17.2862071 9.38333333,17.2402299 C9.61666783,17.9643714 10.0305526,18.5620666 10.625,19.0333333 C11.2194474,19.5046001 11.8944407,19.745977 12.65,19.7574713 C11.3611047,20.7919592 9.91111917,21.3091954 8.3,21.3091954 C8.01110967,21.3091954 7.73333467,21.2919542 7.46666667,21.2574713 L7.46666667,21.2574713 Z"
-                                              id="Path" fill="#FFFFFF"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/company/157240/" class="social-buttons__button--in"
-                           target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>LinkedIn icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="LinkedIn">
-                                        <rect id="Rectangle-7" fill="#0070AD" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M20.4822123,12.4050699 L20.6933538,12.4096489 C22.2071139,12.4754634 24.4272139,13.2861468 24.5296556,17.1020282 L24.5333333,17.3797325 L24.5333333,23.4871474 L20.8249255,23.4871474 L20.8249255,17.6196204 C20.8249255,16.417032 20.4822123,15.2122208 19.0884135,15.2122208 C17.7526897,15.2122208 17.1616898,16.3187228 17.1147588,17.4952956 L17.1117063,17.6490738 L17.1117063,23.4871474 L13.3927506,23.4871474 L13.3927506,12.7436915 L17.1117063,12.7436915 L17.1117063,14.1900578 C18.0902522,12.926525 18.9405583,12.4050699 20.4822123,12.4050699 Z M11.0568978,12.4050699 L11.0568978,23.1913055 L7.46666667,23.1913055 L7.46666667,12.4050699 L11.0568978,12.4050699 Z M9.5026852,7.46666667 C10.7305132,7.46666667 11.4920773,8.27485723 11.5076195,9.33172181 C11.5076195,10.3108758 10.7995536,11.1200939 9.64025666,11.1916361 L9.45605882,11.196777 C8.24377298,11.196777 7.46666667,10.3575021 7.46666667,9.33172181 C7.46666667,8.27485723 8.27485723,7.46666667 9.5026852,7.46666667 Z"
-                                              id="Shape" fill="#FFFFFF"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/profile?user=capgeminimedia"
-                           class="social-buttons__button--youtube" target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Youtube icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Youtube">
-                                        <rect id="Rectangle-7" fill="#DC4E41" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M15.9996879,21.6003604 C19.5902719,21.6003604 21.9712958,21.4194026 21.9712958,21.4194026 C22.3046392,21.3813062 23.0379945,21.3813062 23.685633,20.7050954 C23.685633,20.7050954 24.2094583,20.1812702 24.3618438,19.0098064 C24.5201819,17.8014368 24.5326823,16.5930672 24.5333333,16.3098555 L24.5333333,14.8905049 C24.5326823,14.6072932 24.5201819,13.3989236 24.3618438,12.190554 C24.2094583,11.0095661 23.685633,10.495265 23.685633,10.495265 C23.0379945,9.8095301 22.3046392,9.8095301 21.9712958,9.77143372 C21.9712958,9.77143372 19.5902719,9.6 15.9996879,9.6 C12.4091039,9.6 10.02808,9.77143372 10.02808,9.77143372 C9.69473664,9.8095301 8.96138128,9.8095301 8.31374278,10.495265 C8.31374278,10.495265 7.78991753,11.0095661 7.637532,12.190554 C7.49427373,13.2838408 7.47039735,14.3771276 7.46666667,14.7852121 L7.46666667,16.4151483 C7.47039735,16.8232328 7.49427373,17.9165196 7.637532,19.0098064 C7.78991753,20.1812702 8.31374278,20.7050954 8.31374278,20.7050954 C8.96138128,21.3813062 9.81854988,21.362258 10.1995137,21.4289267 C10.1995137,21.4289267 11.5614594,21.562264 15.9996879,21.6003604 Z M14.2377302,17.8097704 L14.2377302,13.0191503 L18.8473925,15.4287465 L14.2377302,17.8097704 Z"
-                                              id="" fill="#FFFFFF"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://soundcloud.com/capgemini" class="social-buttons__button--soundcloud"
-                           target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Souncloud icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Souncloud">
-                                        <rect id="Rectangle-7" fill="#F7620E" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M22.437037,20.2 C23.5925926,20.2 24.5333333,19.2666667 24.5333333,18.1111111 C24.5333333,16.9481481 23.5925926,16.0074074 22.437037,16.0074074 C22.1481481,16.0074074 21.8740741,16.0666667 21.6222222,16.1703704 C21.4518519,14.2814815 19.8666667,12.8 17.9333333,12.8 C17.4592593,12.8 17,12.8888889 16.5925926,13.0518519 C16.4296296,13.1111111 16.3851852,13.1703704 16.3851852,13.2962963 L16.3851852,19.9555556 C16.3851852,20.0722222 16.4645833,20.1605324 16.5687934,20.1907118 L16.6149889,20.2 C16.6204318,20.2 16.7957988,20.2 22.437037,20.2 Z M15.962963,20.1925926 C16.0731481,20.1925926 16.1663194,20.1131944 16.1878906,20.0089844 L16.1925926,19.962963 L16.2962963,18.2518519 L16.1925926,13.5185185 C16.1851852,13.437037 16.1407407,13.362963 16.0740741,13.3259259 C16.0444444,13.3037037 16,13.2888889 15.962963,13.2888889 C15.9037037,13.2888889 15.8518519,13.3111111 15.8148148,13.3407407 C15.762963,13.3851852 15.7333333,13.4518519 15.7259259,13.5185185 L15.7259259,13.5407407 L15.637037,18.2518519 L15.6814815,19.1185185 L15.7259259,19.962963 C15.7333333,20.0888889 15.837037,20.1925926 15.962963,20.1925926 Z M15.2444444,20.2074074 C15.3037037,20.2074074 15.3555556,20.1777778 15.3925926,20.1407407 C15.437037,20.1037037 15.4592593,20.0518519 15.4592593,19.9925926 L15.4666667,19.8148148 L15.5481481,18.2518519 L15.4592593,13.9111111 C15.4592593,13.837037 15.4222222,13.7703704 15.362963,13.7333333 C15.3259259,13.7111111 15.2888889,13.6962963 15.2444444,13.6962963 C15.2,13.6962963 15.162963,13.7111111 15.1259259,13.7333333 C15.0666667,13.7703704 15.0296296,13.837037 15.0296296,13.9111111 L15.0222222,13.9555556 L14.9481481,18.2444444 L14.94849,18.2522644 C14.9502679,18.2919258 14.9612903,18.5326165 15.0296296,19.9925926 L15.0296296,20 L15.0296296,20 C15.0296296,20.0444444 15.0444444,20.0888889 15.0740741,20.1259259 C15.1185185,20.1777778 15.1777778,20.2074074 15.2444444,20.2074074 Z M13.0962963,20.2 C13.1925926,20.2 13.2666667,20.1259259 13.2740741,20.0296296 L13.3925926,18.2444444 L13.2740741,14.3703704 C13.2666667,14.2740741 13.1925926,14.1925926 13.0962963,14.1925926 C13.0074074,14.1925926 12.9259259,14.2740741 12.9259259,14.3703704 L12.8222222,18.2444444 L12.9259259,20.0296296 C12.9333333,20.1259259 13.0074074,20.2 13.0962963,20.2 Z M13.8074074,20.2 C13.9111111,20.2 13.9925926,20.1185185 13.9925926,20.0148148 L14.1037037,18.2444444 L13.9925926,14.4666667 C13.9925926,14.362963 13.9111111,14.2814815 13.8074074,14.2814815 C13.7037037,14.2814815 13.6222222,14.362963 13.6222222,14.4666667 L13.5185185,18.2444444 L13.6222222,20.0148148 C13.6296296,20.1185185 13.7037037,20.2 13.8074074,20.2 Z M12.3925926,20.1925926 C12.4814815,20.1925926 12.5481481,20.1259259 12.5555556,20.037037 L12.6888889,18.2444444 L12.5555556,14.4962963 C12.5481481,14.4074074 12.4814815,14.3333333 12.3925926,14.3333333 C12.3111111,14.3333333 12.237037,14.4074074 12.237037,14.4962963 L12.1185185,18.2444444 L12.237037,20.037037 C12.2444444,20.1259259 12.3111111,20.1925926 12.3925926,20.1925926 Z M14.5259259,20.2 C14.637037,20.2 14.7259259,20.1111111 14.7259259,20 L14.8296296,18.2518519 L14.7259259,14.6074074 C14.7185185,14.4888889 14.637037,14.4 14.5259259,14.4 C14.4148148,14.4 14.3259259,14.4888889 14.3185185,14.6074074 L14.2296296,18.2518519 L14.3185185,20 C14.3259259,20.1111111 14.4148148,20.2 14.5259259,20.2 Z M11.6888889,20.2074074 C11.762963,20.2074074 11.8296296,20.1481481 11.8296296,20.0666667 L11.9703704,18.2592593 L11.8296296,14.7925926 C11.8296296,14.7111111 11.762963,14.6518519 11.6888889,14.6518519 C11.6209877,14.6518519 11.5685185,14.6930041 11.5486283,14.7538752 L11.5407332,14.7928145 C11.5405511,14.7981393 11.536,14.9312593 11.4222222,18.2592593 L11.5407407,20.0666667 C11.5481481,20.1481481 11.6074074,20.2074074 11.6888889,20.2074074 Z M11.0074074,20.2 C11.0740741,20.2 11.1333333,20.1407407 11.1333333,20.0666667 L11.2888889,18.2444444 L11.1333333,15.4296296 C11.1333333,15.3555556 11.0740741,15.2962963 11.0074074,15.2962963 C10.9481481,15.2962963 10.9031111,15.3342222 10.8836741,15.3873185 L10.8740741,15.4296296 C10.8740741,15.4296296 10.8740741,15.4296296 10.7407407,18.2444444 L10.8740741,20.0666667 C10.8814815,20.1407407 10.9333333,20.2 11.0074074,20.2 Z M9.63703704,20.1481481 C9.68888889,20.1481481 9.73333333,20.1111111 9.74074074,20.0518519 L9.91111111,18.2444444 L9.74074074,16.3777778 C9.73333333,16.3185185 9.68888889,16.2814815 9.63703704,16.2814815 C9.58518519,16.2814815 9.54074074,16.3185185 9.54074074,16.3777778 L9.38518519,18.2444444 L9.54074074,20.0518519 C9.54074074,20.1111111 9.58518519,20.1481481 9.63703704,20.1481481 Z M8.96296296,20.0814815 C9.00740741,20.0814815 9.04444444,20.0444444 9.04444444,20 L9.22962963,18.2444444 L9.04444444,16.4296296 C9.04444444,16.3777778 9.00740741,16.3407407 8.96296296,16.3407407 C8.91851852,16.3407407 8.88148148,16.3777778 8.87407407,16.4296296 L8.71851852,18.2444444 L8.87407407,20 C8.88148148,20.0444444 8.91851852,20.0814815 8.96296296,20.0814815 Z M10.3185185,20.1851852 C10.3777778,20.1851852 10.4296296,20.1333333 10.437037,20.0666667 L10.5925926,18.2444444 L10.437037,16.5111111 C10.4296296,16.4518519 10.3777778,16.4 10.3185185,16.4 C10.2592593,16.4 10.2074074,16.4518519 10.2074074,16.5111111 L10.0592593,18.2444444 L10.2074074,20.0666667 C10.2074074,20.1333333 10.2592593,20.1851852 10.3185185,20.1851852 Z M8.28888889,19.8148148 C8.32592593,19.8148148 8.35555556,19.7851852 8.36296296,19.7481481 L8.55555556,18.2444444 L8.36296296,16.7111111 C8.35555556,16.6740741 8.32592593,16.6444444 8.28888889,16.6444444 C8.26111111,16.6444444 8.2375,16.6611111 8.22743056,16.6850694 L8.22222222,16.7111111 C8.22222222,16.7111111 8.22222222,16.7111111 8.05185185,18.2444444 L8.22222222,19.7407407 C8.22222222,19.7851852 8.25185185,19.8148148 8.28888889,19.8148148 Z M7.65925926,19.2444444 C7.6962963,19.2444444 7.71851852,19.2148148 7.72592593,19.1777778 L7.87407407,18.2444444 L7.72592593,17.2962963 C7.71851852,17.2592593 7.6962963,17.2296296 7.65925926,17.2296296 C7.62222222,17.2296296 7.6,17.2592593 7.59259259,17.2962963 L7.46666667,18.2444444 L7.59259259,19.1777778 C7.6,19.2148148 7.62222222,19.2444444 7.65925926,19.2444444 Z"
-                                              id="" fill="#FFFFFF"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/capgemini" class="social-buttons__button--instagram"
-                           target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Instagram icon</title>
-                                <defs>
-                                    <rect id="path-1" x="0" y="0" width="32" height="32" rx="2.13333333"></rect>
-                                    <linearGradient x1="17.9393583%" y1="15.465716%" x2="83.1623559%" y2="85.2036559%"
-                                                    id="linearGradient-3">
-                                        <stop stop-color="#395DFA" offset="0%"></stop>
-                                        <stop stop-color="#544CED" offset="21.6534791%"></stop>
-                                        <stop stop-color="#903ACD" offset="44.7643908%"></stop>
-                                        <stop stop-color="#D53592" offset="68.3389075%"></stop>
-                                        <stop stop-color="#F4306D" offset="100%"></stop>
-                                    </linearGradient>
-                                    <filter x="-7.5%" y="-7.5%" width="115.1%" height="115.1%"
-                                            filterUnits="objectBoundingBox" id="filter-4">
-                                        <feGaussianBlur stdDeviation="1.02564103" in="SourceGraphic"></feGaussianBlur>
-                                    </filter>
-                                    <filter x="-45.0%" y="-45.0%" width="190.1%" height="190.1%"
-                                            filterUnits="objectBoundingBox" id="filter-5">
-                                        <feGaussianBlur stdDeviation="5.12820513" in="SourceGraphic"></feGaussianBlur>
-                                    </filter>
-                                    <filter x="-26.2%" y="-26.2%" width="152.4%" height="152.4%"
-                                            filterUnits="objectBoundingBox" id="filter-6">
-                                        <feGaussianBlur stdDeviation="2.46153846" in="SourceGraphic"></feGaussianBlur>
-                                    </filter>
-                                    <filter x="-27.9%" y="-27.9%" width="155.7%" height="155.7%"
-                                            filterUnits="objectBoundingBox" id="filter-7">
-                                        <feGaussianBlur stdDeviation="2.18197351" in="SourceGraphic"></feGaussianBlur>
-                                    </filter>
-                                    <filter x="-35.5%" y="-35.5%" width="170.9%" height="170.9%"
-                                            filterUnits="objectBoundingBox" id="filter-8">
-                                        <feGaussianBlur stdDeviation="2.46153846" in="SourceGraphic"></feGaussianBlur>
-                                    </filter>
-                                    <filter x="-82.0%" y="-82.0%" width="264.0%" height="264.0%"
-                                            filterUnits="objectBoundingBox" id="filter-9">
-                                        <feGaussianBlur stdDeviation="4.96230439" in="SourceGraphic"></feGaussianBlur>
-                                    </filter>
-                                </defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Instagram">
-                                        <g id="Color-background">
-                                            <mask id="mask-2" fill="white">
-                                                <use xlink:href="#path-1"></use>
-                                            </mask>
-                                            <use id="round-shape" fill="#C5C5C5" xlink:href="#path-1"></use>
-                                            <circle id="bottom" fill="url(#linearGradient-3)" filter="url(#filter-4)"
-                                                    mask="url(#mask-2)" cx="16.3076923" cy="15.2820513"
-                                                    r="20.4102564"></circle>
-                                            <circle id="Oval-12" fill="#F8443E" filter="url(#filter-5)"
-                                                    mask="url(#mask-2)" cx="10.5128205" cy="28.7692308"
-                                                    r="17.0769231"></circle>
-                                            <circle id="Oval-13" fill="#F86737" filter="url(#filter-6)"
-                                                    mask="url(#mask-2)" cx="10.1025641" cy="31.6410256"
-                                                    r="14.1025641"></circle>
-                                            <circle id="Oval-13" fill="#F88330" filter="url(#filter-7)"
-                                                    mask="url(#mask-2)" cx="10.4102564" cy="31.8461538"
-                                                    r="11.7435897"></circle>
-                                            <circle id="Oval-13" fill="#FBBB45" filter="url(#filter-8)"
-                                                    mask="url(#mask-2)" cx="10.4102564" cy="33.1794872"
-                                                    r="10.4102564"></circle>
-                                            <circle id="Oval-13" fill="#FBE18A" filter="url(#filter-9)"
-                                                    mask="url(#mask-2)" cx="10.3076923" cy="34.5128205"
-                                                    r="9.07692308"></circle>
-                                        </g>
-                                        <path d="M19.5219356,24.4770879 C20.8884911,24.4104267 22.0995036,24.0993409 23.0994222,23.0994222 C24.0993409,22.0995036 24.4104267,20.8884911 24.4770879,19.5219356 C24.5437492,18.3442537 24.5326389,17.1776819 24.5326389,16 C24.5326389,14.8223181 24.5437492,13.6557463 24.4770879,12.4780644 C24.4104267,11.1115089 24.0993409,9.90049638 23.0994222,8.90057775 C22.0995036,7.90065913 20.8884911,7.58957333 19.5219356,7.52291209 C18.3442537,7.45625085 17.1776819,7.46736105 16,7.46736105 C14.8223181,7.46736105 13.6557463,7.45625085 12.4780644,7.52291209 C11.1115089,7.58957333 9.90049638,7.90065913 8.90057775,8.90057775 C7.90065913,9.90049638 7.58957333,11.1115089 7.52291209,12.4780644 C7.47291616,13.3613258 7.46666667,14.2383378 7.46666667,15.1184745 L7.46736105,16 C7.46736105,17.1776819 7.45625085,18.3442537 7.52291209,19.5219356 C7.58957333,20.8884911 7.90065913,22.0995036 8.90057775,23.0994222 C9.90049638,24.0993409 11.1115089,24.4104267 12.4780644,24.4770879 C13.6557463,24.5437492 14.8223181,24.5326389 16,24.5326389 C17.1776819,24.5326389 18.3442537,24.5437492 19.5219356,24.4770879 Z M10.9670762,22.655014 C10.578219,22.4994711 10.2893536,22.3105976 9.98937803,22.010622 C9.68940245,21.7106464 9.50052893,21.421781 9.34498603,21.0329238 C8.90057775,19.9107928 9.00056962,17.2443432 9.00056962,16 C9.00056962,14.7556568 8.90057775,12.0892072 9.34498603,10.9670762 C9.50052893,10.578219 9.68940245,10.2893536 9.98937803,9.98937803 C10.2893536,9.68940245 10.578219,9.50052893 10.9670762,9.34498603 C12.0892072,8.90057775 14.7556568,9.00056962 16,9.00056962 C17.2443432,9.00056962 19.9107928,8.90057775 21.0329238,9.34498603 C21.421781,9.50052893 21.7106464,9.68940245 22.010622,9.98937803 C22.3105976,10.2893536 22.4994711,10.578219 22.655014,10.9670762 C23.0994222,12.0892072 22.9994304,14.7556568 22.9994304,16 C22.9994304,17.2443432 23.0994222,19.9107928 22.655014,21.0329238 C22.4994711,21.421781 22.3105976,21.7106464 22.010622,22.010622 C21.7106464,22.3105976 21.421781,22.4994711 21.0329238,22.655014 C19.9107928,23.0994222 17.2443432,22.9994304 16,22.9994304 C14.7556568,22.9994304 12.0892072,23.0994222 10.9670762,22.655014 Z M20.5551849,12.4669542 C21.1218054,12.4669542 21.5773239,12.0114357 21.5773239,11.4448151 C21.5773239,10.8781946 21.1218054,10.4226761 20.5551849,10.4226761 C19.9885643,10.4226761 19.5330458,10.8781946 19.5330458,11.4448151 C19.5330458,12.0114357 19.9885643,12.4669542 20.5551849,12.4669542 Z M16,20.3774215 C18.4220251,20.3774215 20.3774215,18.4220251 20.3774215,16 C20.3774215,13.5779749 18.4220251,11.6225785 16,11.6225785 C13.5779749,11.6225785 11.6225785,13.5779749 11.6225785,16 C11.6225785,18.4220251 13.5779749,20.3774215 16,20.3774215 Z M16,18.844213 C14.4334608,18.844213 13.155787,17.5665392 13.155787,16 C13.155787,14.4334608 14.4334608,13.155787 16,13.155787 C17.5665392,13.155787 18.844213,14.4334608 18.844213,16 C18.844213,17.5665392 17.5665392,18.844213 16,18.844213 Z"
-                                              id="" fill="#FFFFFF" fill-rule="nonzero"></path>
-                                    </g>
-                                </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.slideshare.net/capgemini" class="social-buttons__button--slideshare"
-                           target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Slideshare icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Slideshare">
-                                        <rect id="Rectangle-7" fill="#00ABAC" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M20.5551332,18.5813752 C22.3266292,17.8575381 23.4885782,16.9336935 24.0981252,16.1812839 C24.4028987,15.7241236 24.0695526,15.2383909 23.5647715,15.5907852 C23.4981023,15.6384061 23.4314331,15.6860269 23.3647639,15.7336478 L23.3647639,9.12387256 C23.3647639,8.20955207 22.6790236,7.46666667 21.8313723,7.46666667 L9.85948829,7.46666667 C9.01183699,7.46666667 8.32609662,8.20955207 8.32609662,9.12387256 L8.32609662,15.7336478 C8.25942742,15.6860269 8.18323405,15.6384061 8.11656484,15.5907852 C7.61178374,15.2383909 7.27843772,15.7241236 7.58321122,16.1812839 C8.19275822,16.9336935 9.35470718,17.8575381 11.1262031,18.5813752 C9.24994129,24.9720945 15.7073298,25.9911809 15.6025639,22.7148657 C15.6025639,22.7720108 15.6120881,20.8576522 15.6120881,19.4956957 C15.7835232,19.5337924 15.9263857,19.571889 16.0692483,19.6004616 C16.0692483,20.952894 16.0787725,22.7720108 16.0787725,22.7148657 C15.9740066,25.9911809 22.4313951,24.9720945 20.5551332,18.5813752 Z M16.0692483,18.0480216 C15.8787649,17.905159 15.6882814,17.7527722 15.4882738,17.5622888 C15.4501771,17.5337163 15.4216046,17.5051438 15.3930321,17.4765712 C15.221597,17.295612 14.9358719,17.2098944 14.4882358,17.2194186 C13.4310527,17.2575153 11.4976458,17.4670471 9.24041712,16.2860498 L9.24041712,9.87628214 C9.24041712,8.71433317 9.53566644,8.35241465 10.5928495,8.35241465 L21.1837286,8.35241465 C22.1932908,8.35241465 22.5456851,8.78100238 22.5456851,9.87628214 L22.5456851,16.2289047 C20.2503597,17.4765712 18.269332,17.2670395 17.1931006,17.2194186 C16.4025943,17.1908461 16.107345,17.5241921 16.0692483,18.0480216 Z M13.5643911,16.4384365 C14.6977676,16.4384365 15.6216122,15.5717369 15.6216122,14.5145538 C15.6216122,13.4478466 14.6977676,12.5906711 13.5643911,12.5906711 C12.4310147,12.5906711 11.50717,13.4478466 11.50717,14.5145538 C11.50717,15.5717369 12.4310147,16.4384365 13.5643911,16.4384365 Z M18.3455254,16.4384365 C19.488426,16.4384365 20.4027465,15.5717369 20.4027465,14.5145538 C20.4027465,13.4478466 19.488426,12.5906711 18.3455254,12.5906711 C17.2121489,12.5906711 16.2883043,13.4478466 16.2883043,14.5145538 C16.2883043,15.5717369 17.2121489,16.4384365 18.3455254,16.4384365 Z"
-                                              id="" fill="#FFFFFF"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.glassdoor.com/Overview/Working-at-Capgemini-EI_IE3803.11,20.htm"
-                           class="social-buttons__button--glassdoor" target="_blank">
-                            <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <title>Glassdoor icon</title>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Glassdoor">
-                                        <rect id="Rectangle-7" fill="#0CAA41" x="0" y="0" width="32" height="32"
-                                              rx="2.13333333"></rect>
-                                        <path d="M21.7836478,11.9933914 C21.8168553,11.9933914 21.8469497,12.0191114 21.8599214,12.0512614 L21.8666667,12.0848404 L21.8666667,22.0985041 C21.8666667,23.383263 20.9096113,24.4379299 19.692982,24.5272114 L19.5255346,24.5333333 L12.4910692,24.5333333 C11.2446331,24.5333333 10.2320143,23.5359877 10.1497934,22.2656843 L10.1444025,22.0985041 L19.5255346,22.0985041 L19.5255346,12.0848404 C19.5255346,12.0462603 19.547327,12.0141103 19.5769025,12.0004465 L19.6085535,11.9933914 L21.7836478,11.9933914 Z M19.5255346,7.46666667 C20.8206289,7.46666667 21.8666667,8.55833891 21.8666667,9.90721143 L12.4855346,9.90721143 L12.4855346,19.9208752 C12.4855346,19.9665997 12.4467925,20.0123242 12.3969811,20.0123242 L10.2218868,20.0123242 C10.1776101,20.0123242 10.1333333,19.9723152 10.1333333,19.9208752 L10.1333333,9.90721143 C10.1333333,8.55833891 11.1793711,7.46666667 12.48,7.46666667 L19.5255346,7.46666667 Z"
-                                              id="Shape" fill="#FFFFFF"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </li>
                 </ul>
             </div>
             <div class="footer__copy col-12 col-xl-6" role="contentinfo">
@@ -2031,80 +1429,5 @@
     </div>
 </footer>
 
-<div class="section__cookies">
-    <img src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/cookies.svg" alt="cookies.">
-    <div class="section__cookies__text">
-        <p>By continuing to navigate on this website, you accept the use of cookies.</p>
-        <p>For more information and to change the setting of cookies on your computer, please read our <a
-                href="https://www.capgemini.com/privacy-policy/">Privacy Policy</a>.</p></div>
-    <a href="#" class="section__button--cookies section__button section__button--transparent"><i
-            class="icon-android-close" aria-hidden="true"></i>
-        <p>Close</p><span class="sr-only">Close cookie information</span></a>
-</div>
-
-
-<script>
-    var ELASTIC_JOBS = {
-        "api_url": "https:\/\/jobstream.elastic.macs.capgemini.com",
-        "country_code": "global",
-        "country_code_param": "",
-        "country_name_param": ""
-    };
-</script>
-<script type='text/javascript'
-        src='https://www.capgemini.com/_static/??/wp-content/plugins/cg-elastic-jobs/assets/js/elastic-jobs.js,/wp-content/themes/capgemini-komposite/assets/js/libs/jquery.touchSwipe.min.js?m=1586935255j'></script>
-<script src='https://www.capgemini.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.15'></script>
-<script>
-    window.lodash = _.noConflict();
-</script>
-<script>
-    var CG_hero = {"replayString": "Replay video", "resumeString": "Continue watching"};
-</script>
-<script>
-    var CG_hero = {"replayString": "Replay video"};
-</script>
-<script>
-    var CG_SEARCH = {"searchNonce": "8cb4e21d30", "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php"};
-</script>
-<script>
-    var CG = {"expandString": "Expand", "collapseString": "Collapse"};
-</script>
-<script>
-    var PF = {
-        "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php",
-        "ajaxNonce": "6ae349bb37",
-        "strings": {
-            "remove_file": "remove file",
-            "select_file": "Select File",
-            "uploading": "uploading...",
-            "file_selected": "File selected",
-            "default_error": "This field's value is invalid!",
-            "required_error": "This field is required!",
-            "email_error": "Please enter a valid email address!",
-            "date_format_error": "Please enter date in valid format!"
-        }
-    };
-</script>
-<script type='text/javascript'
-        src='https://www.capgemini.com/_static/??-eJytk81OAzEMhF+IbFqhqlwQj8Gxynq9qbdJbOKkqDw9QRVQwYkNx/zMlxmPYl/FAKeCqdhyxIhqwYnHSInMiaOwUkHrVLGoXdRqoAnzsOid/bMUMklRwzVDO3bpcvjQOyhVu4DCUqWfYM4tGndxihv7ohwx8z/46MSAHpI7r5I6AM4TcTKFvQ+4ChJobFkwIJRn5mGuIaznLC8V82WYqbSBdLXTVcnMOfYRKEntNDEG9kYprS3m67+4hOGXlViNhOoptbtYxMHJHiiBHSuFyQb3djEUncdrN9/Lob33k/UJAm8ks2C+DvDGy+22mXPTNcZTfNzuHvab3f1mv13eAUBz3DM='></script>
-<script type='text/javascript' src='https://stats.wp.com/e-202016.js' async='async' defer='defer'></script>
-<script type='text/javascript'>
-    _stq = window._stq || [];
-    _stq.push(['view', {v: 'ext', j: '1:8.4.2', blog: '134905850', post: '41283', tz: '2', srv: 'www.capgemini.com'}]);
-    _stq.push(['clickTrackerInit', '134905850', '41283']);
-</script>
-
-<script type="text/javascript">window.NREUM || (NREUM = {});
-NREUM.info = {
-    "beacon": "bam.nr-data.net",
-    "licenseKey": "6b6b1d1407",
-    "applicationID": "52117986",
-    "transactionName": "YANaNUJSCkUHVUZYDFlJeQJEWgtYSUJXXBNbB0wEHVoKRQ9RWkUQGgdWBR1dAUEV",
-    "queueTime": 0,
-    "applicationTime": 427,
-    "atts": "TERNQwpIGRpEVxALGEob",
-    "errorBeacon": "bam.nr-data.net",
-    "agent": ""
-}</script>
 </body>
 </html>

@@ -1,31 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Blog</title>
+    <title>Home Admin page</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/vendors/iconfonts/mdi/css/materialdesignicons.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" th:href="@{/css/style1.css}">
-    <!-- endinject -->
-    <link rel="shortcut icon" th:href="@{/images/favicon.png}"/>
-
+    <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+            crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{/css/style-admin.css}"/>
 </head>
 <body>
-
 <div class="container-scroller">
-
-
     <div th:replace="~{/admin/header_admin :: header_admin}"></div>
 
     <!-- partial -->
@@ -48,20 +36,39 @@
                         <span class="menu-title">User</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/comments}">
+                        <span class="menu-title">Comment</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
                     <h1>Post Management</h1>
-                    <form class="form-inline my-2 my-lg-0" th:method="get" th:action="@{/admin/post/search}">
-                        <input class="form-control mr-sm-2" th:name="key" th:value="${key}" type="text">
+                    <form
+                            class="form-inline my-2 my-lg-0"
+                            th:method="get"
+                            th:action="@{/admin/posts/search}"
+                    >
+                        <input
+                                class="form-control mr-sm-2"
+                                th:name="key"
+                                th:value="${key}"
+                                type="text"
+                        />
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
                 </div>
 
-                <button type="button" class="btn btn-primary" id="new-product" data-toggle="modal"
-                        style="margin-bottom: 20px">
+                <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="new-product"
+                        data-toggle="modal"
+                        style="margin-bottom: 20px;"
+                >
                     Add new post
                 </button>
 
@@ -76,7 +83,6 @@
                                     <th colspan="1">
                                         #
                                     </th>
-
                                     <th colspan="1">
                                         Title
                                     </th>
@@ -100,104 +106,169 @@
                                 <tbody>
                                 <tr th:each="post, i : ${posts.content}">
                                     <td colspan="1" th:text="${i.count}"></td>
-                                    <td colspan="1" th:text="${#strings.abbreviate(post.title,30)}"></td>
-                                    <td colspan="1" class="show-content"><a
-                                            th:text="${#strings.abbreviate(post.content,20)}"></a></td>
-                                    <td colspan="1"><img th:src="@{${post.image}}" style="height: 40px;width: 40px">
+                                    <td
+                                            colspan="1"
+                                            th:text="${#strings.abbreviate(post.title,30)}"
+                                    ></td>
+                                    <td colspan="1" class="show-content">
+                                        <a
+                                                th:text="${#strings.abbreviate(post.content,20)}"
+                                        ></a>
+                                    </td>
+                                    <td colspan="1">
+                                        <img
+                                                th:src="@{${post.image}}"
+                                                style="height: 40px; width: 40px;"
+                                        />
                                     </td>
                                     <td colspan="1" th:text="${post.categoryName}"></td>
-                                    <td colspan="1"
-                                        th:text="${#dates.format(post.dateCreated,'dd-MM-yyyy HH:mm:ss')}"></td>
-                                    <td colspan="1"
-                                        th:text="${#dates.format(post.dateUpdated, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                                    <td
+                                            colspan="1"
+                                            th:text="${#dates.format(post.dateCreated,'dd-MM-yyyy HH:mm:ss')}"
+                                    ></td>
+                                    <td
+                                            colspan="1"
+                                            th:text="${#dates.format(post.dateUpdated, 'dd-MM-yyyy HH:mm:ss')}"
+                                    ></td>
                                     <!--                                    <td class="descip" th:attr="prodID=${product.id}" colspan="1"-->
                                     <!--                                        th:text="${#strings.abbreviate(product.description,20)}"></td>-->
                                     <td colspan="1">
-                                        <i class="far fa-edit btn-edit-product" title="Edit product"
-                                           th:attr="cateid=${post.id}" style="cursor: pointer"></i>
-                                        <i class="far fa-trash-alt btn-delete-product" title="Delete product"
-                                           th:attr="cateid=${post.id}" style="cursor: pointer"></i>
+                                        <a
+                                                class="far fa-edit btn-edit-product"
+                                                title="Edit product"
+                                                th:attr="cateid=${post.id}"
+                                                style="cursor: pointer;"
+                                        >Edit</a>
+                                        <span>|</span>
+                                        <a
+                                                class="far fa-trash-alt btn-delete-product"
+                                                title="Delete product"
+                                                th:attr="cateid=${post.id}"
+                                                style="cursor: pointer;"
+                                        >Delete</a>
                                     </td>
-
                                 </tr>
                                 </tbody>
                             </table>
                             <div class="topassda" th:if="${isPost}">
-                                <a th:href="@{'/admin/post'( page=${posts.currentPage -1})}"
-                                   th:if="${posts.hasPrev}">Previous</a>
+                                <a th:href="@{'/admin/posts'( page=${posts.currentPage -1})}"
+                                        th:if="${posts.hasPrev}"
+                                >Previous</a>
                                 <span th:text="${posts.currentPage}"></span>/<span
                                     th:text="${posts.totalPage}"></span>
-                                <a th:href="@{'/admin/post'( page=${posts.currentPage + 1})}"
-                                   th:if="${posts.hasNext}">Next</a>
+                                <a th:href="@{'/admin/posts'( page=${posts.currentPage + 1})}"
+                                        th:if="${posts.hasNext}"
+                                >Next</a>
                             </div>
                             <div class="topassda" th:if="${isSearch}">
-                                <a th:href="@{'/admin/post/search'( key=${key}, page=${posts.currentPage -1})}"
+                                <a th:href="@{'/admin/posts/search'( key=${key}, page=${posts.currentPage -1})}"
                                    th:if="${posts.hasPrev}">Previous</a>
                                 <span th:text="${posts.currentPage}"></span>/<span
                                     th:text="${posts.totalPage}"></span>
-                                <a th:href="@{'/admin/post/search'(key=${key}, page=${posts.currentPage + 1})}"
+                                <a th:href="@{'/admin/posts/search'(key=${key}, page=${posts.currentPage + 1})}"
                                    th:if="${posts.hasNext}">Next</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <nav style="margin-top: 50px" aria-label="...">
-                </nav>
+                <nav style="margin-top: 50px;" aria-label="..."></nav>
             </div>
 
-
             <!-- Modal -->
-            <div class="modal fade" id="modal-context" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div
+                    class="modal fade"
+                    id="modal-context"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLongTitle"
+                    aria-hidden="true"
+            >
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Content:</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                            >
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
-                                <textarea disabled class="context" style="width: 470px;height: 400px"></textarea>
+                            <div
+                                    class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;"
+                            >
+                    <textarea
+                            disabled
+                            class="context"
+                            style="width: 470px; height: 400px;"
+                    ></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-
-            <div class="modal fade" id="modal-create-cate" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade"
+                    id="modal-create-cate"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLongTitle"
+                    aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Thêm mới danh mục</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <h5 class="modal-title" id="exampleModalLongTitle">
+                                Add Post
+                            </h5>
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;">
                                 <label>Title:</label>
-                                <input type="text" class="form-control" id="input-title">
+                                <input type="text" class="form-control" id="input-title"/>
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;">
                                 <label>Content:</label>
-                                <textarea type="text" class="form-control" id="input-content"></textarea>
+                                <textarea style="height:200px"
+                                        type="text"
+                                        class="form-control"
+                                        id="input-content"
+                                ></textarea>
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div class="form-group margin-bottom-15"
+                                 style="margin-top: 20px;">
+                                    <input type="checkbox" id="important-created">
+                                    <label>Important</label>
+                            </div>
+                            <div
+                                    class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;">
                                 <label>Category:</label>
                                 <select class="category-id-create">
-                                    <option th:each="category : ${categories}"
+                                    <option
+                                            th:each="category : ${categories}"
                                             th:value="${category.id}"
                                             th:text="${category.categoryName}"
-                                            th:attr="cateid=${category.id}"></option>
+                                            th:attr="cateid=${category.id}"
+                                    ></option>
                                 </select>
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div
+                                    class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;"
+                            >
                                 <label>Image:</label>
                                 <div class="container">
                                     <form enctype="multipart/form-data">
@@ -209,47 +280,85 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="btn-close" data-dismiss="modal">Close
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    id="btn-close"
+                                    data-dismiss="modal"
+                            >
+                                Close
                             </button>
-                            <button type="button" class="btn btn-primary btn-save-category" id="save-cate">Save
-                                changes
+                            <button
+                                    type="button"
+                                    class="btn btn-primary btn-save-category"
+                                    id="save-cate"
+                            >
+                                Save changes
                             </button>
                         </div>
                     </div>
                 </div>
-
             </div>
-
 
             <!-- Modal -->
             <div class="modal fade" id="modal-update-cate" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Cập nhật danh mục</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <h5 class="modal-title">Edit Post</h5>
+                            <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                            >
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div
+                                    class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;"
+                            >
                                 <label>Title:</label>
-                                <input type="text" class="form-control" id="input-title-update">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="input-title-update"
+                                />
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div
+                                    class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;"
+                            >
                                 <label>Content:</label>
-                                <textarea type="text" class="form-control" id="input-content-update"></textarea>
+                                <textarea
+                                        type="text"
+                                        class="form-control"
+                                        id="input-content-update"
+                                ></textarea>
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div class="form-group margin-bottom-15"
+                                 style="margin-top: 20px;">
+                                <input type="checkbox" name="important" value="important" id="important-update"/>
+                                <label for="important">Important</label>
+                            </div>
+                            <div class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;">
                                 <label>Category:</label>
                                 <select class="category-id-update">
-                                    <option th:each="category : ${categories}"
+                                    <option
+                                            th:each="category : ${categories}"
                                             th:value="${category.id}"
                                             th:text="${category.categoryName}"
-                                            th:attr="cateid=${category.id}"></option>
+                                            th:attr="cateid=${category.id}"
+                                    ></option>
                                 </select>
                             </div>
-                            <div class="form-group margin-bottom-15" style="margin-top: 20px">
+                            <div
+                                    class="form-group margin-bottom-15"
+                                    style="margin-top: 20px;"
+                            >
                                 <label>Image:</label>
                                 <div class="container">
                                     <form enctype="multipart/form-data">
@@ -261,21 +370,29 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary bnt-close" data-dismiss="modal">Close
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary bnt-close"
+                                    data-dismiss="modal"
+                            >
+                                Close
                             </button>
-                            <button type="button" class="btn btn-primary" id="btn-update-cate">Update changes</button>
+                            <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="btn-update-cate"
+                            >
+                                Update changes
+                            </button>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
         <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -285,11 +402,6 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
-<script th:src="@{/vendors/js/vendor.bundle.addons.js}"></script>
-<script th:src="@{/js/off-canvas.js}"></script>
-<script th:src="@{/js/misc.js}"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>

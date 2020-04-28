@@ -1,6 +1,6 @@
 package com.example.demo.controller.api;
 
-import com.example.demo.entity.User;
+import com.example.demo.model.api.BasicApiResult;
 import com.example.demo.model.dto.UserDto;
 import com.example.demo.model.request.UserCreateRequest;
 import com.example.demo.model.request.UserUpdateRequest;
@@ -19,33 +19,64 @@ public class ApiUserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getAllUser() {
-        List<User> userDtos = userService.listUser();
-        return new ResponseEntity<>(userDtos, HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable Long id) {
-        UserDto userDto = userService.getUserById(id);
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            UserDto userDto = userService.getUserById(id);
+
+            result.setSuccess(true);
+            result.setMessage("Successfull");
+            result.setData(userDto);
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping("")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserCreateRequest user) {
-        UserDto userDto = userService.createUser(user);
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            userService.createUser(user);
+
+            result.setSuccess(true);
+            result.setMessage("Successfull");
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@Valid @PathVariable Long id, @RequestBody UserUpdateRequest user) {
-        UserDto userDto = userService.updateUser(id, user);
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            userService.updateUser(id, user);
+
+            result.setSuccess(true);
+            result.setMessage("Successfull");
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        BasicApiResult result = new BasicApiResult();
+        try {
+            userService.deleteUser(id);
+
+            result.setSuccess(true);
+            result.setMessage("Successfull");
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

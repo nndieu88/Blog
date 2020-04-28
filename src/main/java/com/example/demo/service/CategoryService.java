@@ -4,6 +4,8 @@ import com.example.demo.model.dto.CategoryDto;
 import com.example.demo.model.dto.Paging;
 import com.example.demo.model.request.CategoryCreateRequest;
 import com.example.demo.model.request.CategoryUpdateRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +17,9 @@ public interface CategoryService {
 
     public Paging getAll(int page);
 
-    List<CategoryDto> getListCategory();
+    public List<CategoryDto> getListCategory();
+
+    public Paging getCategoryFTS(int page, String searchKey);
 
     public CategoryDto createCategory(CategoryCreateRequest categoryCreateRequest);
 

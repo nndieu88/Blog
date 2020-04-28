@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.search.annotations.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Indexed
 @Entity
 @Table
 public class Post {
@@ -20,10 +22,19 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Field(termVector = TermVector.YES, analyze= Analyze.YES, store= Store.NO)
     private String title;
 
     @Column(columnDefinition = "TEXT")
+    @Field(termVector = TermVector.YES, analyze= Analyze.YES, store= Store.NO)
     private String content;
+
+    private String metaCategory;
+
+    private String isImportant;
+
+    @Field(termVector = TermVector.YES, analyze= Analyze.YES, store= Store.NO)
+    private String cate;
 
     private String metaTitle;
 
@@ -33,11 +44,9 @@ public class Post {
 
     private String image;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn
-//    private User user;
+//    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<Comment> comments;
 }

@@ -17,11 +17,9 @@ public class PostMapper {
         postDto.setDateCreated(post.getDateCreated());
         postDto.setDateUpdated(post.getDateUpdated());
         postDto.setImage(post.getImage());
-//        postDto.setUserID(post.getUser().getId());
-//        postDto.setUserName(post.getUser().getUserName());
         postDto.setCategoryID(post.getCategory().getId());
-        postDto.setCategoryName(post.getCategory().getCategoryName());
-        postDto.setMetaCategory(post.getMetaTitle());
+        postDto.setCategoryName(post.getCate());
+        postDto.setMetaCategory(post.getMetaCategory());
         return postDto;
     }
 
@@ -30,6 +28,7 @@ public class PostMapper {
         post.setTitle(postCreateRequest.getTitle());
         post.setContent(postCreateRequest.getContent());
         post.setMetaTitle(ConvertStringToUrl.convert(postCreateRequest.getTitle()));
+        post.setIsImportant(postCreateRequest.getIsImportant());
         post.setDateCreated(new Date());
         post.setDateUpdated(new Date());
         post.setImage(postCreateRequest.getImage());

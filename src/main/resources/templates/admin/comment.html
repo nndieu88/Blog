@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Home Admin page</title>
+
+    <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+            crossorigin="anonymous"/>
+    <link rel="stylesheet"
+            th:href="@{/vendors/iconfonts/mdi/css/materialdesignicons.min.css}"/>
+    <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style-admin.css}"/>
+</head>
+<body>
+<div class="container-scroller">
+    <div th:replace="~{/admin/header_admin :: header_admin}"></div>
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/posts}">
+                        <span class="menu-title">Post</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/categories}">
+                        <span class="menu-title">Category</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/users}">
+                        <span class="menu-title">User</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/comments}">
+                        <span class="menu-title">Comment</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h1>Post Management</h1>
+                    <form class="form-inline my-2 my-lg-0"
+                          th:method="get"
+                          th:action="@{/admin/comments/search}">
+                        <input class="form-control mr-sm-2"
+                               th:name="key"
+                               th:value="${key}"
+                               type="text"/>
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+
+                <!--                <p id="description"></p>-->
+
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-info">
+                                <tr>
+                                    <th colspan="1">
+                                        #
+                                    </th>
+
+                                    <th colspan="1">
+                                        Comment
+                                    </th>
+                                    <th colspan="1">
+                                        Title
+                                    </th>
+                                    <th colspan="1">
+                                        User
+                                    </th>
+                                    <th colspan="1">
+                                        Date_Created
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="comment, i : ${comments.content}">
+                                    <td colspan="1" th:text="${i.count}"></td>
+                                    <td
+                                            colspan="1"
+                                            th:text="${#strings.abbreviate(comment.content,100)}"
+                                    ></td>
+                                    <td colspan="1" th:text="${comment.title}"></td>
+                                    <td colspan="1" th:text="${comment.user}"></td>
+                                    <td colspan="1"
+                                        th:text="${#dates.format(comment.dateCreated,'dd-MM-yyyy HH:mm:ss')}"
+                                    ></td>
+
+                                    <td colspan="1">
+                                        <a
+                                                class="far fa-trash-alt btn-delete-comment"
+                                                title="Delete product"
+                                                th:attr="cateid=${comment.id}"
+                                                style="cursor: pointer;"
+                                        >Delete</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="topassda" th:if="${isComment}">
+                                <a th:href="@{'/admin/comments'( page=${comments.currentPage -1})}"
+                                   th:if="${comments.hasPrev}">Previous</a>
+                                <span th:text="${comments.currentPage}"></span>/<span
+                                    th:text="${comments.totalPage}"></span>
+                                <a th:href="@{'/admin/comments'( page=${comments.currentPage + 1})}"
+                                   th:if="${comments.hasNext}">Next</a>
+                            </div>
+                            <div class="topassda" th:if="${isSearch}">
+                                <a th:href="@{'/admin/comments/search'( key=${key}, page=${comments.currentPage -1})}"
+                                   th:if="${comments.hasPrev}">Previous</a>
+                                <span th:text="${comments.currentPage}"></span>/<span
+                                    th:text="${comments.totalPage}"></span>
+                                <a th:href="@{'/admin/comments/search'(key=${key}, page=${comments.currentPage + 1})}"
+                                   th:if="${comments.hasNext}">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav style="margin-top: 50px;" aria-label="..."></nav>
+            </div>
+
+            <!-- Modal -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/admin-comment.js}"></script>
+</body>
+</html>

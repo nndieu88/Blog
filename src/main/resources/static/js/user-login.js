@@ -1,23 +1,22 @@
 $(document).ready(function () {
-    var data = {};
-    $(".login-user").on("click", function () {
-        data.email = $(".email").val();
-        data.password = $(".password").val();
+  var data = {};
+  $(".login-user").on("click", function () {
+    data.email = $(".email").val();
+    data.password = $(".password").val();
 
-        if ($(".email").val().trim() == '' || $(".password").val().trim() == '') {
-            swal("Vui lòng nhập đầy đủ thông tin");
-            return;
-        }
+    if ($(".email").val().trim() == "" || $(".password").val().trim() == "") {
+      swal("Enter full information");
+      return;
+    }
 
-        axios.post("http://localhost:8080/api/login", data)
-            .then(function (data) {
-                if (data.data == "ROLE_ADMIN") {
-                    location.replace("/admin")
-                } else {
-                    location.replace("/");
-                }
-            }).catch(function (err) {
-            swal("Tài khoản sai, vui lòng nhập lại")
-        })
-    })
+    axios
+      .post("http://localhost:8080/api/login", data)
+      .then(function (data) {
+        swal(data.data.message);
+        location.replace("/");
+      })
+      .catch(function (err) {
+        swal("wrong account");
+      });
+  });
 });

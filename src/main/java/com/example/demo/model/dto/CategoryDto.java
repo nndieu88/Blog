@@ -17,6 +17,8 @@ public class CategoryDto {
 
     private String categoryName;
 
+    private String metaCategory;
+
     private Date dateCreated;
 
     private Date dateUpdated;

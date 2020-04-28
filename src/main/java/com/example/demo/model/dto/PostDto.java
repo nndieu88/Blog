@@ -27,10 +27,6 @@ public class PostDto {
 
     private String image;
 
-    private Long userID;
-
-    private String userName;
-
     private Long categoryID;
 
     private String categoryName;

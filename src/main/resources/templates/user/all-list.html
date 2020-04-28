@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org" class="no-js no-svg">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
+
+    <title th:text="${postImportant.categoryName}"></title>
+    <link href="css/user-all-list.css" rel="stylesheet" type="text/css" media="all"/>
+    <style id='wp-block-library-inline-css'>
+        .has-text-align-justify {
+            text-align: justify;
+        }
+    </style>
+
+    <style>@media (min-width: 576px) {
+        .footer__banner-link {
+            background-position: center;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .footer__banner-link {
+            background-position: center;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .footer__banner-link {
+            background-position: center;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .footer__banner-link {
+            background-position: center;
+        }
+    }
+    </style>
+
+    <!-- Jetpack Open Graph Tags -->
+    <meta property="og:type" content="website"/>
+    <!-- End Jetpack Open Graph Tags -->
+</head>
+
+<body class="home page-template page-template-dynamic-template-base page-template-dynamic-template-base-php page page-id-40776 ">
+
+<header class="header">
+
+    <div class="header__window--top container">
+        <div class="header__window--logo">
+            <a class="header__logo"><img
+                    src="images/logo.png"
+                    alt=""></a>
+        </div>
+        <div class="header__window--buttons">
+            <button class="header__locations header__locations-button open-menu">
+                <img alt="" src="images/globe.svg">
+                <span class="hidden-sm-down">Global | EN</span>
+                <span aria-hidden="true" ></span>
+            </button>
+            <div class="header__search-button ">
+                <div class="menu-search-menu-container">
+                    <ul id="menu-search-menu" class="">
+                        <li id="menu-item-313458" style="padding-top: 9px;"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313458">
+                            <img alt="" src="images/Search-big.svg">
+                            <a th:href="@{/search}">Search</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header__window header__window--locations">
+        <div class="container">
+            <div class="row">
+                <p class="section__regular-title col-12">Select which Site you would like to reach:</p>
+            </div>
+            <nav class="row">
+                <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-worldwide">
+                    Worldwide</h3>
+                    <ul class="locations__list">
+                        <li><span class="locations__list-fl location-global-en"> <img alt="country flag"
+                                                                                      class="img--flag"
+                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/globe.svg"/> </span>
+                            <a href="https://www.capgemini.com/?georedirect_none=true">Global | EN</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-americas">
+                    Americas</h3>
+                    <ul class="locations__list">
+                        <li><span class="locations__list-fl location-argentina-es"> <img alt="country flag"
+                                                                                         class="img--flag"
+                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ar.svg"/> </span>
+                            <a href="https://www.capgemini.com/ar-es/?georedirect_none=true">Argentina | ES</a></li>
+                        <li><span class="locations__list-fl location-brazil-pt"> <img alt="country flag"
+                                                                                      class="img--flag"
+                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/br.svg"/> </span>
+                            <a href="https://www.capgemini.com/br-pt/?georedirect_none=true">Brazil | PT</a></li>
+                        <li><span class="locations__list-fl location-canada"> <img alt="country flag" class="img--flag"
+                                                                                   src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ca.svg"/> </span>
+                            <a href="https://www.capgemini.com/ca-en/?georedirect_none=true">Canada | EN</a></li>
+                        <li><span class="locations__list-fl location-canada-fr"> <img alt="country flag"
+                                                                                      class="img--flag"
+                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ca.svg"/> </span>
+                            <a href="https://www.capgemini.com/ca-fr/?georedirect_none=true">Canada | FR</a></li>
+                        <li><span class="locations__list-fl location-colombia-es"> <img alt="country flag"
+                                                                                        class="img--flag"
+                                                                                        src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/co.svg"/> </span>
+                            <a href="https://www.capgemini.com/co-es/?georedirect_none=true">Colombia | ES</a></li>
+                        <li><span class="locations__list-fl location-mexico-es"> <img alt="country flag"
+                                                                                      class="img--flag"
+                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/mx.svg"/> </span>
+                            <a href="https://www.capgemini.com/mx-es/?georedirect_none=true">Mexico | ES</a></li>
+                        <li><span class="locations__list-fl location-united-states-en"> <img alt="country flag"
+                                                                                             class="img--flag"
+                                                                                             src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/us.svg"/> </span>
+                            <a href="https://www.capgemini.com/us-en/?georedirect_none=true">United States | EN</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-asia-pacific">Asia
+                    Pacific</h3>
+                    <ul class="locations__list">
+                        <li><span class="locations__list-fl location-australia-en"> <img alt="country flag"
+                                                                                         class="img--flag"
+                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/au.svg"/> </span>
+                            <a href="https://www.capgemini.com/au-en/?georedirect_none=true">Australia | EN</a></li>
+                        <li><span class="locations__list-fl location-china-zh"> <img alt="country flag"
+                                                                                     class="img--flag"
+                                                                                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/cn.svg"/> </span>
+                            <a href="https://www.capgemini.com/cn-zh/?georedirect_none=true">China | ZH</a></li>
+                        <li><span class="locations__list-fl location-india-en"> <img alt="country flag"
+                                                                                     class="img--flag"
+                                                                                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/in.svg"/> </span>
+                            <a href="https://www.capgemini.com/in-en/?georedirect_none=true">India | EN</a></li>
+                        <li><span class="locations__list-fl location-japan-jp"> <img alt="country flag"
+                                                                                     class="img--flag"
+                                                                                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/jp.svg"/> </span>
+                            <a href="https://www.capgemini.com/jp-jp/?georedirect_none=true">Japan | JP</a></li>
+                        <li><span class="locations__list-fl location-singapore-en"> <img alt="country flag"
+                                                                                         class="img--flag"
+                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/sg.svg"/> </span>
+                            <a href="https://www.capgemini.com/sg-en/?georedirect_none=true">Singapore | EN</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-6"><h3 class="locations__header locations__label-europe">Europe, Africa &amp;
+                    Middle East</h3>
+                    <div class="row">
+                        <ul class="locations__list col-12 col-md-4">
+                            <li><span class="locations__list-fl location-austria-de"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/at.svg"/> </span>
+                                <a href="https://www.capgemini.com/at-de/?georedirect_none=true">Austria | DE</a></li>
+                            <li><span class="locations__list-fl location-belgium-en"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/be.svg"/> </span>
+                                <a href="https://www.capgemini.com/be-en/?georedirect_none=true">Belgium | EN</a></li>
+                            <li><span class="locations__list-fl location-czech-republic-en"> <img alt="country flag"
+                                                                                                  class="img--flag"
+                                                                                                  src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/cz.svg"/> </span>
+                                <a href="https://www.capgemini.com/cz-en/?georedirect_none=true">Czech Republic | EN</a>
+                            </li>
+                            <li><span class="locations__list-fl location-denmark-da"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/dk.svg"/> </span>
+                                <a href="https://www.capgemini.com/dk-en/?georedirect_none=true">Denmark | EN</a></li>
+                            <li><span class="locations__list-fl location-finland-en"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/fi.svg"/> </span>
+                                <a href="https://www.capgemini.com/fi-en/?georedirect_none=true">Finland | EN</a></li>
+                            <li><span class="locations__list-fl location-france-fr"> <img alt="country flag"
+                                                                                          class="img--flag"
+                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/fr.svg"/> </span>
+                                <a href="https://www.capgemini.com/fr-fr/?georedirect_none=true">France | FR</a></li>
+                            <li><span class="locations__list-fl location-germany-de"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/de.svg"/> </span>
+                                <a href="https://www.capgemini.com/de-de/?georedirect_none=true">Germany | DE</a></li>
+                        </ul>
+                        <ul class="locations__list col-12 col-md-4">
+                            <li><span class="locations__list-fl location-hungary-en"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/hu.svg"/> </span>
+                                <a href="https://www.capgemini.com/hu-en/?georedirect_none=true">Hungary | EN</a></li>
+                            <li><span class="locations__list-fl location-italy-it"> <img alt="country flag"
+                                                                                         class="img--flag"
+                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/it.svg"/> </span>
+                                <a href="https://www.capgemini.com/it-it/?georedirect_none=true">Italy | IT</a></li>
+                            <li><span class="locations__list-fl location-netherlands-nl"> <img alt="country flag"
+                                                                                               class="img--flag"
+                                                                                               src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/nl.svg"/> </span>
+                                <a href="https://www.capgemini.com/nl-nl/?georedirect_none=true">Netherlands | NL</a>
+                            </li>
+                            <li><span class="locations__list-fl location-norway-no"> <img alt="country flag"
+                                                                                          class="img--flag"
+                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/no.svg"/> </span>
+                                <a href="https://www.capgemini.com/no-no/?georedirect_none=true">Norway | NO</a></li>
+                            <li><span class="locations__list-fl location-poland-pl"> <img alt="country flag"
+                                                                                          class="img--flag"
+                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/pl.svg"/> </span>
+                                <a href="https://www.capgemini.com/pl-pl/?georedirect_none=true">Poland | PL</a></li>
+                            <li><span class="locations__list-fl location-portugal-en"> <img alt="country flag"
+                                                                                            class="img--flag"
+                                                                                            src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/pt.svg"/> </span>
+                                <a href="https://www.capgemini.com/pt-en/?georedirect_none=true">Portugal | EN</a></li>
+                            <li><span class="locations__list-fl location-romania-en"> <img alt="country flag"
+                                                                                           class="img--flag"
+                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ro.svg"/> </span>
+                                <a href="https://www.capgemini.com/ro-en/?georedirect_none=true">Romania | EN</a></li>
+                        </ul>
+                        <ul class="locations__list col-12 col-md-4">
+                            <li><span class="locations__list-fl location-saudi-arabia-sa"> <img alt="country flag"
+                                                                                                class="img--flag"
+                                                                                                src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/sa.svg"/> </span>
+                                <a href="https://www.capgemini.com/sa-ar/?georedirect_none=true">Saudi Arabia | AR</a>
+                            </li>
+                            <li><span class="locations__list-fl location-spain-es"> <img alt="country flag"
+                                                                                         class="img--flag"
+                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/es.svg"/> </span>
+                                <a href="https://www.capgemini.com/es-es/?georedirect_none=true">Spain | ES</a></li>
+                            <li><span class="locations__list-fl location-sweden-en"> <img alt="country flag"
+                                                                                          class="img--flag"
+                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/se.svg"/> </span>
+                                <a href="https://www.capgemini.com/se-en/?georedirect_none=true">Sweden | EN</a></li>
+                            <li><span class="locations__list-fl location-switzerland-de"> <img alt="country flag"
+                                                                                               class="img--flag"
+                                                                                               src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ch.svg"/> </span>
+                                <a href="https://www.capgemini.com/ch-de/?georedirect_none=true">Switzerland | DE</a>
+                            </li>
+                            <li><span class="locations__list-fl location-uk-en"> <img alt="country flag"
+                                                                                      class="img--flag"
+                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/gb.svg"/> </span>
+                                <a href="https://www.capgemini.com/gb-en/?georedirect_none=true">UK | EN</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="barre_hamburger"></div>
+    </div>
+
+
+    <div class="header__top container">
+
+        <nav class="header__nav">
+            <a href="#" class="header__nav__mobile hidden-lg-up"><span class="sr-only">Toggle menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="30" viewBox="0 0 27 21">
+                    <path fill="none" fill-rule="evenodd" stroke="#2B0A3D" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="3" d="M2 1.5h22.562M2 19.5h22.562M2 10.5h12.567"/>
+                </svg>
+            </a>
+            <div class="menu-all-pages-container">
+
+                <ul id="menu-main-menu" class="menu">
+                    <li id="menu-item-40812"
+                        class="hotjar_top_nav_industries menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40812">
+                        <a href="https://www.capgemini.com/industries/">Industries</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-221088"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-221088"><a
+                                    href="https://www.capgemini.com/industry/automotive/">Automotive</a></li>
+                            <li id="menu-item-72856"
+                                class="menu-item menu-item-type-taxonomy menu-item-object-industry-taxonomy menu-item-72856">
+                                <a href="https://www.capgemini.com/industry/related/banking-and-capital-markets/">Banking
+                                    &#038; Capital Markets</a></li>
+                            <li id="menu-item-221085"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-221085"><a
+                                    href="https://www.capgemini.com/industry/consumerproducts">Consumer Products</a>
+                            </li>
+                            <li id="menu-item-290747"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-290747"><a
+                                    href="https://www.capgemini.com/industry/distribution/">Distribution – Wholesale</a>
+                            </li>
+                            <li id="menu-item-40322"
+                                class="menu-item menu-item-type-post_type menu-item-object-industry menu-item-40322"><a
+                                    href="https://www.capgemini.com/industry/electronics-high-tech/">Electronics &#038;
+                                High Tech</a></li>
+                            <li id="menu-item-221086"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-221086"><a
+                                    href="https://www.capgemini.com/industry/utilities/">Energy and Utilities</a></li>
+                            <li id="menu-item-40323"
+                                class="menu-item menu-item-type-post_type menu-item-object-industry menu-item-40323"><a
+                                    href="https://www.capgemini.com/industry/government-public-sector/">Government
+                                &#038; Public Sector</a></li>
+                            <li id="menu-item-315235"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-315235"><a
+                                    href="https://www.capgemini.com/industry/healthcare-life-sciences/">Healthcare
+                                &#038; Life sciences</a></li>
+                            <li id="menu-item-330846"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-330846"><a
+                                    href="https://www.capgemini.com/industry/insurance/">Insurance</a></li>
+                            <li id="menu-item-40326"
+                                class="menu-item menu-item-type-post_type menu-item-object-industry menu-item-40326"><a
+                                    href="https://www.capgemini.com/industry/manufacturing-industrial-products/">Manufacturing
+                                &#038; Industrial Products</a></li>
+                            <li id="menu-item-40327"
+                                class="menu-item menu-item-type-post_type menu-item-object-industry menu-item-40327"><a
+                                    href="https://www.capgemini.com/industry/media-entertainment/">Media &#038;
+                                Entertainment</a></li>
+                            <li id="menu-item-221084"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-221084"><a
+                                    href="https://www.capgemini.com/industry/retail/">Retail</a></li>
+                            <li id="menu-item-40330"
+                                class="menu-item menu-item-type-post_type menu-item-object-industry menu-item-40330"><a
+                                    href="https://www.capgemini.com/industry/telecoms/">Telecoms</a></li>
+                            <li id="menu-item-93402"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93402"><a
+                                    href="https://www.capgemini.com/industries/all/">All Industries</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-40813"
+                        class="hotjar_top_nav_services menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40813">
+                        <a href="https://www.capgemini.com/services/">Services</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-298576"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-298576"><a
+                                    href="https://www.capgemini.com/service/perform-ai/">Artificial Intelligence</a>
+                            </li>
+                            <li id="menu-item-242222"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-242222"><a
+                                    href="https://www.capgemini.com/service/transformation-innovation/applied-innovation-exchange/">Applied
+                                Innovation</a></li>
+                            <li id="menu-item-40339"
+                                class="hotjar_top_nav_services_bo menu-item menu-item-type-post_type menu-item-object-service menu-item-has-children menu-item-40339">
+                                <a href="https://www.capgemini.com/service/business-services/">Business Operations</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-241611"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241611">
+                                        <a href="https://www.capgemini.com/operations-all-stars/">New Ways to Optimize
+                                            Your Operations</a></li>
+                                    <li id="menu-item-40821"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40821">
+                                        <a href="https://www.capgemini.com/service/business-services/transform-your-finance-operations/">Transform
+                                            your finance operations</a></li>
+                                    <li id="menu-item-40822"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40822">
+                                        <a href="https://www.capgemini.com/service/business-services/optimize-your-supply-chain-and-vendor-performance/">Optimize
+                                            your Supply Chain</a></li>
+                                    <li id="menu-item-40823"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40823">
+                                        <a href="https://www.capgemini.com/service/business-services/retain-and-engage-employees/">Retain
+                                            &#038; engage employees</a></li>
+                                    <li id="menu-item-40824"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40824">
+                                        <a href="https://www.capgemini.com/service/business-services/gain-more-insights-from-business-analytics/">Gain
+                                            more insights from your business analytics</a></li>
+                                    <li id="menu-item-40825"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40825">
+                                        <a href="https://www.capgemini.com/service/business-services/enrich-your-customer-interactions/">Enrich
+                                            your customer interactions</a></li>
+                                    <li id="menu-item-40826"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40826">
+                                        <a href="https://www.capgemini.com/service/business-services/better-manage-risk-and-compliance/">Better
+                                            manage risk &#038; compliance</a></li>
+                                    <li id="menu-item-40827"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40827">
+                                        <a href="https://www.capgemini.com/service/business-services/business-process-as-a-service-bpaas/">Business
+                                            Process-as-a-Service (BPaaS)</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-93081"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-93081">
+                                <a href="https://www.capgemini.com/service/cloud-services/">Cloud Services</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-81078"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81078">
+                                        <a href="https://www.capgemini.com/service/cloud-services/cloud-strategy/">Cloud
+                                            Strategy</a></li>
+                                    <li id="menu-item-82253"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-82253">
+                                        <a href="https://www.capgemini.com/service/cloud-services/workloads-assessment/">Workloads
+                                            Assessment</a></li>
+                                    <li id="menu-item-81147"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81147">
+                                        <a href="https://www.capgemini.com/service/cloud-services/migrating-workloads-to-the-cloud/">Migrating
+                                            Workloads to the Cloud</a></li>
+                                    <li id="menu-item-81151"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81151">
+                                        <a href="https://www.capgemini.com/service/cloud-services/sap-migrations-to-the-aws-cloud/">SAP
+                                            Migrations to the AWS Cloud</a></li>
+                                    <li id="menu-item-81145"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81145">
+                                        <a href="https://www.capgemini.com/service/cloud-services/implementing-software-as-a-service-saas/">Implementing
+                                            Software-as-a-Service (SaaS)</a></li>
+                                    <li id="menu-item-81139"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81139">
+                                        <a href="https://www.capgemini.com/service/cloud-services/cloud-native-applications-paas/">Cloud-Native
+                                            Applications (PaaS)</a></li>
+                                    <li id="menu-item-81132"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81132">
+                                        <a href="https://www.capgemini.com/service/cloud-services/capgemini-enterprise-ipaas/">Capgemini
+                                            Enterprise iPaaS</a></li>
+                                    <li id="menu-item-81141"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81141">
+                                        <a href="https://www.capgemini.com/service/cloud-services/capgemini-cloud-platform/">Capgemini
+                                            Cloud Platform</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-324917"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-324917">
+                                <a href="https://www.capgemini.com/service/cybersecurity-services/">Cybersecurity
+                                    Services</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-334457"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-334457">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/cloud-security-services/">Cloud
+                                            Security</a></li>
+                                    <li id="menu-item-324918"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324918">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/cybersecurity-consulting/">Cybersecurity
+                                            Consulting</a></li>
+                                    <li id="menu-item-324919"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324919">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/cyber-attack-simulation/">Cyber
+                                            attack Simulation</a></li>
+                                    <li id="menu-item-324920"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324920">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/application-security-testing/">Application
+                                            Security Testing</a></li>
+                                    <li id="menu-item-324921"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324921">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/identity-access-management/">Identity
+                                            &#038; Access Management</a></li>
+                                    <li id="menu-item-324922"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324922">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/capgeminis-idaas-identity-as-a-service/">Capgemini’s
+                                            IDaaS- Identity-as-a-Service</a></li>
+                                    <li id="menu-item-324923"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324923">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/security-operations-center/">Security
+                                            Operations Center</a></li>
+                                    <li id="menu-item-324925"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324925">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/endpoint-security/">Future
+                                            Ready EPaaS</a></li>
+                                    <li id="menu-item-324924"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324924">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/risk-compliance/">Compliance
+                                            &#038; Risk</a></li>
+                                    <li id="menu-item-357530"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357530">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/cybersecurity-defense-maturity-evaluation/">Cybersecurity
+                                            Defense Maturity Evaluation</a></li>
+                                    <li id="menu-item-357531"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357531">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/cybersecurity-transformation/">Cybersecurity
+                                            Transformation Services</a></li>
+                                    <li id="menu-item-357532"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357532">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/network-security-and-segmentation-service/">Network
+                                            Security and Segmentation Service</a></li>
+                                    <li id="menu-item-357533"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357533">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-device-management/">Cybersecurity
+                                            Device Management</a></li>
+                                    <li id="menu-item-357534"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357534">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/penetration-testing-red-teaming-and-threat-simulation/">Penetration
+                                            Testing, Red Teaming, and Threat Simulation</a></li>
+                                    <li id="menu-item-357529"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357529">
+                                        <a href="https://www.capgemini.com/service/mdr/">Managed Detection and
+                                            Response</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-40336"
+                                class="menu-item menu-item-type-post_type menu-item-object-service menu-item-has-children menu-item-40336">
+                                <a title="Disrupt with Digital"
+                                   href="https://www.capgemini.com/service/digital-services/">Digital Services</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-207498"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-207498">
+                                        <a href="https://www.capgemini.com/service/digital-services/customer-experience/">Customer
+                                            Experience</a></li>
+                                    <li id="menu-item-40488"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40488">
+                                        <a href="https://www.capgemini.com/service/digital-services/digital-engineering-and-manufacturing-services/">Digital
+                                            Engineering and Manufacturing Services</a></li>
+                                    <li id="menu-item-40485"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40485">
+                                        <a href="https://www.capgemini.com/service/digital-services/digital-manufacturing/">Digital
+                                            Manufacturing</a></li>
+                                    <li id="menu-item-41864"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41864">
+                                        <a target="_blank" rel="noopener noreferrer"
+                                           href="https://www.capgemini.com/service/invent/">Digital Strategy &#038;
+                                            Transformation</a></li>
+                                    <li id="menu-item-330793"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-330793">
+                                        <a href="https://www.capgemini.com/service/cybersecurity-services/gdpr-readiness/">GDPR</a>
+                                    </li>
+                                    <li id="menu-item-293855"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-293855">
+                                        <a href="https://www.capgemini.com/service/digital-services/insights-data/">Insights
+                                            &#038; Data</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-439075"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-439075">
+                                <a href="https://www.capgemini.com/service/intelligent-industry/">Intelligent
+                                    Industry</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-439093"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-439093">
+                                        <a href="https://www.capgemini.com/service/intelligent-industry/smart-operations/">Smart
+                                            Operations</a></li>
+                                    <li id="menu-item-439094"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-439094">
+                                        <a href="https://www.capgemini.com/service/intelligent-industry/smart-products/">Smart
+                                            Products</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-40335"
+                                class="menu-item menu-item-type-post_type menu-item-object-service menu-item-has-children menu-item-40335">
+                                <a href="https://www.capgemini.com/service/technology-operations/">Technology
+                                    Solutions</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-40348"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40348">
+                                        <a href="https://www.capgemini.com/service/technology-operations/intelligent-automation/">Intelligent
+                                            Automation</a></li>
+                                    <li id="menu-item-40345"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40345">
+                                        <a href="https://www.capgemini.com/service/technology-operations/infrastructure-services/">Infrastructure
+                                            Services</a></li>
+                                    <li id="menu-item-40346"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40346">
+                                        <a href="https://www.capgemini.com/service/technology-operations/admnext/">Application
+                                            Development &#038; Maintenance Services</a></li>
+                                    <li id="menu-item-40347"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-40347">
+                                        <a href="https://www.capgemini.com/service/technology-operations/testing-services/">Testing
+                                            Services</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-224594"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-224594">
+                                <a href="http://www.capgemini.com/services/invent">Transformation &#038; Innovation</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-224544"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-224544">
+                                        <a href="https://www.capgemini.com/service/invent/customer-engagement/">Customer
+                                            Engagement</a></li>
+                                    <li id="menu-item-224557"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-224557">
+                                        <a href="https://www.capgemini.com/service/invent/future-of-technology/">Future
+                                            of Technology</a></li>
+                                    <li id="menu-item-224540"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-224540">
+                                        <a href="https://www.capgemini.com/service/invent/innovation-and-strategy/">Innovation
+                                            and Strategy</a></li>
+                                    <li id="menu-item-224558"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-224558">
+                                        <a href="https://www.capgemini.com/service/invent/insight-driven-enterprise/">Insight
+                                            Driven Enterprise</a></li>
+                                    <li id="menu-item-224548"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-224548">
+                                        <a href="https://www.capgemini.com/service/invent/operations-transformation/">Operations
+                                            Transformation</a></li>
+                                    <li id="menu-item-224553"
+                                        class="menu-item menu-item-type-post_type menu-item-object-service menu-item-224553">
+                                        <a href="https://www.capgemini.com/service/invent/people-and-organization/">People
+                                            &#038; Organization</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-93399"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93399"><a
+                                    href="https://www.capgemini.com/services/all/">All Services</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-40814"
+                        class="hotjar_top_nav_partners menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40814">
+                        <a href="https://www.capgemini.com/partners/">Partners</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-280664"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-280664"><a
+                                    href="https://www.capgemini.com/partner/amazon-web-services/">Amazon Web
+                                Services</a></li>
+                            <li id="menu-item-40437"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40437"><a
+                                    href="https://www.capgemini.com/partner/dell/">Dell Technologies</a></li>
+                            <li id="menu-item-40438"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40438"><a
+                                    href="https://www.capgemini.com/partner/google-cloud/">Google</a></li>
+                            <li id="menu-item-40439"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40439"><a
+                                    href="https://www.capgemini.com/partner/hpe/">HPE</a></li>
+                            <li id="menu-item-40440"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40440"><a
+                                    href="https://www.capgemini.com/partner/ibm/">IBM</a></li>
+                            <li id="menu-item-40441"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40441"><a
+                                    href="https://www.capgemini.com/partner/intel/">Intel</a></li>
+                            <li id="menu-item-40446"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40446"><a
+                                    href="https://www.capgemini.com/partner/microsoft/">Microsoft</a></li>
+                            <li id="menu-item-40442"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40442"><a
+                                    href="https://www.capgemini.com/partner/oracle/">Oracle</a></li>
+                            <li id="menu-item-40443"
+                                class="menu-item menu-item-type-post_type menu-item-object-partner menu-item-40443"><a
+                                    href="https://www.capgemini.com/partner/pega/">Pega</a></li>
+                            <li id="menu-item-295834"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-295834"><a
+                                    href="https://www.capgemini.com/partner/salesforce/">Salesforce</a></li>
+                            <li id="menu-item-289228"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-289228"><a
+                                    href="https://www.capgemini.com/partner/sap/">SAP</a></li>
+                            <li id="menu-item-40863"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40863"><a
+                                    href="https://www.capgemini.com/partners/">All our partners</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-40332"
+                        class="menu-item menu-item-type-post_type_archive menu-item-object-expert menu-item-40332"><a
+                            href="https://www.capgemini.com/experts/">Our Experts</a></li>
+                    <li id="menu-item-41388"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41388"><a
+                            href="https://www.capgemini.com/insights-and-news/">Insights &#038; News</a></li>
+                    <li id="menu-item-41405"
+                        class="hotjar_top_nav_about menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41405">
+                        <a href="https://www.capgemini.com/our-company/">About us</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-41419"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41419">
+                                <a href="https://www.capgemini.com/our-company/">Our Company</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-328771"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328771">
+                                        <a href="https://www.capgemini.com/company-profile-key-figures/">Company Profile
+                                            &#038; Key Figures</a></li>
+                                    <li id="menu-item-328455"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328455">
+                                        <a href="https://www.capgemini.com/service/invent/">Capgemini Invent</a></li>
+                                    <li id="menu-item-328456"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328456">
+                                        <a href="https://www.sogeti.com">Sogeti</a></li>
+                                    <li id="menu-item-342544"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342544">
+                                        <a href="https://www.capgemini.com/capgemini-ventures/">Capgemini Ventures</a>
+                                    </li>
+                                    <li id="menu-item-328454"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328454">
+                                        <a href="https://www.capgemini.com/our-company/all-our-brands/">All Our
+                                            Brands</a></li>
+                                    <li id="menu-item-328452"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-328452">
+                                        <a href="https://www.capgemini.com/company-profile-key-figures/a-history-of-our-founder-serge-kampf/">A
+                                            History of our Founder, Serge Kampf</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-323530"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-323530">
+                                <a href="https://www.capgemini.com/our-company/values-ethics/">Values &#038; Ethics</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-328276"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328276">
+                                        <a href="https://www.capgemini.com/our-company/values-ethics/our-code-of-business-ethics/">Our
+                                            Code of Business Ethics</a></li>
+                                    <li id="menu-item-328280"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328280">
+                                        <a href="https://www.capgemini.com/our-company/values-ethics/speakup/">SpeakUp</a>
+                                    </li>
+                                    <li id="menu-item-335058"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-335058">
+                                        <a href="https://www.capgemini.com/our-company/values-ethics/group-anti-corruption-policy/">Group
+                                            Anti-Corruption Policy</a></li>
+                                    <li id="menu-item-328278"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328278">
+                                        <a href="https://www.capgemini.com/our-company/values-ethics/worlds-most-ethical-companies-recognition/">World’s
+                                            Most Ethical Companies® recognition</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-330859"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-330859"><a
+                                    href="https://www.capgemini.com/our-company/our-corporate-social-responsibility-program/">Our
+                                Corporate Social Responsibility Program</a></li>
+                            <li id="menu-item-184080"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184080"><a
+                                    href="https://www.capgemini.com/service/rugby7s/">Rugby Sevens</a></li>
+                            <li id="menu-item-40341"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40341"><a
+                                    href="https://investors.capgemini.com">Investors</a></li>
+                            <li id="menu-item-330814"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-330814"><a
+                                    target="_blank" rel="noopener noreferrer"
+                                    href="https://reports.capgemini.com/2018/en/">Latest Annual Reports</a></li>
+                            <li id="menu-item-42629"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42629"><a
+                                    href="https://www.capgemini.com/contact-us/">Our Offices</a></li>
+                            <li id="menu-item-47246"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47246"><a
+                                    href="https://www.capgemini.com/contact-capgemini/">Contact us</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-41362"
+                        class="hotjar_top_nav_careers menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41362">
+                        <a href="https://www.capgemini.com/careers/">Careers</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-42228"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42228"><a
+                                    href="https://www.capgemini.com/careers/career-paths/">Career paths</a></li>
+                            <li id="menu-item-286422"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-286422"><a
+                                    href="https://www.capgemini.com/careers/shape-your-future-at-capgemini-invent/">Join
+                                Capgemini Invent</a></li>
+                            <li id="menu-item-42229"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42229"><a
+                                    href="https://www.capgemini.com/careers/learning-development/">Learning &#038;
+                                Development</a></li>
+                            <li id="menu-item-330963"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-330963"><a
+                                    href="https://www.capgemini.com/our-company/our-corporate-social-responsibility-program/diversity/">Diversity</a>
+                            </li>
+                            <li id="menu-item-42230"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42230"><a
+                                    href="https://www.capgemini.com/careers/life-at-capgemini/">Life at Capgemini</a>
+                            </li>
+                            <li id="menu-item-42231"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42231"><a
+                                    href="https://www.capgemini.com/testimonials/">Employee stories</a></li>
+                            <li id="menu-item-42237"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42237"><a
+                                    href="https://www.capgemini.com/careers/job-search/">Job search</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<header class="header">
+
+    <nav class="nav--insights container-full">
+        <div class="container">
+            <div class="row">
+                <ul id="menu-insights" class="col">
+                    <li id="menu-item-352561"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352561"><a
+                            href="https://www.capgemini.com/podcasts/">Podcasts</a></li>
+                    <li id="menu-item-41387"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41387"><a
+                            href="https://www.capgemini.com/newsroom/">Newsroom</a></li>
+                    <li id="menu-item-41372"
+                        class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-41372">
+                        <a href="https://www.capgemini.com/blogs/">Blogs</a></li>
+                    <li id="menu-item-41377"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41377"><a
+                            href="https://www.capgemini.com/events/">Events</a></li>
+                    <li id="menu-item-261753"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-261753"><a
+                            href="https://www.capgemini.com/research/">Research</a></li>
+                    <li id="menu-item-41381"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41381"><a
+                            href="https://www.capgemini.com/all-client-stories/">Client stories</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-full hero hero_full hero_full__pic  "
+         th:style="'background-image: url(' + @{${postImportant.image}} + ');'">
+        <div class="hero_full__inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-8 hero_overflow offset_hero--md">
+                        <div class="hero_full__info">
+                        </div>
+                        <h1 class="hero_full__title">
+						<span class="inside">
+							<span class="inner">
+                                <a class="1"
+                                   th:href="@{/info/__${postImportant.metaTitle}__}">
+                                    <span th:text="${postImportant.title}"></span>
+                                </a>
+
+                            </span>
+						</span>
+                        </h1>
+
+                        <div class="hero_full__text">
+                            <div class="inner_text">
+                                <a th:href="@{/info/__${postImportant.metaTitle}__}">
+                                    <span th:text="${#strings.abbreviate(postImportant.content,100)}"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="hero_full__link_wrapper">
+                            <div class="hero_full__link_bg">
+
+                                <a class="hero_full__link section__button section__button--transparent"
+                                   th:href="@{/info/__${postImportant.metaTitle}__}">
+                                    <span class="sr-only">Success of Capgemini’s tender offer for Altran:  Capgemini now holds 98% of Altran’s share capital</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15">
+                                        <title>Read more</title>
+                                        <path fill="none" stroke="#2B0A3D" stroke-width="2"
+                                              d="M1.455 1l7 6.5-7 6.5"></path>
+                                    </svg>
+                                </a>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BtB subscribe form without inset class to avoid blank space within a hero module -->
+    <div class="hero__inner">
+    </div>
+
+</header>
+
+
+<section class="section container section--list">
+    <div class="row">
+        <div class="col-12 search_results__pagination search_results__pagination--bottom">
+
+            <div class="pagination pagination__top">
+                <div class="pagination__current-page">
+                    <p>results: <span th:text="${posts.element}"></span></p>
+                </div>
+                <div class="pagination_show">
+                    <div class="pagination_show__label">
+                        <a class="prev page-numbers"
+                           th:href="@{'/list-all/'+ ${postImportant.metaCategory} (page=${posts.currentPage -1})}"
+                           th:if="${posts.hasPrev}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9">
+                                <path fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2" d="M4.5 1 l -4 3.5 4 3.5"></path>
+                            </svg>
+                        </a>
+                        <a class="page-numbers" th:if="${posts.currentPage} > 1" th:text="${posts.currentPage -1}"></a>
+                        <span aria-current="page" class="page-numbers current" th:text="${posts.currentPage}"></span>
+                        <a class="page-numbers" th:if="${posts.currentPage} < ${posts.totalPage}"
+                           th:text="${posts.currentPage + 1}"></a>
+                        <a class="next page-numbers"
+                           th:href="@{'/list-all/'+ ${postImportant.metaCategory} (page=${posts.currentPage + 1})}"
+                           th:if="${posts.hasNext}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9">
+                                <path fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2" d="M1.91 1l4 3.5-4 3.5"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="section__block col-12" th:each="post:${posts.content}">
+
+            <div class="card_default card_default--hovered  card_default--grey ">
+                <div class="card_default__content">
+
+                    <div class="card_default__tags">
+                    </div>
+                    <h3 class="card_default__title">
+                        <a th:href="@{/info/__${post.metaTitle}__}"><span th:text="${post.title}"></span></a>
+                    </h3>
+                    <div class="card_default__date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">Date icon
+                            <path fill="#000"
+                                  d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                        </svg>
+                        <span th:text="${#dates.format(post.dateCreated, 'dd-MM-yyyy')}">20 November 2015</span>
+                    </div>
+
+                    <div class="card_default__text">
+                        <p th:text="${#strings.abbreviate(post.content,100)}"></p>
+                    </div>
+
+                    <div class="card_default__links">
+                        <div class="card_default__more">
+                            <a th:href="@{/info/__${post.metaTitle}__}" aria-label="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">Read
+                                    more icon
+                                    <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
+                                        <path class="border_svg"
+                                              d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
+                                        <path d="M15.018 11.997l3.958 3.958 2.042 2.042-6.021 6.02"/>
+                                    </g>
+                                </svg>
+                            </a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="card_default__media   " style="background-image: url( ); "><!-- card_default__media -->
+
+                    <a th:href="@{/info/__${post.metaTitle}__}">Capgemini named a “Leader” by
+                        NelsonHall in its NEAT evaluation of learning services
+                        <div class="card_default__media--inner" style="height: 100px">
+                            <img th:src="@{${post.image}}" style="width: 400px;height: 300px">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="pagination pagination__top">
+                <div class="pagination__current-page">
+                    <p>results: <span th:text="${posts.element}"></span></p>
+                </div>
+                <div class="pagination_show">
+                    <div class="pagination_show__label">
+                        <a class="prev page-numbers"
+                           th:href="@{'/list-all/'+ ${postImportant.metaCategory} (page=${posts.currentPage -1})}"
+                           th:if="${posts.hasPrev}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9">
+                                <path fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2" d="M4.5 1 l -4 3.5 4 3.5"></path>
+                            </svg>
+                        </a>
+                        <a class="page-numbers" th:if="${posts.currentPage} > 1" th:text="${posts.currentPage -1}"></a>
+                        <span aria-current="page" class="page-numbers current"
+                              th:text="${posts.currentPage}"></span>
+                        <a class="page-numbers" th:if="${posts.currentPage} < ${posts.totalPage}"
+                           th:text="${posts.currentPage + 1}"></a>
+                        <a class="next page-numbers"
+                           th:href="@{'/list-all/'+ ${postImportant.metaCategory} (page=${posts.currentPage + 1})}"
+                           th:if="${posts.hasNext}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9">
+                                <path fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2" d="M1.91 1l4 3.5-4 3.5"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="footer container-full">
+    <div class="container">
+        <div class="footer__top row">
+            <div class="footer__logo col-md-4 hidden-lg-down">
+                <img alt="Capgemini logo"
+                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg">
+            </div>
+            <nav class="footer__nav col-12 col-xl-8">
+                <div class="row">
+                    <ul class="col-6 col-md-3">
+                        <li><a href="https://www.capgemini.com/services/" class="">Services</a></li>
+                        <li><a href="https://www.capgemini.com/industries/" class="">Industries</a></li>
+                        <li><a href="https://www.capgemini.com/partners/" class="">Partners</a></li>
+                        <li><a href="https://www.capgemini.com/experts/" class="">Our Experts</a></li>
+                        <li><a href="https://www.capgemini.com/insights-and-news/" class="">Insights &amp; News</a></li>
+                        <li><a href="https://www.capgemini.com/careers/" class="">Careers</a></li>
+                        <li><a href="https://www.capgemini.com/our-company/" class="">Our Company</a></li>
+                    </ul>
+                    <ul class="col-6 col-md-3">
+                        <li><a href="http://investors.capgemini.com" class="">Investor relations</a></li>
+                        <li><a href="https://www.capgemini.com/newsroom/" class="">Newsroom</a></li>
+                        <li><a href="https://www.capgemini.com/contact-us/" class="">Our Offices</a></li>
+                        <li><a href="https://www.capgemini.com/contact-capgemini/" class="">Contact us</a></li>
+                        <li><a href="https://www.capgemini.com/sitemap/" class="">Sitemap</a></li>
+                    </ul>
+                    <ul class="col-6 col-md-3">
+                        <li><a href="https://www.capgemini.com/terms-of-use/" class="">Terms of Use</a></li>
+                        <li><a href="https://www.capgemini.com/privacy-policy/" class="">Privacy Policy</a></li>
+                        <li><a href="https://www.capgemini.com/social-media-guidelines/" class="">Social Media
+                            Policy</a></li>
+                        <li><a href="https://www.capgemini.com/social-media-house-rules/" class="">Social Media House
+                            Rules</a></li>
+                        <li><a href="https://www.capgemini.com/legal-information-mentions-legales/" class="">Legal
+                            Information / Mentions Légales</a></li>
+                        <li>
+                            <a href="https://www.capgemini.com/capgeminis-cybersecurity-vulnerability-notification-process/"
+                               class="">Security Vulnerability Notification</a></li>
+                    </ul>
+                    <div class="col-6 col-md-3">
+
+                        <h3 class="footer__title">Our brands:</h3>
+
+                        <ol>
+                            <li><a href="https://www.altran.com/" class="altran" target="_blank"><img
+                                    alt="Altran part of Capgemini"
+                                    src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/altran_logo_new.svg"></a>
+                            </li>
+                            <li><a href="https://www.capgemini.com/invent/" class="capconsult"><img
+                                    alt="Capgemini Invent Logotype"
+                                    src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/capgemini-invent.svg"></a>
+                            </li>
+                            <li><a href="https://www.sogeti.com/" class="sogeti" target="_blank" rel="noreferrer"><img
+                                    alt="Sogeti by Capgemini"
+                                    src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/sogeti-by-capgemini.svg"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="footer__bottom row no-gutters">
+            <div class="footer__social col-12 col-xl-6">
+
+            </div>
+            <div class="footer__copy col-12 col-xl-6" role="contentinfo">
+                <p>All rights reserved by Capgemini. <span>Copyright &copy; 2020</span></p>
+            </div>
+            <div class="footer__logo col-12 hidden-xl-up">
+                <img alt="Capgemini logo"
+                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg">
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

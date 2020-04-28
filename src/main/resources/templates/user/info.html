@@ -1,458 +1,20 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns:th="http://www.thymeleaf.org" class="no-js no-svg">
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
     <meta charset="UTF-8">
-    <script type="text/javascript">(window.NREUM || (NREUM = {})).loader_config = {
-        licenseKey: "6b6b1d1407",
-        applicationID: "52117986"
-    };
-    window.NREUM || (NREUM = {}), __nr_require = function (e, n, t) {
-        function r(t) {
-            if (!n[t]) {
-                var i = n[t] = {exports: {}};
-                e[t][0].call(i.exports, function (n) {
-                    var i = e[t][1][n];
-                    return r(i || n)
-                }, i, i.exports)
-            }
-            return n[t].exports
-        }
 
-        if ("function" == typeof __nr_require) return __nr_require;
-        for (var i = 0; i < t.length; i++) r(t[i]);
-        return r
-    }({
-        1: [function (e, n, t) {
-            function r() {
-            }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
 
-            function i(e, n, t) {
-                return function () {
-                    return o(e, [u.now()].concat(f(arguments)), n ? null : this, t), n ? void 0 : this
-                }
-            }
-
-            var o = e("handle"), a = e(4), f = e(5), c = e("ee").get("tracer"), u = e("loader"), s = NREUM;
-            "undefined" == typeof window.newrelic && (newrelic = s);
-            var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished", "addToTrace", "inlineHit", "addRelease"],
-                l = "api-", d = l + "ixn-";
-            a(p, function (e, n) {
-                s[n] = i(l + n, !0, "api")
-            }), s.addPageAction = i(l + "addPageAction", !0), s.setCurrentRouteName = i(l + "routeName", !0), n.exports = newrelic, s.interaction = function () {
-                return (new r).get()
-            };
-            var m = r.prototype = {
-                createTracer: function (e, n) {
-                    var t = {}, r = this, i = "function" == typeof n;
-                    return o(d + "tracer", [u.now(), e, t], r), function () {
-                        if (c.emit((i ? "" : "no-") + "fn-start", [u.now(), r, i], t), i) try {
-                            return n.apply(this, arguments)
-                        } catch (e) {
-                            throw c.emit("fn-err", [arguments, this, e], t), e
-                        } finally {
-                            c.emit("fn-end", [u.now()], t)
-                        }
-                    }
-                }
-            };
-            a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (e, n) {
-                m[n] = i(d + n)
-            }), newrelic.noticeError = function (e, n) {
-                "string" == typeof e && (e = new Error(e)), o("err", [e, u.now(), !1, n])
-            }
-        }, {}], 2: [function (e, n, t) {
-            function r(e, n) {
-                var t = e.getEntries();
-                t.forEach(function (e) {
-                    "first-paint" === e.name ? c("timing", ["fp", Math.floor(e.startTime)]) : "first-contentful-paint" === e.name && c("timing", ["fcp", Math.floor(e.startTime)])
-                })
-            }
-
-            function i(e, n) {
-                var t = e.getEntries();
-                t.length > 0 && c("lcp", [t[t.length - 1]])
-            }
-
-            function o(e) {
-                if (e instanceof s && !l) {
-                    var n, t = Math.round(e.timeStamp);
-                    n = t > 1e12 ? Date.now() - t : u.now() - t, l = !0, c("timing", ["fi", t, {type: e.type, fid: n}])
-                }
-            }
-
-            if (!("init" in NREUM && "page_view_timing" in NREUM.init && "enabled" in NREUM.init.page_view_timing && NREUM.init.page_view_timing.enabled === !1)) {
-                var a, f, c = e("handle"), u = e("loader"), s = NREUM.o.EV;
-                if ("PerformanceObserver" in window && "function" == typeof window.PerformanceObserver) {
-                    a = new PerformanceObserver(r), f = new PerformanceObserver(i);
-                    try {
-                        a.observe({entryTypes: ["paint"]}), f.observe({entryTypes: ["largest-contentful-paint"]})
-                    } catch (p) {
-                    }
-                }
-                if ("addEventListener" in document) {
-                    var l = !1, d = ["click", "keydown", "mousedown", "pointerdown", "touchstart"];
-                    d.forEach(function (e) {
-                        document.addEventListener(e, o, !1)
-                    })
-                }
-            }
-        }, {}], 3: [function (e, n, t) {
-            function r(e, n) {
-                if (!i) return !1;
-                if (e !== i) return !1;
-                if (!n) return !0;
-                if (!o) return !1;
-                for (var t = o.split("."), r = n.split("."), a = 0; a < r.length; a++) if (r[a] !== t[a]) return !1;
-                return !0
-            }
-
-            var i = null, o = null, a = /Version\/(\S+)\s+Safari/;
-            if (navigator.userAgent) {
-                var f = navigator.userAgent, c = f.match(a);
-                c && f.indexOf("Chrome") === -1 && f.indexOf("Chromium") === -1 && (i = "Safari", o = c[1])
-            }
-            n.exports = {agent: i, version: o, match: r}
-        }, {}], 4: [function (e, n, t) {
-            function r(e, n) {
-                var t = [], r = "", o = 0;
-                for (r in e) i.call(e, r) && (t[o] = n(r, e[r]), o += 1);
-                return t
-            }
-
-            var i = Object.prototype.hasOwnProperty;
-            n.exports = r
-        }, {}], 5: [function (e, n, t) {
-            function r(e, n, t) {
-                n || (n = 0), "undefined" == typeof t && (t = e ? e.length : 0);
-                for (var r = -1, i = t - n || 0, o = Array(i < 0 ? 0 : i); ++r < i;) o[r] = e[n + r];
-                return o
-            }
-
-            n.exports = r
-        }, {}], 6: [function (e, n, t) {
-            n.exports = {exists: "undefined" != typeof window.performance && window.performance.timing && "undefined" != typeof window.performance.timing.navigationStart}
-        }, {}], ee: [function (e, n, t) {
-            function r() {
-            }
-
-            function i(e) {
-                function n(e) {
-                    return e && e instanceof r ? e : e ? c(e, f, o) : o()
-                }
-
-                function t(t, r, i, o) {
-                    if (!l.aborted || o) {
-                        e && e(t, r, i);
-                        for (var a = n(i), f = v(t), c = f.length, u = 0; u < c; u++) f[u].apply(a, r);
-                        var p = s[y[t]];
-                        return p && p.push([b, t, r, a]), a
-                    }
-                }
-
-                function d(e, n) {
-                    h[e] = v(e).concat(n)
-                }
-
-                function m(e, n) {
-                    var t = h[e];
-                    if (t) for (var r = 0; r < t.length; r++) t[r] === n && t.splice(r, 1)
-                }
-
-                function v(e) {
-                    return h[e] || []
-                }
-
-                function g(e) {
-                    return p[e] = p[e] || i(t)
-                }
-
-                function w(e, n) {
-                    u(e, function (e, t) {
-                        n = n || "feature", y[t] = n, n in s || (s[n] = [])
-                    })
-                }
-
-                var h = {}, y = {}, b = {
-                    on: d,
-                    addEventListener: d,
-                    removeEventListener: m,
-                    emit: t,
-                    get: g,
-                    listeners: v,
-                    context: n,
-                    buffer: w,
-                    abort: a,
-                    aborted: !1
-                };
-                return b
-            }
-
-            function o() {
-                return new r
-            }
-
-            function a() {
-                (s.api || s.feature) && (l.aborted = !0, s = l.backlog = {})
-            }
-
-            var f = "nr@context", c = e("gos"), u = e(4), s = {}, p = {}, l = n.exports = i();
-            l.backlog = s
-        }, {}], gos: [function (e, n, t) {
-            function r(e, n, t) {
-                if (i.call(e, n)) return e[n];
-                var r = t();
-                if (Object.defineProperty && Object.keys) try {
-                    return Object.defineProperty(e, n, {value: r, writable: !0, enumerable: !1}), r
-                } catch (o) {
-                }
-                return e[n] = r, r
-            }
-
-            var i = Object.prototype.hasOwnProperty;
-            n.exports = r
-        }, {}], handle: [function (e, n, t) {
-            function r(e, n, t, r) {
-                i.buffer([e], r), i.emit(e, n, t)
-            }
-
-            var i = e("ee").get("handle");
-            n.exports = r, r.ee = i
-        }, {}], id: [function (e, n, t) {
-            function r(e) {
-                var n = typeof e;
-                return !e || "object" !== n && "function" !== n ? -1 : e === window ? 0 : a(e, o, function () {
-                    return i++
-                })
-            }
-
-            var i = 1, o = "nr@id", a = e("gos");
-            n.exports = r
-        }, {}], loader: [function (e, n, t) {
-            function r() {
-                if (!x++) {
-                    var e = E.info = NREUM.info, n = d.getElementsByTagName("script")[0];
-                    if (setTimeout(s.abort, 3e4), !(e && e.licenseKey && e.applicationID && n)) return s.abort();
-                    u(y, function (n, t) {
-                        e[n] || (e[n] = t)
-                    }), c("mark", ["onload", a() + E.offset], null, "api");
-                    var t = d.createElement("script");
-                    t.src = "https://" + e.agent, n.parentNode.insertBefore(t, n)
-                }
-            }
-
-            function i() {
-                "complete" === d.readyState && o()
-            }
-
-            function o() {
-                c("mark", ["domContent", a() + E.offset], null, "api")
-            }
-
-            function a() {
-                return O.exists && performance.now ? Math.round(performance.now()) : (f = Math.max((new Date).getTime(), f)) - E.offset
-            }
-
-            var f = (new Date).getTime(), c = e("handle"), u = e(4), s = e("ee"), p = e(3), l = window, d = l.document,
-                m = "addEventListener", v = "attachEvent", g = l.XMLHttpRequest, w = g && g.prototype;
-            NREUM.o = {
-                ST: setTimeout,
-                SI: l.setImmediate,
-                CT: clearTimeout,
-                XHR: g,
-                REQ: l.Request,
-                EV: l.Event,
-                PR: l.Promise,
-                MO: l.MutationObserver
-            };
-            var h = "" + location, y = {
-                    beacon: "bam.nr-data.net",
-                    errorBeacon: "bam.nr-data.net",
-                    agent: "js-agent.newrelic.com/nr-1167.min.js"
-                }, b = g && w && w[m] && !/CriOS/.test(navigator.userAgent),
-                E = n.exports = {offset: f, now: a, origin: h, features: {}, xhrWrappable: b, userAgent: p};
-            e(1), e(2), d[m] ? (d[m]("DOMContentLoaded", o, !1), l[m]("load", r, !1)) : (d[v]("onreadystatechange", i), l[v]("onload", r)), c("mark", ["firstbyte", f], null, "api");
-            var x = 0, O = e(6)
-        }, {}], "wrap-function": [function (e, n, t) {
-            function r(e) {
-                return !(e && e instanceof Function && e.apply && !e[a])
-            }
-
-            var i = e("ee"), o = e(5), a = "nr@original", f = Object.prototype.hasOwnProperty, c = !1;
-            n.exports = function (e, n) {
-                function t(e, n, t, i) {
-                    function nrWrapper() {
-                        var r, a, f, c;
-                        try {
-                            a = this, r = o(arguments), f = "function" == typeof t ? t(r, a) : t || {}
-                        } catch (u) {
-                            l([u, "", [r, a, i], f])
-                        }
-                        s(n + "start", [r, a, i], f);
-                        try {
-                            return c = e.apply(a, r)
-                        } catch (p) {
-                            throw s(n + "err", [r, a, p], f), p
-                        } finally {
-                            s(n + "end", [r, a, c], f)
-                        }
-                    }
-
-                    return r(e) ? e : (n || (n = ""), nrWrapper[a] = e, p(e, nrWrapper), nrWrapper)
-                }
-
-                function u(e, n, i, o) {
-                    i || (i = "");
-                    var a, f, c, u = "-" === i.charAt(0);
-                    for (c = 0; c < n.length; c++) f = n[c], a = e[f], r(a) || (e[f] = t(a, u ? f + i : i, o, f))
-                }
-
-                function s(t, r, i) {
-                    if (!c || n) {
-                        var o = c;
-                        c = !0;
-                        try {
-                            e.emit(t, r, i, n)
-                        } catch (a) {
-                            l([a, t, r, i])
-                        }
-                        c = o
-                    }
-                }
-
-                function p(e, n) {
-                    if (Object.defineProperty && Object.keys) try {
-                        var t = Object.keys(e);
-                        return t.forEach(function (t) {
-                            Object.defineProperty(n, t, {
-                                get: function () {
-                                    return e[t]
-                                }, set: function (n) {
-                                    return e[t] = n, n
-                                }
-                            })
-                        }), n
-                    } catch (r) {
-                        l([r])
-                    }
-                    for (var i in e) f.call(e, i) && (n[i] = e[i]);
-                    return n
-                }
-
-                function l(n) {
-                    try {
-                        e.emit("internal-error", n)
-                    } catch (t) {
-                    }
-                }
-
-                return e || (e = i), t.inPlace = u, t.flag = a, t
-            }
-        }, {}]
-    }, {}, ["loader"]);</script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/favicon.ico"
-          type="image/x-icon"/>
-    <script>var h = document.getElementsByTagName('html')[0];
-    h.className = h.className.replace('no-js', 'js-enabled')</script>
-    <title>Success of Capgemini’s tender offer for Altran: Capgemini now holds 98% of Altran’s share capital &#8211;
-        Capgemini Worldwide</title>
-    <link rel='dns-prefetch' href='//www.google.com'/>
-    <link rel='dns-prefetch' href='//code.jquery.com'/>
-    <link rel='dns-prefetch' href='//s.w.org'/>
-    <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide &raquo; Feed"
-          href="https://www.capgemini.com/feed/"/>
-    <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide &raquo; Comments Feed"
-          href="https://www.capgemini.com/comments/feed/"/>
-    <link rel="alternate" type="application/rss+xml" title="Capgemini Worldwide - News Feed"
-          href="https://www.capgemini.com/newsroom/feed/"/>
-    <script type="text/javascript">
-        window._wpemojiSettings = {
-            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/",
-            "ext": ".png",
-            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/",
-            "svgExt": ".svg",
-            "source": {"concatemoji": "https:\/\/www.capgemini.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4"}
-        };
-        /*! This file is auto-generated */
-        !function (e, a, t) {
-            var r, n, o, i, p = a.createElement("canvas"), s = p.getContext && p.getContext("2d");
-
-            function c(e, t) {
-                var a = String.fromCharCode;
-                s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, e), 0, 0);
-                var r = p.toDataURL();
-                return s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, t), 0, 0), r === p.toDataURL()
-            }
-
-            function l(e) {
-                if (!s || !s.fillText) return !1;
-                switch (s.textBaseline = "top", s.font = "600 32px Arial", e) {
-                    case"flag":
-                        return !c([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) && (!c([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !c([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]));
-                    case"emoji":
-                        return !c([55357, 56424, 55356, 57342, 8205, 55358, 56605, 8205, 55357, 56424, 55356, 57340], [55357, 56424, 55356, 57342, 8203, 55358, 56605, 8203, 55357, 56424, 55356, 57340])
-                }
-                return !1
-            }
-
-            function d(e) {
-                var t = a.createElement("script");
-                t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
-            }
-
-            for (i = Array("flag", "emoji"), t.supports = {
-                everything: !0,
-                everythingExceptFlag: !0
-            }, o = 0; o < i.length; o++) t.supports[i[o]] = l(i[o]), t.supports.everything = t.supports.everything && t.supports[i[o]], "flag" !== i[o] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[i[o]]);
-            t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function () {
-                t.DOMReady = !0
-            }, t.supports.everything || (n = function () {
-                t.readyCallback()
-            }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function () {
-                "complete" === a.readyState && t.readyCallback()
-            })), (r = t.source || {}).concatemoji ? d(r.concatemoji) : r.wpemoji && r.twemoji && (d(r.twemoji), d(r.wpemoji)))
-        }(window, document, window._wpemojiSettings);
-    </script>
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <link rel='stylesheet' id='all-css-0'
-          href='https://www.capgemini.com/_static/??-eJx9jdEOgjAMRX/I2oiB+GL8ljEKVrZ1WUsMf+8ILxgTX2/uOQffGTj5sAyk6FVxYDXsg/gZAvfFlRXV1kDnyOlcDyeshJdklAxzWCZOFZyAglNjDy/pFZ0q2e477j+8PSluXZcnqn6GWWIWZaOjYu//aecimQqMUuJX+7jDWCq4WR7xfmlv3bVtuqb5AKa5X5A='
-          type='text/css' media='all'/>
+    <title th:text="${post.title}"></title>
+    <link href="css/user-info.css" rel="stylesheet" type="text/css" media="all"/>
     <style id='wp-block-library-inline-css'>
         .has-text-align-justify {
             text-align: justify;
         }
     </style>
-    <link rel='stylesheet' id='datepicker-css'
-          href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=5.4' media='all'/>
-    <link rel='stylesheet' id='all-css-2'
-          href='https://www.capgemini.com/wp-content/mu-plugins/jetpack/css/jetpack.css?m=1587053074g' type='text/css'
-          media='all'/>
-    <script type='text/javascript'
-            src='https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/js/libs/jquery-3.2.1.min.js?m=1581956972g'></script>
-    <script async defer src='https://www.google.com/recaptcha/api.js?ver=5.4'></script>
-    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=5.4'></script>
-    <link rel='https://api.w.org/' href='https://www.capgemini.com/wp-json/'/>
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.capgemini.com/xmlrpc.php?rsd"/>
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
-          href="https://www.capgemini.com/wp-includes/wlwmanifest.xml"/>
-    <meta name="generator" content="WordPress 5.4"/>
-    <link rel="canonical"
-          href="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"/>
-    <link rel='shortlink' href='https://www.capgemini.com/?p=462638'/>
+
     <style>@media (min-width: 576px) {
         .footer__banner-link {
             background-position: center;
@@ -475,341 +37,42 @@
         .footer__banner-link {
             background-position: center;
         }
-    }</style>
-    <link rel="alternate"
-          href="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="x-default"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/gb-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-gb"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/us-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-us"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/de-de/news/uebernahmeangebot-von-capgemini-fuer-altran-war-erfolgreich-capgemini-haelt-nun-98-des-aktienkapitals-von-altran/"
-          hreflang="de-de"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/in-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-in"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/nl-nl/news/welkom-altran-together-pioneering-intelligent-industry/"
-          hreflang="nl-nl"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/au-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-au"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/ca-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-ca"/>
-    <link rel="alternate" href="https://www.capgemini.com/cn-zh/news/we-welcome-altran/" hreflang="zh-cn"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/it-it/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="it-it"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/jp-jp/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="ja-jp"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/pl-pl/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="pl-pl"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/es-es/news/exito-de-la-oferta-publica-de-capgemini-para-altran-capgemini-ahora-posee-el-98-del-capital-social-de-altran/"
-          hreflang="es-es"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/be-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-be"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/mx-es/news/capgemini-concluye-exitosamente-la-oferta-de-compra-de-altran-capgemini-ahora-posee-98-del-capital-social-de-altran/"
-          hreflang="es-mx"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/at-de/news/uebernahmeangebot-von-capgemini-fuer-altran-war-erfolgreich-capgemini-haelt-nun-98-des-aktienkapitals-von-altran/"
-          hreflang="de-at"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/ch-de/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="ch-de"/>
-    <link rel="alternate"
-          href="https://www.capgemini.com/fi-en/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"
-          hreflang="en-fi"/>
-    <style type='text/css'>img#wpstats {
-        display: none
-    }</style>
-    <style type="text/css">
-        /* If html does not have either class, do not show lazy loaded images. */
-        html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
-            display: none;
-        }
+    }
     </style>
-    <script>
-        document.documentElement.classList.add(
-            'jetpack-lazy-images-js-enabled'
-        );
-    </script>
-    <link rel="amphtml"
-          href="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/amp/">
-    <!-- Jetpack Open Graph Tags -->
-    <meta property="og:type" content="article"/>
-    <meta property="og:title"
-          content="Success of Capgemini’s tender offer for Altran:  Capgemini now holds 98% of Altran’s share capital"/>
-    <meta property="og:url"
-          content="https://www.capgemini.com/news/success-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital/"/>
-    <meta property="og:description"
-          content="The French financial market authority (Autorité des marchés financiers – AMF) announced today that 110,571,163 Altran shares have been tendered in connection with the final reopening of the friendl…"/>
-    <meta property="article:published_time" content="2020-04-01T11:20:29+00:00"/>
-    <meta property="article:modified_time" content="2020-04-16T10:48:34+00:00"/>
-    <meta property="og:site_name" content="Capgemini Worldwide"/>
-    <meta property="og:image"
-          content="https://www.capgemini.com/wp-content/uploads/2020/04/Web-CG_1200x350_2peopleonlyV2.jpg"/>
-    <meta property="og:image:width" content="960"/>
-    <meta property="og:image:height" content="280"/>
-    <meta property="og:locale" content="en_US"/>
-    <meta name="twitter:text:title"
-          content="Success of Capgemini’s tender offer for Altran:  Capgemini now holds 98% of Altran’s share capital"/>
-    <meta name="twitter:image"
-          content="https://www.capgemini.com/wp-content/uploads/2020/04/Web-CG_1200x350_2peopleonlyV2.jpg?w=640"/>
-    <meta name="twitter:card" content="summary_large_image"/>
 
+    <!-- Jetpack Open Graph Tags -->
+    <meta property="og:type" content="website"/>
     <!-- End Jetpack Open Graph Tags -->
 </head>
 
-<body class="news-template news-template-dynamic-template-base news-template-dynamic-template-base-php single single-news postid-462638 ">
-
-<script>var dataLayer = [{
-    "post_type": "news",
-    "post_id": 462638,
-    "blog": "https:\/\/www.capgemini.com",
-    "network": "https:\/\/www.capgemini.com\/",
-    "u1": "Success of Capgemini\u2019s tender offer for Altran:  Capgemini now holds 98% of Altran\u2019s share capital",
-    "u2": "US",
-    "u3": "en_US",
-    "author": "",
-    "date_posted": "2020-04-01 13:20:29"
-}];</script>
-<!-- Google Tag Manager -->
-<noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-534SM7Q" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-534SM7Q');</script>
-<!-- End Google Tag Manager -->
-
-<!-- Google Tag Manager -->
-<noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TF6CWNB" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-TF6CWNB');</script>
-<!-- End Google Tag Manager -->
-
+<body class="home page-template page-template-dynamic-template-base page-template-dynamic-template-base-php page page-id-40776 ">
 
 <header class="header">
 
     <div class="header__window--top container">
         <div class="header__window--logo">
-            <a href="https://www.capgemini.com/" class="header__logo"><img
-                    src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg"
-                    alt="Capgemini Worldwide"></a>
+            <a class="header__logo"><img
+                    src="images/logo.png"
+                    alt=""></a>
         </div>
         <div class="header__window--buttons">
             <button class="header__locations header__locations-button open-menu">
-                <img alt="country flag" class="img--flag"
-                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/globe.svg"/>
+                <img alt="" src="images/globe.svg">
                 <span class="hidden-sm-down">Global | EN</span>
-                <span aria-hidden="true" class="icon-ios-arrow-left hidden-sm-down icons__button--locations"></span>
+                <span aria-hidden="true" ></span>
             </button>
             <div class="header__search-button ">
                 <div class="menu-search-menu-container">
-                    <ul id="menu-search-menu" class="search_results__button">
-                        <form th:method="get" th:action="@{/search}">
-                            <input th:name="key" th:value="${key}" type="text">
-                            <input type="submit" value="Search..."/>
-                        </form>
+                    <ul id="menu-search-menu" class="">
+                        <li id="menu-item-313458" style="padding-top: 9px;"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313458">
+                            <img alt="" src="images/Search-big.svg">
+                            <a th:href="@{/search}">Search</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="header__window header__window--locations">
-        <div class="container">
-            <div class="row">
-                <p class="section__regular-title col-12">Select which Site you would like to reach:</p>
-            </div>
-            <nav class="row">
-                <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-worldwide">
-                    Worldwide</h3>
-                    <ul class="locations__list">
-                        <li><span class="locations__list-fl location-global-en"> <img alt="country flag"
-                                                                                      class="img--flag"
-                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/globe.svg"/> </span>
-                            <a href="https://www.capgemini.com/?georedirect_none=true">Global | EN</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-americas">
-                    Americas</h3>
-                    <ul class="locations__list">
-                        <li><span class="locations__list-fl location-argentina-es"> <img alt="country flag"
-                                                                                         class="img--flag"
-                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ar.svg"/> </span>
-                            <a href="https://www.capgemini.com/ar-es/?georedirect_none=true">Argentina | ES</a></li>
-                        <li><span class="locations__list-fl location-brazil-pt"> <img alt="country flag"
-                                                                                      class="img--flag"
-                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/br.svg"/> </span>
-                            <a href="https://www.capgemini.com/br-pt/?georedirect_none=true">Brazil | PT</a></li>
-                        <li><span class="locations__list-fl location-canada"> <img alt="country flag" class="img--flag"
-                                                                                   src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ca.svg"/> </span>
-                            <a href="https://www.capgemini.com/ca-en/?georedirect_none=true">Canada | EN</a></li>
-                        <li><span class="locations__list-fl location-canada-fr"> <img alt="country flag"
-                                                                                      class="img--flag"
-                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ca.svg"/> </span>
-                            <a href="https://www.capgemini.com/ca-fr/?georedirect_none=true">Canada | FR</a></li>
-                        <li><span class="locations__list-fl location-colombia-es"> <img alt="country flag"
-                                                                                        class="img--flag"
-                                                                                        src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/co.svg"/> </span>
-                            <a href="https://www.capgemini.com/co-es/?georedirect_none=true">Colombia | ES</a></li>
-                        <li><span class="locations__list-fl location-mexico-es"> <img alt="country flag"
-                                                                                      class="img--flag"
-                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/mx.svg"/> </span>
-                            <a href="https://www.capgemini.com/mx-es/?georedirect_none=true">Mexico | ES</a></li>
-                        <li><span class="locations__list-fl location-united-states-en"> <img alt="country flag"
-                                                                                             class="img--flag"
-                                                                                             src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/us.svg"/> </span>
-                            <a href="https://www.capgemini.com/us-en/?georedirect_none=true">United States | EN</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-4 col-lg-2"><h3 class="locations__header locations__label-asia-pacific">Asia
-                    Pacific</h3>
-                    <ul class="locations__list">
-                        <li><span class="locations__list-fl location-australia-en"> <img alt="country flag"
-                                                                                         class="img--flag"
-                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/au.svg"/> </span>
-                            <a href="https://www.capgemini.com/au-en/?georedirect_none=true">Australia | EN</a></li>
-                        <li><span class="locations__list-fl location-china-zh"> <img alt="country flag"
-                                                                                     class="img--flag"
-                                                                                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/cn.svg"/> </span>
-                            <a href="https://www.capgemini.com/cn-zh/?georedirect_none=true">China | ZH</a></li>
-                        <li><span class="locations__list-fl location-india-en"> <img alt="country flag"
-                                                                                     class="img--flag"
-                                                                                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/in.svg"/> </span>
-                            <a href="https://www.capgemini.com/in-en/?georedirect_none=true">India | EN</a></li>
-                        <li><span class="locations__list-fl location-japan-jp"> <img alt="country flag"
-                                                                                     class="img--flag"
-                                                                                     src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/jp.svg"/> </span>
-                            <a href="https://www.capgemini.com/jp-jp/?georedirect_none=true">Japan | JP</a></li>
-                        <li><span class="locations__list-fl location-singapore-en"> <img alt="country flag"
-                                                                                         class="img--flag"
-                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/sg.svg"/> </span>
-                            <a href="https://www.capgemini.com/sg-en/?georedirect_none=true">Singapore | EN</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-lg-6"><h3 class="locations__header locations__label-europe">Europe, Africa &amp;
-                    Middle East</h3>
-                    <div class="row">
-                        <ul class="locations__list col-12 col-md-4">
-                            <li><span class="locations__list-fl location-austria-de"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/at.svg"/> </span>
-                                <a href="https://www.capgemini.com/at-de/?georedirect_none=true">Austria | DE</a></li>
-                            <li><span class="locations__list-fl location-belgium-en"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/be.svg"/> </span>
-                                <a href="https://www.capgemini.com/be-en/?georedirect_none=true">Belgium | EN</a></li>
-                            <li><span class="locations__list-fl location-czech-republic-en"> <img alt="country flag"
-                                                                                                  class="img--flag"
-                                                                                                  src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/cz.svg"/> </span>
-                                <a href="https://www.capgemini.com/cz-en/?georedirect_none=true">Czech Republic | EN</a>
-                            </li>
-                            <li><span class="locations__list-fl location-denmark-da"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/dk.svg"/> </span>
-                                <a href="https://www.capgemini.com/dk-en/?georedirect_none=true">Denmark | EN</a></li>
-                            <li><span class="locations__list-fl location-finland-en"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/fi.svg"/> </span>
-                                <a href="https://www.capgemini.com/fi-en/?georedirect_none=true">Finland | EN</a></li>
-                            <li><span class="locations__list-fl location-france-fr"> <img alt="country flag"
-                                                                                          class="img--flag"
-                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/fr.svg"/> </span>
-                                <a href="https://www.capgemini.com/fr-fr/?georedirect_none=true">France | FR</a></li>
-                            <li><span class="locations__list-fl location-germany-de"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/de.svg"/> </span>
-                                <a href="https://www.capgemini.com/de-de/?georedirect_none=true">Germany | DE</a></li>
-                        </ul>
-                        <ul class="locations__list col-12 col-md-4">
-                            <li><span class="locations__list-fl location-hungary-en"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/hu.svg"/> </span>
-                                <a href="https://www.capgemini.com/hu-en/?georedirect_none=true">Hungary | EN</a></li>
-                            <li><span class="locations__list-fl location-italy-it"> <img alt="country flag"
-                                                                                         class="img--flag"
-                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/it.svg"/> </span>
-                                <a href="https://www.capgemini.com/it-it/?georedirect_none=true">Italy | IT</a></li>
-                            <li><span class="locations__list-fl location-netherlands-nl"> <img alt="country flag"
-                                                                                               class="img--flag"
-                                                                                               src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/nl.svg"/> </span>
-                                <a href="https://www.capgemini.com/nl-nl/?georedirect_none=true">Netherlands | NL</a>
-                            </li>
-                            <li><span class="locations__list-fl location-norway-no"> <img alt="country flag"
-                                                                                          class="img--flag"
-                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/no.svg"/> </span>
-                                <a href="https://www.capgemini.com/no-no/?georedirect_none=true">Norway | NO</a></li>
-                            <li><span class="locations__list-fl location-poland-pl"> <img alt="country flag"
-                                                                                          class="img--flag"
-                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/pl.svg"/> </span>
-                                <a href="https://www.capgemini.com/pl-pl/?georedirect_none=true">Poland | PL</a></li>
-                            <li><span class="locations__list-fl location-portugal-en"> <img alt="country flag"
-                                                                                            class="img--flag"
-                                                                                            src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/pt.svg"/> </span>
-                                <a href="https://www.capgemini.com/pt-en/?georedirect_none=true">Portugal | EN</a></li>
-                            <li><span class="locations__list-fl location-romania-en"> <img alt="country flag"
-                                                                                           class="img--flag"
-                                                                                           src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ro.svg"/> </span>
-                                <a href="https://www.capgemini.com/ro-en/?georedirect_none=true">Romania | EN</a></li>
-                        </ul>
-                        <ul class="locations__list col-12 col-md-4">
-                            <li><span class="locations__list-fl location-saudi-arabia-sa"> <img alt="country flag"
-                                                                                                class="img--flag"
-                                                                                                src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/sa.svg"/> </span>
-                                <a href="https://www.capgemini.com/sa-ar/?georedirect_none=true">Saudi Arabia | AR</a>
-                            </li>
-                            <li><span class="locations__list-fl location-spain-es"> <img alt="country flag"
-                                                                                         class="img--flag"
-                                                                                         src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/es.svg"/> </span>
-                                <a href="https://www.capgemini.com/es-es/?georedirect_none=true">Spain | ES</a></li>
-                            <li><span class="locations__list-fl location-sweden-en"> <img alt="country flag"
-                                                                                          class="img--flag"
-                                                                                          src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/se.svg"/> </span>
-                                <a href="https://www.capgemini.com/se-en/?georedirect_none=true">Sweden | EN</a></li>
-                            <li><span class="locations__list-fl location-switzerland-de"> <img alt="country flag"
-                                                                                               class="img--flag"
-                                                                                               src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/ch.svg"/> </span>
-                                <a href="https://www.capgemini.com/ch-de/?georedirect_none=true">Switzerland | DE</a>
-                            </li>
-                            <li><span class="locations__list-fl location-uk-en"> <img alt="country flag"
-                                                                                      class="img--flag"
-                                                                                      src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/fl/gb.svg"/> </span>
-                                <a href="https://www.capgemini.com/gb-en/?georedirect_none=true">UK | EN</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="barre_hamburger"></div>
-    </div>
-
 
     <div class="header__top container">
 
@@ -1304,7 +567,7 @@
 <header>
     <div class="container-full hero hero_full hero_full__pic hero--with-inset hero--title-only "
          th:style="'background-image: url(' + @{${post.image}} + ');'">
-        <div class="hero_full__inner" >
+        <div class="hero_full__inner">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-8 hero_overflow offset_hero--md">
@@ -1347,7 +610,7 @@
                                         <path fill="#000"
                                               d="M16 7H2v10h14V7zm2 0v12H0V3h2.5v.5a2 2 0 1 0 4 0V3h5v.5a2 2 0 1 0 4 0V3H18v4zm-4.5-6A1.5 1.5 0 0 1 15 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 13.5 1zm-9 0A1.5 1.5 0 0 1 6 2.5v1a1.5 1.5 0 0 1-3 0v-1A1.5 1.5 0 0 1 4.5 1zM4 9h2v2H4V9zm0 4h2v2H4v-2zm4-4h2v2H8V9zm0 4h2v2H8v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
                                     </svg>
-                                    <span th:text="${#dates.format(post.dateCreated, 'dd-MM-yyyy')}"></span>
+                                    <span th:text="${#dates.format(post.dateCreated, 'dd-MM-yyyy')}">20 November 2015</span>
                                 </time>
                             </div>
 
@@ -1362,46 +625,9 @@
     </div>
 </header>
 <article>
-
     <div class="section container">
         <article class="col-12 main-content">
             <div class="row">
-
-                <div class="social-buttons" data-stick-to=".main-content">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.capgemini.com%2Fnews%2Fsuccess-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital%2F"
-                       aria-label="Share on Facebook" class="social-buttons__button social-buttons__button--fb"
-                       target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                            <g fill="none" fill-rule="evenodd">
-                                <rect width="36" height="36" rx="3"/>
-                                <path d="M16.572 28.558H20.1v-9.515h2.646l.523-2.973H20.1v-2.154c0-.695.458-1.424 1.111-1.424h1.802V9.52h-2.208v.014c-3.454.123-4.164 2.087-4.225 4.15h-.007v2.387h-1.764v2.973h1.764v9.515z"/>
-                            </g>
-                        </svg>
-                    </a>
-
-                    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.capgemini.com%2Fnews%2Fsuccess-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital%2F&#038;text="
-                       aria-label="Share on Twitter" class="social-buttons__button social-buttons__button--twitter"
-                       target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                            <g fill="none" fill-rule="evenodd">
-                                <rect width="36" height="36" rx="3"/>
-                                <path d="M27.76 11.757c-.538.344-1.772.844-2.38.844v.001a3.816 3.816 0 0 0-6.477 3.487c-2.859-.075-5.984-1.507-7.866-3.959-1.157 2.003-.156 4.23 1.157 5.041-.45.034-1.277-.051-1.666-.431-.026 1.329.613 3.09 2.943 3.729-.449.241-1.243.172-1.588.12.12 1.123 1.692 2.59 3.41 2.59-.612.708-2.916 1.992-5.502 1.584a11.464 11.464 0 0 0 5.969 1.687c6.155 0 10.936-4.989 10.679-11.143-.002-.007-.002-.014-.002-.021l.002-.048c0-.02-.002-.038-.003-.056a6.582 6.582 0 0 0 1.85-1.953c-.312.171-1.246.515-2.116.6.558-.301 1.385-1.288 1.59-2.072"/>
-                            </g>
-                        </svg>
-                    </a>
-
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fwww.capgemini.com%2Fnews%2Fsuccess-of-capgeminis-tender-offer-for-altran-capgemini-now-holds-98-of-altrans-share-capital%2F"
-                       aria-label="Share on LinkedIn" class="social-buttons__button social-buttons__button--in"
-                       target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                            <g fill="none" fill-rule="evenodd">
-                                <rect width="36" height="36" rx="3"/>
-                                <path d="M11.622 14.125c1.31 0 2.373-.97 2.373-2.166 0-1.198-1.063-2.168-2.373-2.168-1.312 0-2.375.97-2.375 2.168 0 1.197 1.063 2.166 2.375 2.166M9.791 28.056h4.258V15.775H9.791zM20.026 21.225c0-1.408.666-2.785 2.26-2.785 1.593 0 1.985 1.377 1.985 2.752v6.707h4.239v-6.981c0-4.851-2.867-5.687-4.631-5.687-1.762 0-2.734.596-3.853 2.04v-1.653h-4.251v12.281h4.251v-6.674z"/>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
-
                 <div class="section__block main-content-text col-12 col-md-7 offset-md-1">
                     <div class="article-text">
                         <p th:text="${post.content}"></p>
@@ -1410,38 +636,214 @@
 
                 <div class="section__block col-12 col-md-4">
 
-                    <div class="card_download card_download--hovered  ">
-                        <h3 class="card_download__title">
-                            <a href="https://www.capgemini.com/wp-content/uploads/2020/04/Capgemini_-_2020-04-01_-_Capgemini_now_holds_98_percent_of_Altran_s_share_capital_Final.pdf">Press
-                                Release</a>
-                        </h3>
-                        <div class="card_download__file">
-		<span>
-			File size: 127.34 KB		</span>
+<!--                    <div class="card_download card_download&#45;&#45;hovered  ">-->
+<!--                        <h3 class="card_download__title">-->
+<!--                            <a href="https://www.capgemini.com/wp-content/uploads/2020/04/Capgemini_-_2020-04-01_-_Capgemini_now_holds_98_percent_of_Altran_s_share_capital_Final.pdf">Press-->
+<!--                                Release</a>-->
+<!--                        </h3>-->
+<!--                        <div class="card_download__file">-->
+<!--		<span>-->
+<!--			File size: 127.34 KB		</span>-->
 
-                            <span>
-				File type: PDF			</span>
+<!--                            <span>-->
+<!--				File type: PDF			</span>-->
+<!--                        </div>-->
+<!--                        <div class="card_download__download">-->
+<!--                            <a href="https://www.capgemini.com/wp-content/uploads/2020/04/Capgemini_-_2020-04-01_-_Capgemini_now_holds_98_percent_of_Altran_s_share_capital_Final.pdf"-->
+<!--                               aria-label="">-->
+<!--                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">-->
+<!--                                    Download icon-->
+<!--                                    <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">-->
+<!--                                        <path class="border_svg"-->
+<!--                                              d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>-->
+<!--                                        <path d="M23.867 17.867l-3.958 3.958-2.042 2.042-6.02-6.02M11.846 27.846h12M17.846 8.303v14.543"/>-->
+<!--                                    </g>-->
+<!--                                </svg>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+            </div>
+
+            <!--Post Comments Start-->
+            <div class="detailBox">
+                <div class="titleBox">
+                    <h2>Comment Box</h2>
+                </div>
+
+                <div class="actionBox">
+                    <ul class="commentList" th:each="comment:${comments}">
+                        <li>
+                            <div class="commenterImage">
+                                <h5 th:text="${comment.user}"></h5>
+                            </div>
+                            <div>
+                                <br>
+                            </div>
+                            <div class="commentText">
+                                <p class="" th:text="${comment.content}" style="padding-left:100px; font-size: 12px"></p>
+                                <span class="date sub-text" th:text="${#dates.format(comment.dateCreated, 'dd-MM-yyyy')}"></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <textarea class="form-control btn-input-comment" type="text"
+                                      placeholder="Your comments"></textarea>
                         </div>
-                        <div class="card_download__download">
-                            <a href="https://www.capgemini.com/wp-content/uploads/2020/04/Capgemini_-_2020-04-01_-_Capgemini_now_holds_98_percent_of_Altran_s_share_capital_Final.pdf"
-                               aria-label="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                                    Download icon
-                                    <g fill="none" fill-rule="evenodd" stroke="#0070AD" stroke-width="2">
-                                        <path class="border_svg"
-                                              d="M1 18c0 9.39 7.61 17 17 17s17-7.61 17-17S27.39 1 18 1 1 8.61 1 18z"/>
-                                        <path d="M23.867 17.867l-3.958 3.958-2.042 2.042-6.02-6.02M11.846 27.846h12M17.846 8.303v14.543"/>
-                                    </g>
-                                </svg>
-                            </a>
+                        <div class="form-group">
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    id="btn-comment" >
+                                Add
+                            </button>
+
+
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
+
+            <style>
+                .detailBox {
+    width:650px;
+    border:0px solid #bbb;
+    margin:50px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:100%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+
+    width:10%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+
+            </style>
+            <!--Post Comments End-->
         </article>
     </div>
-
 </article>
+
+<!--modal-->
+<div class="modal fade"
+     id="modal-create-user"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                   Register
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group margin-bottom-15"
+                     style="margin-top: 20px;">
+                    <label>Full Name:</label>:</label>
+                    <input type="text" placeholder="6 characters"
+                           class="form-control"
+                           id="input-user-name"/>
+                </div>
+                <div class="form-group margin-bottom-15"
+                     style="margin-top: 20px;">
+                    <label>Email:</label>
+                    <input type="text" placeholder="abc@gmail.com"
+                           class="form-control"
+                           id="input-user-email"/>
+                </div>
+                <div class="form-group margin-bottom-15"
+                     style="margin-top: 20px;">
+                    <label>Password:</label>
+                    <input type="password" placeholder="6-12 characters"
+                           class="form-control"
+                           id="input-user-password"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        id="btn-close"
+                        data-dismiss="modal">Close
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-primary btn-save-category"
+                        id="save-cate"
+                        th:attr="postID = ${post.id}"
+                >Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--                 Go to www.addthis.com/dashboard to customize your tools-->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ea3bf1425d2673e"></script>
 
 
 <footer class="footer container-full">
@@ -1713,80 +1115,17 @@
     </div>
 </footer>
 
-<div class="section__cookies">
-    <img src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/cookies.svg" alt="cookies.">
-    <div class="section__cookies__text">
-        <p>By continuing to navigate on this website, you accept the use of cookies.</p>
-        <p>For more information and to change the setting of cookies on your computer, please read our <a
-                href="https://www.capgemini.com/privacy-policy/">Privacy Policy</a>.</p></div>
-    <a href="#" class="section__button--cookies section__button section__button--transparent"><i
-            class="icon-android-close" aria-hidden="true"></i>
-        <p>Close</p><span class="sr-only">Close cookie information</span></a>
-</div>
-
-
-<script>
-    var ELASTIC_JOBS = {
-        "api_url": "https:\/\/jobstream.elastic.macs.capgemini.com",
-        "country_code": "global",
-        "country_code_param": "",
-        "country_name_param": ""
-    };
-</script>
-<script type='text/javascript'
-        src='https://www.capgemini.com/_static/??/wp-content/plugins/cg-elastic-jobs/assets/js/elastic-jobs.js,/wp-content/themes/capgemini-komposite/assets/js/libs/jquery.touchSwipe.min.js?m=1586935257j'></script>
-<script src='https://www.capgemini.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.15'></script>
-<script>
-    window.lodash = _.noConflict();
-</script>
-<script>
-    var CG_hero = {"replayString": "Replay video", "resumeString": "Continue watching"};
-</script>
-<script>
-    var CG_hero = {"replayString": "Replay video"};
-</script>
-<script>
-    var CG_SEARCH = {"searchNonce": "8cb4e21d30", "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php"};
-</script>
-<script>
-    var CG = {"expandString": "Expand", "collapseString": "Collapse"};
-</script>
-<script>
-    var PF = {
-        "ajaxURL": "https:\/\/www.capgemini.com\/wp-admin\/admin-ajax.php",
-        "ajaxNonce": "6ae349bb37",
-        "strings": {
-            "remove_file": "remove file",
-            "select_file": "Select File",
-            "uploading": "uploading...",
-            "file_selected": "File selected",
-            "default_error": "This field's value is invalid!",
-            "required_error": "This field is required!",
-            "email_error": "Please enter a valid email address!",
-            "date_format_error": "Please enter date in valid format!"
-        }
-    };
-</script>
-<script type='text/javascript'
-        src='https://www.capgemini.com/_static/??-eJytk81OAzEMhF+IbIqqqlwQj8Gxyma9qbdJbGKnqDw9QRVQwYkNx/zMlxmPYl/ZeMoKWa0eIYFY7zhAwozmRIlJUME6EVCxi1iJOEEZFrmzf5b6gqxiqBbfjl2+HD70zmuVLiATV+4nmHOLRl0cdWNflCMU+gcfnRgvh+zOq6TOeyoTUjZKIURYBYk4tiwQwesz0TDXGNdzlpcK5TLMqG0gXe10VTJTSX0EzFw7TYyRghHMa4v5+i8uQ/xlJVXDsQbM7S4oO3+yB8zejhXjZKN7uxhMLsC1m+/l0N77yfoE+WC4EEO5DvDGy+22mUvTNcZTerzfPew3u+1mv13eAUB33DU='></script>
-<script type='text/javascript' src='https://stats.wp.com/e-202016.js' async='async' defer='defer'></script>
-<script type='text/javascript'>
-    _stq = window._stq || [];
-    _stq.push(['view', {v: 'ext', j: '1:8.4.2', blog: '134905850', post: '462638', tz: '2', srv: 'www.capgemini.com'}]);
-    _stq.push(['clickTrackerInit', '134905850', '462638']);
-</script>
-
-<script type="text/javascript">window.NREUM || (NREUM = {});
-NREUM.info = {
-    "beacon": "bam.nr-data.net",
-    "licenseKey": "6b6b1d1407",
-    "applicationID": "52117986",
-    "transactionName": "YANaNUJSCkUHVUZYDFlJeQJEWgtYSVJLXwJaD1tMRFYJRgpXRlROVQdLBA==",
-    "queueTime": 0,
-    "applicationTime": 380,
-    "atts": "TERNQwpIGRpEVxALGEob",
-    "errorBeacon": "bam.nr-data.net",
-    "agent": ""
-}</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/user-comment.js}"></script>
 </body>
 </html>

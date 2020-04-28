@@ -22,4 +22,6 @@ public class Paging {
     private int currentPage;
 
     private int totalPage;
+
+    private long element;
 }

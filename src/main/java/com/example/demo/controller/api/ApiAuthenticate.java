@@ -1,5 +1,6 @@
 package com.example.demo.controller.api;
 
+import com.example.demo.model.api.BasicApiResult;
 import com.example.demo.model.mapper.UserMapper;
 import com.example.demo.model.request.AuthenticationRequest;
 import com.example.demo.security.CookieUtil;
@@ -31,32 +32,39 @@ public class ApiAuthenticate {
 
     @PostMapping("/api/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthenticationRequest req, HttpServletResponse res) {
-        // Xác thực từ username và password.
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        req.getEmail(),
-                        req.getPassword()
-                )
-        );
+        BasicApiResult basicApiResult = new BasicApiResult();
 
-        // Nếu không xảy ra exception tức là thông tin hợp lệ
-        // Set thông tin authentication vào Security Context
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            // Xác thực từ username và password.
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            req.getEmail(),
+                            req.getPassword()
+                    )
+            );
 
-        // Gen token
-        String token = jwtTokenUtil.generateToken((CustomUserDetails) authentication.getPrincipal());
+            // Nếu không xảy ra exception tức là thông tin hợp lệ
+            // Set thông tin authentication vào Security Context
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Luu cookie
-        CookieUtil.create(res, NAME_TOKEN, token);
+            // Gen token
+            String token = jwtTokenUtil.generateToken((CustomUserDetails) authentication.getPrincipal());
 
-        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String role = userDetails.getUser().getRole().getRoleName();
+            // Luu cookie
+            CookieUtil.create(res, NAME_TOKEN, token);
 
-        return ResponseEntity.ok(role);
+            basicApiResult.setSuccess(true);
+            basicApiResult.setMessage("Successful");
+        } catch (Exception ex) {
+            basicApiResult.setSuccess(false);
+            basicApiResult.setMessage("Email or password is incorrect!");
+        }
+
+        return ResponseEntity.ok(basicApiResult);
     }
 
-    @GetMapping("/current-user")
-    public ResponseEntity<?> getCurrentUser() {
+    @GetMapping("/check-user")
+    public ResponseEntity<?> getUser() {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(UserMapper.toUserDto(userDetails.getUser()));
     }
